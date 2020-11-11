@@ -10,11 +10,8 @@ class App extends React.Component {
     return (
       <>
         <h1>
-          Hello {name}!!!
+          Hello
         </h1>
-        <button type="button" class="btn btn-primary">
-          This is a bootstrap button
-        </button>
       </>
     );
   }
