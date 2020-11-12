@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     const { name } = this.props;
     return (
-      <div>
+      <div className="container">
         <Review />
       </div>
     );

@@ -1,4 +1,14 @@
+/* ================================= 
+  Base Layout Styles
+==================================== */
+
 h1 {
   color: black;
   background-color: white;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  max-width: 1150px;
 }
