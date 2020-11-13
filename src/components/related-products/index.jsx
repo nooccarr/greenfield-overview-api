@@ -36,3 +36,5 @@ class RelatedOutfit extends React.Component {
 
 
 }
+
+export default RelatedOutfit;
