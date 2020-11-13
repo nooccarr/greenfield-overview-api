@@ -11,10 +11,10 @@ class App extends React.Component {
     const { name } = this.props;
     return (
       <div>
-        <Related/>
-      </div>
-      <div>
-        <Review />
+        <div className="container">
+          <Related />
+          <Review />
+        </div>
       </div>
     );
   }
