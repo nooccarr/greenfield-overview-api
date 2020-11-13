@@ -1,5 +1,5 @@
 import React from 'react';
-import OutfitProd from './Outfitprod'
+import OutfitProd from './Outfitprod';
 
 const Outfit = (props) => (
     <div>
