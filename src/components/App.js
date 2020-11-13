@@ -3,7 +3,7 @@ import React from "react";
 import { hot } from 'react-hot-loader/root';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Review from './ratings-reviews/Review';
+import ReviewMain from './ratings-reviews/ReviewMain';
 import Related from './related-products/index.jsx';
 
 class App extends React.Component {
@@ -13,7 +13,7 @@ class App extends React.Component {
       <div>
         <div className="container">
           <Related />
-          <Review />
+          <ReviewMain />
         </div>
       </div>
     );
