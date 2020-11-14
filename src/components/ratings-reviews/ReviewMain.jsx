@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import RatingsAndReviews from './RatingsAndReviews';
 import Review from './Reviews';
-import findRatingAverage from './Rating-Helpers';
+import {
+  findRatingAverage,
+  findRecommendPercent,
+  getRatingPercentages,
+} from './Rating-Helpers';
 
 function ReviewMain(props) {
   const [ratingAverage, setRatingAverage] = useState(null);
+  const [recommendPercentage, setRecommendPercentage] = useState(null);
+  const [reviewCount, setReviewCount] = useState(null);
+  const [ratingsPercentages, setRatingPercentages] = useState(null);
 
   // -------------- fetch data from reviews endpoint ---------------------
   useEffect(() => {
@@ -13,7 +20,7 @@ function ReviewMain(props) {
         return res.json();
       })
       .then((result) => {
-        console.log(result);
+        setReviewCount(result.count);
       })
       .catch((err) => {
         console.log(err);
@@ -28,6 +35,8 @@ function ReviewMain(props) {
       })
       .then((result) => {
         setRatingAverage(findRatingAverage(result.ratings));
+        setRecommendPercentage(findRecommendPercent(result.recommended));
+        setRatingPercentages(getRatingPercentages(result.ratings));
       })
       .catch((err) => {
         console.log(err);
@@ -36,8 +45,12 @@ function ReviewMain(props) {
 
   return (
     <div className="review-main-container">
-      <RatingsAndReviews ratingAverage={ratingAverage} />
-      <Review />
+      <RatingsAndReviews
+        ratingAverage={ratingAverage}
+        recommendPercentage={recommendPercentage}
+        ratingsPercentages={ratingsPercentages}
+      />
+      <Review reviewCount={reviewCount} />
     </div>
   );
 }
