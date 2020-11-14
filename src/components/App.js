@@ -1,10 +1,10 @@
-
-import React from "react";
+import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReviewMain from './ratings-reviews/ReviewMain';
 import Related from './related-products/index.jsx';
+import Detail from './productDetail/index.jsx';
 
 class App extends React.Component {
   render() {
@@ -12,6 +12,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="container">
+          <Detail />
           <Related />
           <ReviewMain />
         </div>
