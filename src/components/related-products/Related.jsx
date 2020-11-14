@@ -5,7 +5,13 @@ import RelatedProd from './Relatedprod';
 const Related = (props) => (
     <div>
         <h3>RELATED PRODUCTS</h3>
-        <RelatedProd/>
+        {props.related.map((item, index) => {
+            return (
+                <div key={index}>
+                    <RelatedProd focus={item}/>
+                </div>
+            )
+        })}
     </div>
 )
 
