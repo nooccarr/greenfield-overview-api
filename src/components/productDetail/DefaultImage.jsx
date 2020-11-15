@@ -1,10 +1,10 @@
 import React from 'react';
 
-class DefaultImage extends React.component {
+class DefaultImage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentImage: this.props.currentStyle.results.photos[0].url,
+      currentImage: props.currentStyle.photos[0].url,
     };
   }
 
@@ -15,7 +15,7 @@ class DefaultImage extends React.component {
   render() {
     return (
       <div>
-        <img src={this.state.currentImage}></img>
+        <img src={this.props.currentStyle.photos[0].url}></img>
         <div>
           {
             // thumbnails

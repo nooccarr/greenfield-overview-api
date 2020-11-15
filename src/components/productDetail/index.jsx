@@ -13,8 +13,81 @@ class Detail extends React.Component {
     this.state = {
       currentProductId: 1,
       currentProduct: {},
-      currentStyle: {},
+      currentProductStyles: [],
+      currentStyle: {
+        style_id: 1,
+        name: 'Forest Green & Black',
+        original_price: '140',
+        sale_price: '0',
+        'default?': 1,
+        photos: [
+          {
+            thumbnail_url:
+              'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+            url:
+              'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            thumbnail_url:
+              'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+            url:
+              'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
+          },
+          {
+            thumbnail_url:
+              'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+            url:
+              'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
+          },
+          {
+            thumbnail_url:
+              'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
+            url:
+              'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            thumbnail_url:
+              'https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+            url:
+              'https://images.unsplash.com/photo-1556648202-80e751c133da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          },
+          {
+            thumbnail_url:
+              'https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+            url:
+              'https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80',
+          },
+        ],
+        skus: {
+          1: {
+            quantity: 8,
+            size: 'XS',
+          },
+          2: {
+            quantity: 16,
+            size: 'S',
+          },
+          3: {
+            quantity: 17,
+            size: 'M',
+          },
+          4: {
+            quantity: 10,
+            size: 'L',
+          },
+          5: {
+            quantity: 15,
+            size: 'XL',
+          },
+          6: {
+            quantity: 4,
+            size: 'XL',
+          },
+        },
+      },
     };
+
+    this.handleStyleChange = this.handleStyleChange.bind(this);
   }
   fetchProduct() {
     return axios
@@ -29,9 +102,9 @@ class Detail extends React.Component {
 
   fetchStyle() {
     return axios
-      .get(`http://3.21.164.220/products/${this.state.currentProductId}/style`)
-      .then((style) => {
-        this.getCurrentStyle(style);
+      .get(`http://3.21.164.220/products/${this.state.currentProductId}/styles`)
+      .then((styles) => {
+        this.getCurrentStyle(styles.data.results);
       })
       .catch((err) => {
         console.log(err);
@@ -42,38 +115,39 @@ class Detail extends React.Component {
     this.setState({ currentProduct: product });
   }
 
-  getCurrentStyle(style) {
+  getCurrentStyle(styles) {
+    this.setState({ currentProductStyles: styles });
+  }
+
+  handleStyleChange(style) {
     this.setState({ currentStyle: style });
   }
 
-  componentDidMont() {
+  componentDidMount() {
     this.fetchProduct();
     this.fetchStyle();
   }
   render() {
     return (
       <div>
-        <ProductImage
-          currentProduct={this.state.currentProduct}
-          currentStyle={this.state.currentStyle}
-        />
-        <review />
+        <DefaultImage currentStyle={this.state.currentStyle} />
+
         <ProductInfo
           currentProduct={this.state.currentProduct}
-          currentStyle={this.state.currentStyle}
+          currentProductStyles={this.state.currentProductStyles}
           productId={this.state.currentProductId}
         />
         <Style
-          currentProduct={this.state.currentProduct}
-          currentStyle={this.state.currentStyle}
+          handleStyleChange={this.handleStyleChange}
+          currentProductStyles={this.state.currentProductStyles}
         />
         <Selections
           currentProduct={this.state.currentProduct}
-          currentStyle={this.state.currentStyle}
+          currentProductStyles={this.state.currentProductStyles}
         />
         <Description
           currentProduct={this.state.currentProduct}
-          currentStyle={this.state.currentStyle}
+          currentProductStyles={this.state.currentProductStyles}
         />
       </div>
     );

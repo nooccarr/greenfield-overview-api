@@ -1,5 +1,4 @@
 import React from 'react';
-
 const ProductInfo = (props) => {
   return (
     <div>
