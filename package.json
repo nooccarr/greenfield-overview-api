@@ -14,7 +14,6 @@
     "test": "jest"
   },
   "dependencies": {
-
     "@material-ui/core": "^4.11.0",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "axios": "^0.21.0",
