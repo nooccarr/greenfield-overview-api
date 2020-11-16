@@ -16,18 +16,20 @@ class RelatedProd extends React.Component {
         axios.get(`http://3.21.164.220/products/${this.props.focus}/styles`)
         .then((response) => {
             this.setState({
-                item: response.data
+                item: response.data,
             })
             axios.get(`http://3.21.164.220/products/${response.data.product_id}`)
             .then((response) => {
                 this.setState({
                     item: this.state.item,
-                    name: response.data.name
+                    name: response.data.name,
+                    cat: response.data.category,
+                    price: response.data.default_price
                 })
             })
         })
         .catch((err) => {
-            console.log(`there was an error fetching styles for related prod:`, this.props.focus)
+            console.log(`there was an error fetching styles for related prod:`, this.props.focus, err)
         })
     }
 
@@ -41,7 +43,7 @@ class RelatedProd extends React.Component {
         } else {
             return (
                 <div>
-                    <span>{`Product Name:${this.state.name}`}</span>
+                    <span>{`Product Name: ${this.state.name} Category: ${this.state.cat}, Price: $${this.state.price}, Rating: TBD`}</span>
                     <img src={this.state.item.results[0].photos[0].thumbnail_url}></img>
                 </div>
             )
