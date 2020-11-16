@@ -82,3 +82,7 @@ Carousel Styling
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 }
+
+.relatedImg {
+  height:300px;
+}
