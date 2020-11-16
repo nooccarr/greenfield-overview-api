@@ -78,11 +78,15 @@ Carousel Styling
   left: 0;
   display: flex;
   overflow-x: scroll;
-  counter-reset: item;
   scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
 }
 
 .relatedImg {
   height:300px;
+}
+
+.card {
+  margin: 20px;
+  border: black;
+  border-style: solid;
 }
