@@ -18,7 +18,7 @@ class RelatedOutfit extends React.Component {
 
     // current Item will need to be handed down by props
     componentDidMount() {
-        axios.get('http://3.21.164.220/products/13/related')
+        axios.get('http://3.21.164.220/products/85/related')
         .then((response) => {
             var removeDups = (arr) => {
                 var memory = {}
@@ -38,7 +38,7 @@ class RelatedOutfit extends React.Component {
             })     
         })
         .catch((err) => {
-            console.log('there was an error getting related products')
+            console.log('there was an error getting related products', err)
         })
     }
 
