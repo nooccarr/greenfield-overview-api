@@ -66,3 +66,19 @@ Rating and Reviews Styling
   margin-right: 0.5rem;
   margin-bottom: 1.2rem;
 }
+
+/* ================================= 
+Carousel Styling
+==================================== */
+
+.carousel {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow-x: scroll;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
