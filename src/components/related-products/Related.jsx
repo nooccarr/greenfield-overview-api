@@ -28,6 +28,22 @@ class Related extends React.Component {
         }
     }
     
+    leftButton() {
+        if (this.state.start !== 0) {
+            return (
+                <button className='carouselArrow carouselLeft' id='leftBut' onClick={(e) => {this.handleClick(e)}}></button>
+            )
+        }
+    }
+
+    rightButton() {
+        if (this.state.end < this.props.related.length) {
+            return (
+                <button className='carouselArrow carouselRight' id='rightBut' onClick={(e) => {this.handleClick(e)}}></button>
+            )
+        }
+    }
+
 
     render() {
         var related = this.props.related.slice(this.state.start, this.state.end)
@@ -43,7 +59,7 @@ class Related extends React.Component {
                     )
                 })}
             </div>
-            <button className='carouselArrow carouselLeft' id='leftBut' onClick={(e) => {this.handleClick(e)}}></button><button className='carouselArrow carouselRight' id='rightBut' onClick={(e) => {this.handleClick(e)}}></button>
+            {this.leftButton()}{this.rightButton()}
         </div>
         )
     }
