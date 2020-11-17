@@ -43,7 +43,7 @@ class Related extends React.Component {
                     )
                 })}
             </div>
-            <button id='leftBut' onClick={(e) => {this.handleClick(e)}}>{`<`}</button><button id='rightBut' onClick={(e) => {this.handleClick(e)}}>{`>`}</button>
+            <button className='carouselArrow carouselLeft' id='leftBut' onClick={(e) => {this.handleClick(e)}}></button><button className='carouselArrow carouselRight' id='rightBut' onClick={(e) => {this.handleClick(e)}}></button>
         </div>
         )
     }
