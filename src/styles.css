@@ -128,7 +128,7 @@ Carousel Styling
   bottom: 0;
   left: 0;
   display: flex;
-  overflow-x: scroll;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -139,6 +139,11 @@ Carousel Styling
 .card {
   margin: 20px;
   border: black;
+  border-width: 1px;
   border-style: solid;
+}
+
+.cardText {
+  padding-left: 10px;
 }
 
