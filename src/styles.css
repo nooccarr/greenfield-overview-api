@@ -117,3 +117,28 @@ Rating and Reviews Styling
   float: right;
   font-size: x-small;
 }
+
+/* ================================= 
+Carousel Styling
+==================================== */
+
+.carousel {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.relatedImg {
+  height:300px;
+}
+
+.card {
+  margin: 20px;
+  border: black;
+  border-style: solid;
+}
+
