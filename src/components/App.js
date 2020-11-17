@@ -8,7 +8,6 @@ import Detail from './productDetail/index.jsx';
 
 class App extends React.Component {
   render() {
-    const { name } = this.props;
     return (
       <div>
         <div className="container">
