@@ -42,9 +42,13 @@ class RelatedProd extends React.Component {
             )
         } else {
             return (
-                <div>
-                    <span>{`Product Name: ${this.state.name} Category: ${this.state.cat}, Price: $${this.state.price}, Rating: TBD`}</span>
-                    <img src={this.state.item.results[0].photos[0].thumbnail_url}></img>
+                <div className='card' style={{width: '18rem'}}>
+                    <img src={this.state.item.results[0].photos[0].thumbnail_url} className='relatedImg'></img>
+                    <div className='container'></div>
+                        <h6>{this.state.cat}</h6>
+                        <h4><b>{this.state.name}</b></h4>
+                        <p>${this.state.price}</p>
+                        <p>Rating: TBD</p>
                 </div>
             )
         }
