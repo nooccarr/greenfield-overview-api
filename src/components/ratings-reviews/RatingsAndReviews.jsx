@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Rating from '@material-ui/lab/Rating';
+import ProductBreakdownBars from './ProductBreakdownBars';
 
 function RatingsAndReviews(props) {
   // default values until state updates propery
@@ -14,17 +15,21 @@ function RatingsAndReviews(props) {
   return (
     <div className="ratings-container">
       <h6>RATINGS & REVIEWS</h6>
-      <h5 id="large-rating">{props.ratingAverage}</h5>
-      <Rating
-        value={props.ratingAverage}
-        precision={0.1}
-        readOnly
-        size="small"
-        id="main"
-      />
-      <p>
-        {props.recommendPercentage * 100}% of reviews recommend this product
-      </p>
+      <div className="main-rating">
+        <h5 id="large-rating">{props.ratingAverage}</h5>
+        <Rating
+          value={props.ratingAverage}
+          precision={0.1}
+          readOnly
+          size="small"
+          id="main-stars"
+        />
+      </div>
+      <div id="recommendation">
+        <p>
+          {props.recommendPercentage * 100}% of reviews recommend this product
+        </p>
+      </div>
       <div id="bar-labels">
         <p className="bar-label">5 stars</p>
         <p className="bar-label">4 stars</p>
@@ -59,6 +64,9 @@ function RatingsAndReviews(props) {
           variant="success"
         />
       </div>
+      <ProductBreakdownBars
+        productCharacteristics={props.productCharacteristics}
+      />
     </div>
   );
 }

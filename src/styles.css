@@ -28,19 +28,18 @@ Rating and Reviews Styling
 
 .review-main-container {
   margin-top: 5rem;
+  margin-bottom: 30rem;
 }
 
 .ratings-container {
   float: left;
-  width: 25%;
+  width: 23%;
   font-size: small;
 }
 
 .reviews-container {
-  padding-left: 5rem;
-  margin-top: 1.5rem;
   float: right;
-  width: 60%;
+  width: 70%;
 }
 
 .rating-bar {
@@ -50,8 +49,19 @@ Rating and Reviews Styling
 #large-rating {
   font-size: 3rem;
   font-weight: 700;
+  float: left;
+  width: 30%;
+}
+#main-stars {
+  padding-top: 1rem;
+  width: 60%;
+  color: black;
 }
 
+#recommendation {
+  display: inline-block;
+  width: 100%;
+}
 #bars {
   float: right;
   width: 80%;
@@ -60,9 +70,50 @@ Rating and Reviews Styling
 #bar-labels {
   float: left;
   width: 20%;
+  text-decoration: underline;
 }
 
 .bar-label {
   margin-right: 0.5rem;
   margin-bottom: 1.2rem;
+}
+
+/* Product Breakdown Sliders */
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+  height: 1%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 7px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 20px solid rgb(0, 0, 0);
+}
+
+/* Product Breakdown Labels */
+#breakdown-label-title {
+  margin-bottom: -5px;
+  font-size: medium;
+}
+#breakdown-label-min {
+  float: left;
+  font-size: x-small;
+}
+#breakdown-label-max {
+  float: right;
+  font-size: x-small;
 }
