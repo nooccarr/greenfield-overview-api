@@ -12,7 +12,17 @@ class RelatedProd extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.focus !== this.props.focus) {
+            this.getInfo()
+        }
+    }
+
     componentDidMount() {
+        this.getInfo()
+    }
+
+    getInfo () {
         axios.get(`http://3.21.164.220/products/${this.props.focus}/styles`)
         .then((response) => {
             this.setState({
@@ -42,13 +52,13 @@ class RelatedProd extends React.Component {
             )
         } else {
             return (
-                <div className='card card-body' style={{width: '18rem'}}>
+                <div className='card' style={{width: '18rem'}}>
                     <img src={this.state.item.results[0].photos[0].thumbnail_url} className='relatedImg'></img>
                     <div className='container'></div>
-                        <h6>{this.state.cat}</h6>
-                        <h4><b>{this.state.name}</b></h4>
-                        <p>${this.state.price}</p>
-                        <p>Rating: TBD</p>
+                        <h6 className='cardText'>{this.state.cat}</h6>
+                        <h4 className='cardText'><b>{this.state.name}</b></h4>
+                        <p className='cardText'>${this.state.price}</p>
+                        <p className='cardText'>Rating: TBD</p>
                 </div>
             )
         }

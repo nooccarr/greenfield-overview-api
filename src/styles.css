@@ -122,40 +122,15 @@ Rating and Reviews Styling
 Carousel Styling
 ==================================== */
 
-@media (max-width: 768px) {
-  .carousel-inner .carousel-item > div {
-      display: none;
-  }
-  .carousel-inner .carousel-item > div:first-child {
-      display: block;
-  }
-}
-
-.carousel-inner .carousel-item.active,
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
+.related-carousel {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
-
-/* display 3 */
-@media (min-width: 768px) {
-  
-  .carousel-inner .carousel-item-right.active,
-  .carousel-inner .carousel-item-next {
-    transform: translateX(33.333%);
-  }
-  
-  .carousel-inner .carousel-item-left.active, 
-  .carousel-inner .carousel-item-prev {
-    transform: translateX(-33.333%);
-  }
-}
-
-.carousel-inner .carousel-item-right,
-.carousel-inner .carousel-item-left{ 
-transform: translateX(0);
-}
-
 
 .relatedImg {
   height:300px;
@@ -164,6 +139,11 @@ transform: translateX(0);
 .card {
   margin: 20px;
   border: black;
+  border-width: 1px;
   border-style: solid;
+}
+
+.cardText {
+  padding-left: 10px;
 }
 
