@@ -160,7 +160,7 @@ Carousel Styling
 .carouselRight {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
-  left: 1286px;
+  left: 1273px;
 }
 
 .carouselLeft {
