@@ -5,7 +5,7 @@ import RelatedProd from './Relatedprod';
 const Related = (props) => (
     <div>
         <h3>RELATED PRODUCTS</h3>
-        <div className='carousel'>
+        <div className='related-carousel'>
             {props.related.map((item, index) => {
                 return (
                     <div key={index}>
