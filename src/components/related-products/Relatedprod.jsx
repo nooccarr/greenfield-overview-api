@@ -42,7 +42,7 @@ class RelatedProd extends React.Component {
             )
         } else {
             return (
-                <div className='card' style={{width: '18rem'}}>
+                <div className='card card-body' style={{width: '18rem'}}>
                     <img src={this.state.item.results[0].photos[0].thumbnail_url} className='relatedImg'></img>
                     <div className='container'></div>
                         <h6>{this.state.cat}</h6>
