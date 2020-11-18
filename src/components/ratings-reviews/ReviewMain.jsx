@@ -19,7 +19,7 @@ function ReviewMain(props) {
 
   // -------------- fetch data from reviews endpoint ---------------------
   useEffect(() => {
-    fetch('http://3.21.164.220/reviews?product_id=3')
+    fetch('http://3.21.164.220/reviews?product_id=6')
       .then((res) => {
         return res.json();
       })
@@ -34,7 +34,7 @@ function ReviewMain(props) {
 
   // -------------- fetch data from reviews meta endpoint ---------------------
   useEffect(() => {
-    fetch('http://3.21.164.220/reviews/meta?product_id=3')
+    fetch('http://3.21.164.220/reviews/meta?product_id=6')
       .then((res) => {
         return res.json();
       })
