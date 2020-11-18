@@ -2,6 +2,7 @@ import React from 'react';
 import { Carousel, CarouselItem } from 'react-bootstrap';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowLeft';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowRight';
+import DefaultImgSubSlider from './DefaultImgSubSlider.jsx';
 
 class DefaultImage extends React.Component {
   constructor(props) {
@@ -9,10 +10,14 @@ class DefaultImage extends React.Component {
     this.state = {
       currentIndex: 0,
     };
+    this.handleImageChange = this.handleImageChange.bind(this);
+    this.nextProperty = this.nextProperty.bind(this);
+    this.prevProperty = this.prevProperty.bind(this);
   }
 
-  handleImageChange() {
+  handleImageChange(index) {
     // while click on one of the thumbnail will change the current image
+    this.setState({ currentIndex: index });
   }
   nextProperty() {
     this.setState({ currentIndex: this.state.currentIndex + 1 });
@@ -25,6 +30,13 @@ class DefaultImage extends React.Component {
   render() {
     return (
       <div className="default-image-container">
+        <DefaultImgSubSlider
+          subSliderImgs={this.props.currentImageSet}
+          nextProperty={this.nextProperty}
+          prevProperty={this.prevProperty}
+          currentIndex={this.state.currentIndex}
+          handleImageChange={this.handleImageChange}
+        />
         <div className="default-active-image">
           <div
             className="default-current-img"
@@ -42,25 +54,23 @@ class DefaultImage extends React.Component {
               );
             })}
           </div>
+          <button
+            className="default-current-img-button-right"
+            onClick={() => this.nextProperty()}
+            disabled={
+              this.state.currentIndex === this.props.currentImageSet.length - 1
+            }
+          >
+            <ArrowForwardIosIcon />
+          </button>
+          <button
+            className="default-current-img-button-left"
+            onClick={() => this.prevProperty()}
+            disabled={this.state.currentIndex === 0}
+          >
+            <ArrowBackIosIcon />
+          </button>
         </div>
-
-        <button
-          className="default-current-img-button-right"
-          onClick={() => this.nextProperty()}
-          disabled={
-            this.state.currentIndex === this.props.currentImageSet.length - 1
-          }
-        >
-          <ArrowForwardIosIcon />
-        </button>
-
-        <button
-          className="default-current-img-button-left"
-          onClick={() => this.prevProperty()}
-          disabled={this.state.currentIndex === 0}
-        >
-          <ArrowBackIosIcon />
-        </button>
       </div>
     );
   }
