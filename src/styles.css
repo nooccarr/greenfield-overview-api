@@ -78,6 +78,59 @@ Rating and Reviews Styling
   margin-bottom: 1.2rem;
 }
 
+#review-stars {
+  color: black;
+}
+
+/* Product Breakdown Sliders */
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+  height: 1%;
+}
+
+#product-breakdown-main {
+  margin-top: 10rem;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 7px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 20px solid rgb(0, 0, 0);
+}
+
+/* Product Breakdown Labels */
+#breakdown-label-title {
+  margin-bottom: -5px;
+  font-size: medium;
+  margin-top: 2rem;
+}
+#breakdown-label-min {
+  float: left;
+  font-size: x-small;
+}
+#breakdown-label-max {
+  float: right;
+  font-size: x-small;
+}
+
+/* =================================
+Carousel Styling
+==================================== */
+
 .related-carousel {
   top: 0;
   right: 0;
@@ -103,27 +156,71 @@ Rating and Reviews Styling
   padding-left: 10px;
 }
 
+.carouselArrow {
+  border: solid grey;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 5px;
+  background: transparent;
+  position: relative;
+  top: -275px;
+}
+
+.carouselRight {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  left: 955px;
+}
+
+.carouselLeft {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.carouselHide {
+  border: solid grey;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 5px;
+  background: transparent;
+  position: relative;
+  top: -275px;
+  visibility: hidden;
+}
+
 /************* Image overview style ***************/
 .default-container {
   margin: 10px;
+  display: grid;
+  grid-template-columns: 700px auto;
+  grid-template-rows: 3fr 1fr;
+  overflow: hidden;
 }
-.defualt-image-container {
-  display: block;
-  position: relative;
+.default-image-container {
+  width: 550px;
+  overflow: hidden;
+}
+.default-active-image {
+  width: 550px;
+  overflow: hidden;
 }
 
 .default-current-img {
   display: flex;
-  max-width: 550px;
-  max-height: 800px;
 
+  max-width: 550px;
+  /* max-height: 800px; */
+  align-items: center;
   transition: opacity 300ms linear, border-color 300ms linear,
     background-color 300ms linear,
     transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  object-fit: cover;
 }
-
+.default-product-info {
+  margin: 10px;
+}
 .default-styles {
   display: block;
-  position: relative;
+
   margin: 10px;
 }

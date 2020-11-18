@@ -37,22 +37,23 @@ class DefaultImage extends React.Component {
         >
           Prev
         </button>
-
-        <div
-          className="default-current-img"
-          style={{
-            transform: `translateX(-${this.state.currentIndex * 550}px)`,
-          }}
-        >
-          {this.props.currentImageSet.map((photo, index) => {
-            return (
-              <img
-                src={photo.url}
-                key={index}
-                style={{ height: `100%`, width: `100%` }}
-              />
-            );
-          })}
+        <div className="default-active-image">
+          <div
+            className="default-current-img"
+            style={{
+              transform: `translateX(-${this.state.currentIndex * 550}px)`,
+            }}
+          >
+            {this.props.currentImageSet.map((photo, index) => {
+              return (
+                <img
+                  src={photo.url}
+                  key={index}
+                  style={{ height: `100%`, width: `100%` }}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     );

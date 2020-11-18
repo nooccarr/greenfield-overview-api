@@ -14,6 +14,8 @@ function ReviewMain(props) {
   const [ratingsPercentages, setRatingPercentages] = useState(null);
   const [productID, setProductID] = useState(null);
   const [productCharacteristics, setProductCharacteristics] = useState(null);
+  const [allReviews, setAllReviews] = useState(null);
+  const [allRatings, setAllRatings] = useState(null);
 
   // -------------- fetch data from reviews endpoint ---------------------
   useEffect(() => {
@@ -23,6 +25,7 @@ function ReviewMain(props) {
       })
       .then((result) => {
         setReviewCount(result.count);
+        setAllReviews(result.results);
       })
       .catch((err) => {
         console.log(err);
@@ -40,6 +43,7 @@ function ReviewMain(props) {
         setRecommendPercentage(findRecommendPercent(result.recommended));
         setRatingPercentages(getRatingPercentages(result.ratings));
         setProductCharacteristics(result.characteristics);
+        setAllRatings(result.ratings);
       })
       .catch((err) => {
         console.log(err);
@@ -54,7 +58,11 @@ function ReviewMain(props) {
         ratingsPercentages={ratingsPercentages}
         productCharacteristics={productCharacteristics}
       />
-      <Review reviewCount={reviewCount} />
+      <Review
+        reviewCount={reviewCount}
+        allReviews={allReviews}
+        allRatings={allRatings}
+      />
     </div>
   );
 }

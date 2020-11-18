@@ -171,13 +171,6 @@ class Detail extends React.Component {
     this.fetchStyle();
   }
 
-  prevProperty() {
-    const newIndex = this.state.property.index - 1;
-    this.setState({
-      property: data.properties[newIndex],
-    });
-  }
-
   render() {
     return (
       <div className="default-container">
@@ -190,15 +183,9 @@ class Detail extends React.Component {
           currentProduct={this.state.currentProduct}
           currentProductStyles={this.state.currentProductStyles}
           productId={this.state.currentProductId}
-        />
-        <Style
           handleStyleChange={this.handleStyleChange}
-          currentProductStyles={this.state.currentProductStyles}
         />
-        <Selections
-          currentProduct={this.state.currentProduct}
-          currentProductStyles={this.state.currentProductStyles}
-        />
+
         <Description
           currentProduct={this.state.currentProduct}
           currentProductStyles={this.state.currentProductStyles}
