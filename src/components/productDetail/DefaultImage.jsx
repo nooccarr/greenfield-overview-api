@@ -1,5 +1,7 @@
 import React from 'react';
 import { Carousel, CarouselItem } from 'react-bootstrap';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowLeft';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowRight';
 
 class DefaultImage extends React.Component {
   constructor(props) {
@@ -23,20 +25,6 @@ class DefaultImage extends React.Component {
   render() {
     return (
       <div className="default-image-container">
-        <button
-          onClick={() => this.nextProperty()}
-          disabled={
-            this.state.currentIndex === this.props.currentImageSet.length - 1
-          }
-        >
-          Next
-        </button>
-        <button
-          onClick={() => this.prevProperty()}
-          disabled={this.state.currentIndex === 0}
-        >
-          Prev
-        </button>
         <div className="default-active-image">
           <div
             className="default-current-img"
@@ -55,6 +43,24 @@ class DefaultImage extends React.Component {
             })}
           </div>
         </div>
+
+        <button
+          className="default-current-img-button-left"
+          onClick={() => this.nextProperty()}
+          disabled={
+            this.state.currentIndex === this.props.currentImageSet.length - 1
+          }
+        >
+          <ArrowBackIosIcon />
+        </button>
+
+        <button
+          className="default-current-img-button-right"
+          onClick={() => this.prevProperty()}
+          disabled={this.state.currentIndex === 0}
+        >
+          <ArrowForwardIosIcon />
+        </button>
       </div>
     );
   }
