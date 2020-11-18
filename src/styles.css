@@ -78,10 +78,18 @@ Rating and Reviews Styling
   margin-bottom: 1.2rem;
 }
 
+#review-stars {
+  color: black;
+}
+
 /* Product Breakdown Sliders */
 .slidecontainer {
   width: 100%; /* Width of the outside container */
   height: 1%;
+}
+
+#product-breakdown-main {
+  margin-top: 10rem;
 }
 
 .slider {
