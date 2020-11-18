@@ -28,19 +28,18 @@ Rating and Reviews Styling
 
 .review-main-container {
   margin-top: 5rem;
+  margin-bottom: 30rem;
 }
 
 .ratings-container {
   float: left;
-  width: 25%;
+  width: 23%;
   font-size: small;
 }
 
 .reviews-container {
-  padding-left: 5rem;
-  margin-top: 1.5rem;
   float: right;
-  width: 60%;
+  width: 70%;
 }
 
 .rating-bar {
@@ -50,8 +49,19 @@ Rating and Reviews Styling
 #large-rating {
   font-size: 3rem;
   font-weight: 700;
+  float: left;
+  width: 30%;
+}
+#main-stars {
+  padding-top: 1rem;
+  width: 60%;
+  color: black;
 }
 
+#recommendation {
+  display: inline-block;
+  width: 100%;
+}
 #bars {
   float: right;
   width: 80%;
@@ -60,6 +70,7 @@ Rating and Reviews Styling
 #bar-labels {
   float: left;
   width: 20%;
+  text-decoration: underline;
 }
 
 .bar-label {
@@ -67,18 +78,43 @@ Rating and Reviews Styling
   margin-bottom: 1.2rem;
 }
 
-/* =================================
-Default Image Styling
-==================================== */
-
-.default-image-container {
-  width: 550px;
-  height: 880px;
-  margin: 10px;
+.related-carousel {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-.carousel-indicators li {
-  width: 50px;
-  height: 80px;
-  display: inline-block;
+.relatedImg {
+  height: 300px;
+}
+
+.card {
+  margin: 20px;
+  border: black;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.cardText {
+  padding-left: 10px;
+}
+
+/************* Image overview style ***************/
+.defualt-current-img {
+  margin: 10px;
+  display: block;
+}
+
+.default-current-img {
+  display: flex;
+  position: absolute;
+  max-width: 550px;
+  max-height: 800px;
+  transition: opacity 300ms linear, border-color 300ms linear,
+    background-color 300ms linear,
+    transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
