@@ -233,7 +233,8 @@ Carousel Styling
 
 /************* Image overview style ***************/
 .default-container {
-  margin: 10px;
+  margin-top: 10px;
+  position: relative;
   display: grid;
   grid-template-columns: 700px auto;
   grid-template-rows: 3fr 1fr;
@@ -242,10 +243,12 @@ Carousel Styling
 .default-image-container {
   width: 550px;
   overflow: hidden;
+  position: relative;
 }
 .default-active-image {
   width: 550px;
   overflow: hidden;
+  background-color: rgb(240, 240, 237);
 }
 
 .default-current-img {
@@ -264,6 +267,37 @@ Carousel Styling
 }
 .default-styles {
   display: block;
-
   margin: 10px;
+}
+
+.default-styles-img {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 50px;
+  margin: 10px;
+  cursor: pointer;
+}
+.default-current-img-button-left {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: none;
+  background-color: lightgray;
+}
+
+.default-current-img-button-right {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  border: none;
+  background-color: lightgray;
+}
+.default-styles-img:hover {
+  box-shadow: inset 30px 30px 40px #000;
 }
