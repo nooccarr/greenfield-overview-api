@@ -1,4 +1,4 @@
-/* ================================= 
+/* =================================
   CSS Reset
 ==================================== */
 
@@ -7,7 +7,7 @@
   padding: 0;
 }
 
-/* ================================= 
+/* =================================
   Base Layout Styles
 ==================================== */
 
@@ -22,7 +22,7 @@ h1 {
   max-width: 1150px;
 }
 
-/* ================================= 
+/* =================================
 Rating and Reviews Styling
 ==================================== */
 
@@ -135,7 +135,7 @@ Rating and Reviews Styling
   font-size: x-small;
 }
 
-/* ================================= 
+/* =================================
 Carousel Styling
 ==================================== */
 
@@ -196,3 +196,39 @@ Carousel Styling
   visibility: hidden;
 }
 
+/************* Image overview style ***************/
+.default-container {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 700px auto;
+  grid-template-rows: 3fr 1fr;
+  overflow: hidden;
+}
+.default-image-container {
+  width: 550px;
+  overflow: hidden;
+}
+.default-active-image {
+  width: 550px;
+  overflow: hidden;
+}
+
+.default-current-img {
+  display: flex;
+
+  max-width: 550px;
+  /* max-height: 800px; */
+  align-items: center;
+  transition: opacity 300ms linear, border-color 300ms linear,
+    background-color 300ms linear,
+    transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  object-fit: cover;
+}
+.default-product-info {
+  margin: 10px;
+}
+.default-styles {
+  display: block;
+
+  margin: 10px;
+}
