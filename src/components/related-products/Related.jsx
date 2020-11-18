@@ -1,62 +1,74 @@
 import React from 'react';
 import RelatedProd from './Relatedprod';
-import { render } from 'react-dom';
-
 
 class Related extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            start: 0,
-            end: 3
+            ref: 0
         }
-        this.handleClick = this.handleClick.bind(this)
+        
     }
 
-    handleClick(e) {
-        if (e.target.id === 'rightBut' && this.state.end < this.props.related.length) {
-            this.setState({
-                start: this.state.start+1,
-                end: this.state.end+1
-            })
-        }
-        if (e.target.id === 'leftBut' && this.state.start > 0) {
-            this.setState({
-                start: this.state.start-1,
-                end: this.state.end-1
-            })
-        }
+    myRef = React.createRef();
+
+    rightClick() {
+        const slide = this.myRef.current
+        slide.scrollLeft += 330
+        this.setState({
+            ref: this.state.ref+=330
+        })
+        // if(slide.scrollLeft >= (slide.scrollWidth - slide.offsetWidth)) {
+        //     slide.scrollLeft = 0
+        // }
     }
-    
+
+    leftClick() {
+        const slide = this.myRef.current
+        slide.scrollLeft -= 330
+        this.setState({
+            ref: this.state.ref-=330
+        })
+        // if(slide.scrollLeft <= 0) {
+        //     slide.scrollLeft = slide.offsetWidth
+        // }
+    }
+
+
     leftButton() {
-        if (this.state.start !== 0) {
+        if(this.state.ref <= 0) {
             return (
-                <button className='carouselArrow carouselLeft' id='leftBut' onClick={(e) => {this.handleClick(e)}}></button>
+                <button className='carouselHide' id='leftBut' onClick={() => {this.leftClick()}}></button>
             )
         } else {
             return (
-                <button className='carouselHide' id='leftBut' onClick={(e) => {this.handleClick(e)}}></button>
+                <button className='carouselArrow carouselLeft' id='leftBut' onClick={() => {this.leftClick()}}></button>
             )
         }
-
     }
 
     rightButton() {
-        if (this.state.end < this.props.related.length) {
+        var checker = (this.props.related.length * 141.3)
+        if(this.state.ref >= checker) {
             return (
-                <button className='carouselArrow carouselRight' id='rightBut' onClick={(e) => {this.handleClick(e)}}></button>
+                <button className='carouselHide' id='rightBut' onClick={() => {this.rightClick()}}></button>
+            )
+        } else {
+            return (
+                <button className='carouselArrow carouselRight' id='rightBut' onClick={() => {this.rightClick()}}></button>
             )
         }
     }
 
 
+
+
     render() {
-        var related = this.props.related.slice(this.state.start, this.state.end)
         return (
-        <div>
+        <div className='wrapper'>
         <h3>RELATED PRODUCTS</h3>
-            <div className='related-carousel'>
-                {related.map((item, index) => {
+            <div className='related-carousel' ref={this.myRef}>
+                {this.props.related.map((item, index) => {
                     return (
                         <div key={index}>
                             <RelatedProd focus={item}/>
@@ -64,12 +76,12 @@ class Related extends React.Component {
                     )
                 })}
             </div>
+            <div className='row'>
             {this.leftButton()}{this.rightButton()}
+            </div>
         </div>
         )
     }
 }
-
-
 
 export default Related;
