@@ -151,6 +151,7 @@ Carousel Styling
 
 .relatedImg {
   height: 300px;
+  object-fit: cover;
 }
 
 .card {
@@ -177,7 +178,7 @@ Carousel Styling
 .carouselRight {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
-  left: 955px;
+  left: 1140px;
 }
 
 .carouselLeft {

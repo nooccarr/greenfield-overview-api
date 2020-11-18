@@ -9,14 +9,33 @@ class Related extends React.Component {
         }
     }
 
+    leftButton() {
+        if (this.state.start !== 0) {
+            return (
+                <button className='carouselArrow carouselLeft' id='leftBut' onClick={(e) => {this.handleClick(e)}}></button>
+            )
+        } else {
+            return (
+                <button className='carouselHide' id='leftBut' onClick={(e) => {this.handleClick(e)}}></button>
+            )
+        }
 
+    }
+
+    rightButton() {
+        if (this.state.end < this.props.related.length) {
+            return (
+                <button className='carouselArrow carouselRight' id='rightBut' onClick={(e) => {this.handleClick(e)}}></button>
+            )
+        }
+    }
 
 
 
 
     render() {
         return (
-        <div>
+        <div className='wrapper'>
         <h3>RELATED PRODUCTS</h3>
             <div className='related-carousel'>
                 {this.props.related.map((item, index) => {
@@ -27,7 +46,9 @@ class Related extends React.Component {
                     )
                 })}
             </div>
+            <div className='row'>
             {this.leftButton()}{this.rightButton()}
+            </div>
         </div>
         )
     }
