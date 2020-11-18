@@ -6,15 +6,10 @@ function Reviews(props) {
 
   const renderReviews = (allReviews) => {
     return allReviews.map((review) => {
-      console.log(review);
       return (
         <div className="reviews-container">
           <div className="main-review-block">
-            <Review
-              allRatings={props.allRatings}
-              allReviews={props.allReviews}
-              indReview={review}
-            />
+            <Review indReview={review} />
           </div>
         </div>
       );
@@ -29,11 +24,24 @@ function Reviews(props) {
     );
   } else if (reviewsFromProps.length <= 2) {
     return (
-      <div>
+      <div className="reviews-container">
         <h4 className="review-header">
-          {props.reviewCount} reviews, sorted by
+          {reviewsFromProps.length} reviews, sorted by
         </h4>
         <div>{renderReviews(reviewsFromProps)}</div>
+      </div>
+    );
+  } else if (reviewsFromProps.length > 2) {
+    return (
+      <div className="reviews-container">
+        <h4 className="review-header">
+          {reviewsFromProps.length} reviews, sorted by
+        </h4>
+        <div>{renderReviews(reviewsFromProps.slice(0, 2))}</div>
+        <div className="review-buttons-bottom">
+          <button id="more-reviews-button">MORE REVIEWS</button>
+          <button id="add-review-button">ADD A REVIEW +</button>
+        </div>
       </div>
     );
   }

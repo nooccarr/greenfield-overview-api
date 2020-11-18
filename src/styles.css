@@ -28,22 +28,25 @@ Rating and Reviews Styling
 
 .review-main-container {
   margin-top: 6rem;
-  margin-bottom: 43rem;
+  margin-bottom: 50rem;
 }
 
 .ratings-container {
   float: left;
-  width: 23%;
+  width: 26%;
   font-size: small;
 }
 
 .reviews-container {
-  float: right;
+  float: left;
   width: 70%;
+  margin-left: 1.5rem;
+  margin-top: 19px;
 }
 
 .rating-bar {
   margin-bottom: 1.5rem;
+  /* border-radius: 0%; */
 }
 
 #large-rating {
@@ -83,11 +86,41 @@ Rating and Reviews Styling
 }
 
 .review-header {
-  margin-left: 18.3rem;
+  margin-left: 24px;
 }
 
 .single-review {
   margin-top: 1rem;
+}
+
+.individual-review-user {
+  float: right;
+  font-size: 0.8rem;
+}
+
+.individual-review-header {
+  margin-top: 1rem;
+}
+
+.review-buttons-bottom {
+  display: inline-block;
+  margin-top: 1rem;
+  margin-left: 24px;
+}
+
+#more-reviews-button,
+#add-review-button {
+  margin-right: 2rem;
+  border: 0.1rem solid;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 0.5rem 1.5rem;
+  background-color: #ffffff;
+}
+
+#more-reviews-button:hover,
+#add-review-button:hover {
+  color: #838383;
 }
 
 /* Product Breakdown Sliders */
@@ -139,6 +172,7 @@ Rating and Reviews Styling
 Carousel Styling
 ==================================== */
 
+
 .related-carousel {
   top: 0;
   right: 0;
@@ -151,6 +185,7 @@ Carousel Styling
 
 .relatedImg {
   height: 300px;
+  object-fit: cover;
 }
 
 .card {
@@ -177,7 +212,7 @@ Carousel Styling
 .carouselRight {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
-  left: 955px;
+  left: 1140px;
 }
 
 .carouselLeft {
