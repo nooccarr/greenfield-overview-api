@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import BreakdownBar from './BreakdownBar';
 
 function ProductBreakdownBars(props) {
   const [charToPass, setCharToPass] = useState(null);
@@ -27,7 +26,6 @@ function ProductBreakdownBars(props) {
           char: char,
           value: props.productCharacteristics[char].value,
         };
-        console.log(characteristic);
       }
       return (
         <div className="slidecontainer">
@@ -47,20 +45,6 @@ function ProductBreakdownBars(props) {
     });
   }
   return <div></div>;
-  // let renderBreakdownBars = function () {
-  //   return characteristics.map((characteristic) => {
-  //     <BreakdownBar
-  //       characteristic={
-  //         props.productCharacteristics.characteristics.characteristic.value
-  //       }
-  //     />;
-  //   });
-  // };
-
-  // let char = 'Fit';
-  // if (props.productCharacteristics) {
-  //   console.log(props.productCharacteristics[char].id);
-  // }
 }
 
 export default ProductBreakdownBars;

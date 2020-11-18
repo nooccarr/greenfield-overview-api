@@ -66,6 +66,7 @@ function RatingsAndReviews(props) {
       </div>
       <ProductBreakdownBars
         productCharacteristics={props.productCharacteristics}
+        id="product-breakdown-main"
       />
     </div>
   );
