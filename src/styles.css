@@ -170,17 +170,29 @@ Carousel Styling
   display: inline-block;
   padding: 5px;
   background: transparent;
-  position: absolute;
-  top: 3550px;
+  position: relative;
+  top: -275px;
 }
 
 .carouselRight {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
-  left: 1273px;
+  left: 955px;
 }
 
 .carouselLeft {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
+
+.carouselHide {
+  border: solid grey;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 5px;
+  background: transparent;
+  position: relative;
+  top: -275px;
+  visibility: hidden;
+}
+
