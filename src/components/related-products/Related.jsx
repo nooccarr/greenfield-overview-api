@@ -33,7 +33,12 @@ class Related extends React.Component {
             return (
                 <button className='carouselArrow carouselLeft' id='leftBut' onClick={(e) => {this.handleClick(e)}}></button>
             )
+        } else {
+            return (
+                <button className='carouselHide' id='leftBut' onClick={(e) => {this.handleClick(e)}}></button>
+            )
         }
+
     }
 
     rightButton() {
