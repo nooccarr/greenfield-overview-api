@@ -35,7 +35,7 @@ function ProductBreakdownBars(props) {
             min="1"
             max="5"
             value={props.productCharacteristics[char].value}
-            class="slider"
+            className="slider"
             id="myRange"
           />
           <p id="breakdown-label-min">{breakdownLabelObj[char][0]}</p>
