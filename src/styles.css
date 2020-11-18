@@ -147,3 +147,25 @@ Carousel Styling
 .cardText {
   padding-left: 10px;
 }
+
+.carouselArrow {
+  border: solid grey;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 5px;
+  background: transparent;
+  position: absolute;
+  top: 3550px;
+}
+
+.carouselRight {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  left: 1273px;
+}
+
+.carouselLeft {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
