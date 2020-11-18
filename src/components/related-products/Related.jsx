@@ -12,14 +12,13 @@ class Related extends React.Component {
     myRef = React.createRef();
 
     rightClick() {
-        console.log(this.myRef.current)
-        var slide = this.myRef.current
-        slide.scrollRight += 200
+        const slide = this.myRef.current
+        slide.scrollLeft += 330
     }
 
     leftClick() {
-        var slide = this.myRef.current
-        slide.scrollLeft -= 200
+        const slide = this.myRef.current
+        slide.scrollLeft -= 330
     }
 
 
