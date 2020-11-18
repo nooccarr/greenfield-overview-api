@@ -11,7 +11,7 @@ class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProductId: 1,
+      currentProductId: 3,
       currentProduct: {},
       currentProductStyles: [],
       currentStyle: {
@@ -180,7 +180,7 @@ class Detail extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="default-container">
         <DefaultImage
           currentImageSet={this.state.currentImageSet}
           currentImage={this.state.currentImage}

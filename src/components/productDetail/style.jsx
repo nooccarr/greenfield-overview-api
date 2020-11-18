@@ -2,8 +2,7 @@ import React from 'react';
 
 const Style = (props) => {
   return (
-    <div>
-      This is styles
+    <div className="default-styles">
       <ul>
         {props.currentProductStyles.map((style, index) => {
           return (

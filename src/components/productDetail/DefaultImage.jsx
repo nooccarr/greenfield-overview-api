@@ -24,12 +24,6 @@ class DefaultImage extends React.Component {
     return (
       <div className="default-image-container">
         <button
-          onClick={() => this.prevProperty()}
-          disabled={this.state.currentIndex === 0}
-        >
-          Prev
-        </button>
-        <button
           onClick={() => this.nextProperty()}
           disabled={
             this.state.currentIndex === this.props.currentImageSet.length - 1
@@ -37,6 +31,13 @@ class DefaultImage extends React.Component {
         >
           Next
         </button>
+        <button
+          onClick={() => this.prevProperty()}
+          disabled={this.state.currentIndex === 0}
+        >
+          Prev
+        </button>
+
         <div
           className="default-current-img"
           style={{
