@@ -201,6 +201,7 @@ Carousel Styling
 .relatedImg {
   height: 300px;
   object-fit: cover;
+  padding-bottom: 10px;
 }
 
 .card {
@@ -212,8 +213,14 @@ Carousel Styling
 
 .cardText {
   padding-left: 10px;
+  color: grey;
 }
 
+.cardName {
+  position: relative;
+  right: 17px;
+  color: rgb(90, 88, 88);
+}
 
 .carouselArrow {
   border: solid grey;
@@ -224,6 +231,16 @@ Carousel Styling
   position: relative;
   top: -275px;
 }
+
+.starBut {
+  background: transparent;
+  position: relative;
+  display: inline-block;
+  right: -265px;
+  top: -315px;
+  color: #000;
+} 
+
 
 .carouselRight {
   transform: rotate(-45deg);
