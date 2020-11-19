@@ -91,11 +91,13 @@ Rating and Reviews Styling
 
 .single-review {
   margin-top: 1rem;
+  width: 145%;
 }
 
 .individual-review-user {
   float: right;
   font-size: 0.8rem;
+  color: rgb(136, 136, 136);
 }
 
 .individual-review-header {
@@ -106,6 +108,7 @@ Rating and Reviews Styling
   display: inline-block;
   margin-top: 1rem;
   margin-left: 24px;
+  margin-bottom: 4rem;
 }
 
 #more-reviews-button,
@@ -121,6 +124,19 @@ Rating and Reviews Styling
 #more-reviews-button:hover,
 #add-review-button:hover {
   color: #838383;
+}
+
+#review-line-break {
+  border-top: 1px solid #838383;
+  margin-top: 3rem;
+}
+
+#individual-review-recommended {
+  padding-top: 1rem;
+}
+
+#helpful-report {
+  font-size: small;
 }
 
 /* Product Breakdown Sliders */
@@ -171,7 +187,6 @@ Rating and Reviews Styling
 /* =================================
 Carousel Styling
 ==================================== */
-
 
 .related-carousel {
   top: 0;

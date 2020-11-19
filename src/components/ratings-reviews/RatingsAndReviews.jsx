@@ -6,10 +6,17 @@ import ProductBreakdownBars from './ProductBreakdownBars';
 function RatingsAndReviews(props) {
   // default values until state updates propery
   let percentagesObj;
+  let recPercentage;
   if (props.ratingsPercentages) {
     percentagesObj = props.ratingsPercentages;
   } else {
     percentagesObj = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+  }
+
+  if (props.recommendPercentage) {
+    recPercentage = Math.round(props.recommendPercentage * 100);
+  } else {
+    recPercentage = 0;
   }
 
   return (
@@ -26,9 +33,7 @@ function RatingsAndReviews(props) {
         />
       </div>
       <div id="recommendation">
-        <p>
-          {props.recommendPercentage * 100}% of reviews recommend this product
-        </p>
+        <p>{recPercentage}% of reviews recommend this product</p>
       </div>
       <div id="bar-labels">
         <p className="bar-label">5 stars</p>

@@ -3,6 +3,7 @@ import Review from './Review.jsx';
 
 function Reviews(props) {
   const reviewsFromProps = props.allReviews;
+  const [reviewRenderCount, setReviewRenderCount] = useState(2);
 
   const renderReviews = (allReviews) => {
     return allReviews.map((review) => {
@@ -14,6 +15,10 @@ function Reviews(props) {
         </div>
       );
     });
+  };
+
+  let handleReviewClick = () => {
+    setReviewRenderCount(reviewRenderCount + 2);
   };
 
   if (!props.allReviews) {
@@ -37,9 +42,11 @@ function Reviews(props) {
         <h4 className="review-header">
           {reviewsFromProps.length} reviews, sorted by
         </h4>
-        <div>{renderReviews(reviewsFromProps.slice(0, 2))}</div>
+        <div>{renderReviews(reviewsFromProps.slice(0, reviewRenderCount))}</div>
         <div className="review-buttons-bottom">
-          <button id="more-reviews-button">MORE REVIEWS</button>
+          <button id="more-reviews-button" onClick={handleReviewClick}>
+            MORE REVIEWS
+          </button>
           <button id="add-review-button">ADD A REVIEW +</button>
         </div>
       </div>
