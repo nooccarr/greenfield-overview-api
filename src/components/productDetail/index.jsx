@@ -11,7 +11,7 @@ class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProductId: 3,
+      currentProductId: this.props.current,
       currentProduct: {},
       currentProductStyles: [],
       currentStyle: {
