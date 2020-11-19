@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
 import Stars from '../ratings-reviews/Stars.jsx';
+import { colors } from '@material-ui/core';
 
 
 
@@ -12,6 +13,21 @@ class RelatedProd extends React.Component {
             item: ''
         }
     }
+
+    displayPrice() {
+        if(this.state.item.results[0].sale_price === '0') {
+            return (
+                <p className='cardText'>${this.state.price}</p>
+            )
+        } else {
+            return (
+                <div>
+                    <p className='cardText' >${this.state.item.results[0].sale_price}<strike className='cardText' style={{color: 'red'}}>${this.state.price}</strike></p>
+                </div>
+            )
+        }
+    }
+
 
     componentDidUpdate(prevProps) {
         if (prevProps.focus !== this.props.focus) {
@@ -26,6 +42,7 @@ class RelatedProd extends React.Component {
     getInfo () {
         axios.get(`http://3.21.164.220/products/${this.props.focus}/styles`)
         .then((response) => {
+            console.log('STYLES RESPONSE',response.data)
             this.setState({
                 item: response.data,
             })
@@ -70,7 +87,7 @@ class RelatedProd extends React.Component {
                     <div className='container'></div>
                         <h6 className='cardText'>{this.state.cat}</h6>
                         <h4 className='cardText'><b>{this.state.name}</b></h4>
-                        <p className='cardText'>${this.state.price}</p>
+                        {this.displayPrice()}
                         <p className='cardText'>{this.state.rate}</p>
                 </div>
             )
