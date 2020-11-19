@@ -22,7 +22,7 @@ class RelatedProd extends React.Component {
         } else {
             return (
                 <div>
-                    <p className='cardText' >${this.state.item.results[0].sale_price}<strike className='cardText' style={{color: 'red'}}>${this.state.price}</strike></p>
+                    <p className='cardText' style={{color: 'red'}}>${this.state.item.results[0].sale_price}<strike className='cardText' style={{color: 'black'}}>${this.state.price}</strike></p>
                 </div>
             )
         }
