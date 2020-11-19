@@ -54,17 +54,17 @@ class DefaultImage extends React.Component {
           </div>
           <button
             className="default-current-img-button-right"
-            onClick={() => this.prevProperty()}
-            disabled={this.state.currentIndex === 0}
+            onClick={() => this.nextProperty()}
+            disabled={
+              this.state.currentIndex === this.props.currentImageSet.length - 1
+            }
           >
             <ArrowForwardIosIcon />
           </button>
           <button
             className="default-current-img-button-left"
-            onClick={() => this.nextProperty()}
-            disabled={
-              this.state.currentIndex === this.props.currentImageSet.length - 1
-            }
+            onClick={() => this.prevProperty()}
+            disabled={this.state.currentIndex === 0}
           >
             <ArrowBackIosIcon />
           </button>

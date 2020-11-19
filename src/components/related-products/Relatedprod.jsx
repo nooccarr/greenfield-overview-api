@@ -86,7 +86,7 @@ class RelatedProd extends React.Component {
                     <img src={this.state.item.results[0].photos[0].thumbnail_url} className='relatedImg'></img>
                     <div className='container'></div>
                         <h6 className='cardText'>{this.state.cat}</h6>
-                        <h4 className='cardText'><b>{this.state.name}</b></h4>
+                        <h5 className='cardName'><h4 className='starBut'>☆</h4><b>{this.state.name}</b></h5>
                         {this.displayPrice()}
                         <p className='cardText'>{this.state.rate}</p>
                 </div>
