@@ -214,6 +214,10 @@ Carousel Styling
   padding-left: 10px;
 }
 
+.cardName {
+  position: relative;
+  right: 17px;
+}
 
 .carouselArrow {
   border: solid grey;
@@ -224,6 +228,15 @@ Carousel Styling
   position: relative;
   top: -275px;
 }
+
+.starBut {
+  background: transparent;
+  position: relative;
+  display: inline-block;
+  right: -265px;
+  top: -315px;
+} 
+
 
 .carouselRight {
   transform: rotate(-45deg);
