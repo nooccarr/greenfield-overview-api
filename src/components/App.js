@@ -5,11 +5,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ReviewMain from './ratings-reviews/ReviewMain';
 import Related from './related-products/index.jsx';
 import Detail from './productDetail/index.jsx';
+import SearchIcon from '@material-ui/icons/Search';
 
 class App extends React.Component {
   render() {
     return (
       <div>
+
+        <header>
+          <h1 class="main-logo">DANGO</h1>
+          <div class="search-wrap">
+            <input type="text" class="search" placeholder="What are you looking for?" />
+            <button type="submit" class="searchButton" >
+              <SearchIcon />
+            </button>
+          </div>
+
+          <hr class="header-break"></hr>
+        </header>
         <div className="container">
           <Detail />
           <Related />

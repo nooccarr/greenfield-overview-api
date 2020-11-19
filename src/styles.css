@@ -22,6 +22,44 @@ h1 {
   max-width: 1150px;
 }
 
+/* Header styling */
+
+header {
+  height: 60px;
+  margin-bottom: 80px;
+}
+
+.main-logo {
+  margin: 1rem;
+  padding: 1rem;
+  font-weight: lighter;
+}
+
+.search {
+  height: 2.5rem;
+  width: 15rem;
+  text-indent: 1rem;
+  border-radius: 0px;
+}
+.searchButton {
+  position: absolute;
+  width: 30%;
+  width: 40px;
+  height: 2.5rem;
+  border: 1px solid #000000;
+  background: #000000;
+  text-align: center;
+  color: #fff;
+  border-radius: 0px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.search-wrap {
+  position: absolute;
+  left: 70%;
+  top: 3%;
+}
+
 /* =================================
 Rating and Reviews Styling
 ==================================== */
@@ -216,11 +254,14 @@ Carousel Styling
   color: grey;
 }
 
+
+=======
 .cardName {
   position: relative;
   right: 17px;
   color: rgb(90, 88, 88);
 }
+
 
 .carouselArrow {
   border: solid grey;
