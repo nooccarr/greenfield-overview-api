@@ -32,8 +32,6 @@ class DefaultImage extends React.Component {
       <div className="default-image-container">
         <DefaultImgSubSlider
           subSliderImgs={this.props.currentImageSet}
-          nextProperty={this.nextProperty}
-          prevProperty={this.prevProperty}
           currentIndex={this.state.currentIndex}
           handleImageChange={this.handleImageChange}
         />
@@ -56,17 +54,17 @@ class DefaultImage extends React.Component {
           </div>
           <button
             className="default-current-img-button-right"
-            onClick={() => this.nextProperty()}
-            disabled={
-              this.state.currentIndex === this.props.currentImageSet.length - 1
-            }
+            onClick={() => this.prevProperty()}
+            disabled={this.state.currentIndex === 0}
           >
             <ArrowForwardIosIcon />
           </button>
           <button
             className="default-current-img-button-left"
-            onClick={() => this.prevProperty()}
-            disabled={this.state.currentIndex === 0}
+            onClick={() => this.nextProperty()}
+            disabled={
+              this.state.currentIndex === this.props.currentImageSet.length - 1
+            }
           >
             <ArrowBackIosIcon />
           </button>
