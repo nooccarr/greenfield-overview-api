@@ -22,10 +22,13 @@ function findRecommendPercent(recommended) {
 function getRatingPercentages(ratings) {
     let largest = 0;
     let largestKey
-
+    // let valueSum = Object.values(ratings).reduce((a, b) => a + b)
+    // console.log(ratings)
     if (!ratings) {
         return { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 }
     }
+
+
 
     for (let val in ratings) {
         if (ratings[val] > largest) {
