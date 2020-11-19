@@ -8,6 +8,8 @@ const ProductInfo = (props) => {
       <Style
         currentProductStyles={props.currentProductStyles}
         handleStyleChange={props.handleStyleChange}
+        setMainIndex={props.setMainIndex}
+        setSubIndex={props.setSubIndex}
       />
       <Selections
         currentProduct={props.currentProduct}

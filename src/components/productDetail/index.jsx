@@ -11,6 +11,8 @@ class Detail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      mainSliderIndex: 0,
+      subSliderIndex: 0,
       currentProductId: this.props.current,
       currentProduct: {},
       currentProductStyles: [],
@@ -126,6 +128,18 @@ class Detail extends React.Component {
       currentImage: '',
     };
     this.handleStyleChange = this.handleStyleChange.bind(this);
+    this.setMainIndex = this.setMainIndex.bind(this);
+    this.setSubIndex = this.setSubIndex.bind(this);
+    this.nextMain = this.nextMain.bind(this);
+    this.prevMain = this.prevMain.bind(this);
+    this.nextSub = this.nextSub.bind(this);
+    this.prevSub = this.prevSub.bind(this);
+  }
+  setMainIndex(num) {
+    this.setState({ mainSliderIndex: num });
+  }
+  setSubIndex(num) {
+    this.setState({ subSliderIndex: num });
   }
   fetchProduct() {
     return axios
@@ -171,12 +185,36 @@ class Detail extends React.Component {
     this.fetchStyle();
   }
 
+  nextMain() {
+    this.setState({ mainSliderIndex: this.state.mainSliderIndex + 1 });
+  }
+
+  prevMain() {
+    this.setState({ mainSliderIndex: this.state.mainSliderIndex - 1 });
+  }
+
+  nextSub() {
+    this.setState({ subSliderIndex: this.state.subSliderIndex + 1 });
+  }
+
+  prevSub() {
+    this.setState({ subSliderIndex: this.state.subSliderIndex - 1 });
+  }
+
   render() {
     return (
       <div className="default-container">
         <DefaultImage
           currentImageSet={this.state.currentImageSet}
           currentImage={this.state.currentImage}
+          mainSliderIndex={this.state.mainSliderIndex}
+          subSliderIndex={this.state.subSliderIndex}
+          setMainIndex={this.setMainIndex}
+          setSubIndex={this.setSubIndex}
+          prevMain={this.prevMain}
+          nextMain={this.nextMain}
+          prevSub={this.prevSub}
+          nextSub={this.nextSub}
         />
 
         <ProductInfo
@@ -184,6 +222,10 @@ class Detail extends React.Component {
           currentProductStyles={this.state.currentProductStyles}
           productId={this.state.currentProductId}
           handleStyleChange={this.handleStyleChange}
+          mainSliderIndex={this.state.mainSliderIndex}
+          subSliderIndex={this.state.subSliderIndex}
+          setMainIndex={this.setMainIndex}
+          setSubIndex={this.setSubIndex}
         />
 
         <Description
