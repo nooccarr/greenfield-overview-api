@@ -8,6 +8,20 @@ import Detail from './productDetail/index.jsx';
 import SearchIcon from '@material-ui/icons/Search';
 
 class App extends React.Component {
+  constructor(){
+    super()
+    state = {
+      current: 85
+    }
+    this.changeCurrent = this.changeCurrent.bind(this)
+  }
+
+  changeCurrent(id) {
+    this.setState({
+      current: id
+    })
+  }
+
   render() {
     return (
       <div>
@@ -24,9 +38,9 @@ class App extends React.Component {
           <hr class="header-break"></hr>
         </header>
         <div className="container">
-          <Detail />
-          <Related />
-          <ReviewMain />
+          <Detail current={this.state.current}/>
+          <Related current={this.state.current} changeCurrent={this.changeCurrent}/>
+          <ReviewMain current={this.state.current}/>
         </div>
       </div>
     );
