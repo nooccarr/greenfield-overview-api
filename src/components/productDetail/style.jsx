@@ -1,6 +1,10 @@
 import React from 'react';
 
 const Style = (props) => {
+  const setIndex = () => {
+    props.setMainIndex(0);
+    props.setSubIndex(0);
+  };
   return (
     <div className="default-styles">
       <h3>Please choose styles</h3>
@@ -11,7 +15,10 @@ const Style = (props) => {
               className="default-styles-img"
               src={style.photos[0].thumbnail_url}
               key={index}
-              onClick={() => props.handleStyleChange(style)}
+              onClick={() => {
+                props.handleStyleChange(style);
+                setIndex();
+              }}
             ></img>
           );
         })}
