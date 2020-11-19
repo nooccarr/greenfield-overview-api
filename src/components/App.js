@@ -10,7 +10,7 @@ import SearchIcon from '@material-ui/icons/Search';
 class App extends React.Component {
   constructor(){
     super()
-    state = {
+    this.state = {
       current: 85
     }
     this.changeCurrent = this.changeCurrent.bind(this)
