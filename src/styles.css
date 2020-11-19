@@ -225,6 +225,23 @@ Rating and Reviews Styling
 /* =================================
 Carousel Styling
 ==================================== */
+.modal-holder {
+  position: relative;
+  top: -250px;
+  left: 200px;
+  z-index: 2;
+}
+.modal-main {
+  position: absolute;
+  background: white;
+  width: 400px;
+  height: 380px;
+  transform: translate(-50%,-50%);
+  border: black;
+  border-width: 1px;
+  border-style: solid;
+  display: block;
+}
 
 .related-carousel {
   top: 0;
@@ -255,7 +272,7 @@ Carousel Styling
 }
 
 
-=======
+
 .cardName {
   position: relative;
   right: 17px;
@@ -304,6 +321,7 @@ Carousel Styling
   top: -275px;
   visibility: hidden;
 }
+
 
 /************* Image overview style ***************/
 .default-container {
