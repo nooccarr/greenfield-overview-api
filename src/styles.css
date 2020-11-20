@@ -177,6 +177,13 @@ Rating and Reviews Styling
   font-size: small;
 }
 
+#sort-dropdown {
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  font-weight: 500;
+  border: none;
+  text-decoration: underline;
+}
+
 /* Product Breakdown Sliders */
 .slidecontainer {
   width: 100%; /* Width of the outside container */
@@ -271,14 +278,11 @@ Carousel Styling
   color: grey;
 }
 
-
-
 .cardName {
   position: relative;
   right: 17px;
   color: rgb(90, 88, 88);
 }
-
 
 .carouselArrow {
   border: solid grey;
@@ -297,8 +301,7 @@ Carousel Styling
   right: -265px;
   top: -315px;
   color: #000;
-} 
-
+}
 
 .carouselRight {
   transform: rotate(-45deg);
