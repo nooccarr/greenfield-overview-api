@@ -11,7 +11,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
         <header>
           <h1 class="main-logo">DANGO</h1>
           <div class="search-wrap">
