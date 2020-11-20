@@ -7,7 +7,7 @@ const Style = (props) => {
   };
   return (
     <div className="default-styles">
-      <h3>Please choose styles</h3>
+      <h5>STYLE > SELECTED STYLE</h5>
       <ul>
         {props.currentProductStyles.map((style, index) => {
           return (
