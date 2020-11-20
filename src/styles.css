@@ -157,6 +157,16 @@ Rating and Reviews Styling
   text-align: center;
   padding: 0.5rem 1.5rem;
   background-color: #ffffff;
+  border: 0.1rem solid;
+}
+
+#review-submit-button {
+  background-color: white;
+  color: black;
+  border-radius: 0;
+  border-color: black;
+  text-align: center;
+  padding: 0.5rem 1.5rem;
 }
 
 #more-reviews-button:hover,
@@ -243,7 +253,7 @@ Carousel Styling
   background: white;
   width: 400px;
   height: 380px;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   border: black;
   border-width: 1px;
   border-style: solid;
@@ -324,7 +334,6 @@ Carousel Styling
   top: -275px;
   visibility: hidden;
 }
-
 
 /************* Image overview style ***************/
 .default-container {
