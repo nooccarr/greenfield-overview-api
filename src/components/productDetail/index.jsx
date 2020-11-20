@@ -4,7 +4,8 @@ import ProductInfo from './productInfo.jsx';
 import Style from './style.jsx';
 import Selections from './selections.jsx';
 import Description from './description.jsx';
-import Review from './Review.jsx';
+import Review from './Default-Review.jsx';
+import Features from './Default-features.jsx';
 import axios from 'axios';
 
 class Detail extends React.Component {
@@ -145,7 +146,7 @@ class Detail extends React.Component {
     return axios
       .get(`http://3.21.164.220/products/${this.state.currentProductId}`)
       .then((product) => {
-        this.getCurrentProdcut(product);
+        this.getCurrentProdcut(product.data);
       })
       .catch((err) => {
         console.log(err);
@@ -232,6 +233,8 @@ class Detail extends React.Component {
           currentProduct={this.state.currentProduct}
           currentProductStyles={this.state.currentProductStyles}
         />
+
+        <Features currentProduct={this.state.currentProduct} />
       </div>
     );
   }
