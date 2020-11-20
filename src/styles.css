@@ -236,7 +236,7 @@ Carousel Styling
   background: white;
   width: 400px;
   height: 380px;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   border: black;
   border-width: 1px;
   border-style: solid;
@@ -271,14 +271,11 @@ Carousel Styling
   color: grey;
 }
 
-
-
 .cardName {
   position: relative;
   right: 17px;
   color: rgb(90, 88, 88);
 }
-
 
 .carouselArrow {
   border: solid grey;
@@ -297,8 +294,7 @@ Carousel Styling
   right: -265px;
   top: -315px;
   color: #000;
-} 
-
+}
 
 .carouselRight {
   transform: rotate(-45deg);
@@ -322,8 +318,9 @@ Carousel Styling
   visibility: hidden;
 }
 
-
-/************* Image overview style ***************/
+/* =================================
+Image overview
+==================================== */
 .default-container {
   margin-top: 10px;
   position: relative;
@@ -354,23 +351,69 @@ Carousel Styling
     background-color 300ms linear,
     transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
+
+/******* product info *********/
+
 .default-product-info {
-  margin: 10px;
+  display: block;
 }
+
+/********* review ************/
+
+.default-review {
+  display: block;
+}
+
+/********** title and price ************/
+
+.default-title {
+  display: block;
+  margin: 50px 0 50px 0;
+}
+
+.default-title .h1 {
+  font-size: 150px;
+}
+/******** styles *************/
+
 .default-styles {
   display: block;
-  margin: 10px;
+  margin: 20px 0 20px 0;
 }
 
 .default-styles-img {
   position: relative;
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
   object-fit: cover;
-  border-radius: 50px;
-  margin: 10px;
+  border-radius: 50%;
+  margin: 10px 20px 20px 0;
   cursor: pointer;
 }
+/*********** selections *************/
+
+/*********** description **************/
+.default-description-container {
+  display: block;
+  height: 150px;
+  width: 600px;
+  margin: 50px 50px 20px 0;
+  justify-self: end;
+}
+/*********** features *****************/
+
+.default-features-container {
+  display: block;
+  height: 150px;
+  border-left: solid lightgray 2px;
+  margin: 50px 0 20px 0;
+}
+.default-features-container-list {
+  margin: 10px 0 10px 50px;
+}
+
+/********** sub slider ************/
+
 .default-current-img-button-left {
   position: absolute;
   left: 5px;
@@ -390,6 +433,7 @@ Carousel Styling
   border: none;
   background-color: lightgray;
 }
+
 .default-styles-img:hover {
   box-shadow: inset 30px 30px 40px #000;
 }
