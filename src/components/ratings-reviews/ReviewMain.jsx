@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RatingsAndReviews from './RatingsAndReviews';
-import Review from './Reviews';
+import Reviews from './Reviews';
 import {
   findRatingAverage,
   findRecommendPercent,
@@ -12,14 +12,14 @@ function ReviewMain(props) {
   const [recommendPercentage, setRecommendPercentage] = useState(null);
   const [reviewCount, setReviewCount] = useState(null);
   const [ratingsPercentages, setRatingPercentages] = useState(null);
-  const [productID, setProductID] = useState(null);
   const [productCharacteristics, setProductCharacteristics] = useState(null);
   const [allReviews, setAllReviews] = useState(null);
   const [allRatings, setAllRatings] = useState(null);
+  const [sortMethod, setSortMethod] = useState('relevance');
 
   // -------------- fetch data from reviews endpoint ---------------------
   useEffect(() => {
-    fetch('http://3.21.164.220/reviews?product_id=22')
+    fetch(`http://3.21.164.220/reviews/?product_id=85&sort=${sortMethod}`)
       .then((res) => {
         return res.json();
       })
@@ -30,11 +30,11 @@ function ReviewMain(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  });
 
   // -------------- fetch data from reviews meta endpoint ---------------------
   useEffect(() => {
-    fetch('http://3.21.164.220/reviews/meta?product_id=22')
+    fetch('http://3.21.164.220/reviews/meta?product_id=85')
       .then((res) => {
         return res.json();
       })
@@ -58,10 +58,12 @@ function ReviewMain(props) {
         ratingsPercentages={ratingsPercentages}
         productCharacteristics={productCharacteristics}
       />
-      <Review
+      <Reviews
         reviewCount={reviewCount}
         allReviews={allReviews}
         allRatings={allRatings}
+        sortMethod={sortMethod}
+        setSortMethod={setSortMethod}
       />
     </div>
   );
