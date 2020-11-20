@@ -46,11 +46,11 @@ class Modal extends React.Component {
                 <div className='modal-holder'>
                     <section className='modal-main' onClick={() => {this.props.modalOff()}}>
                         <h7>COMPARING</h7>
-                        <p><h5>{this.props.name}</h5><h5>{this.props.curName}</h5></p>
+                        <p><h5 className='modal-product'>{this.props.name}</h5><h5 className='modal-prod-current'>{this.props.curName}</h5></p>
                         {this.state.compare.map((item, index) => {
                             return (
-                                <div key={index}>
-                                <h7>{item.featVal}</h7><h7 className='modal-feature'>{item.feature}</h7><h7 className='modal-right'>{item.curVal}</h7>
+                                <div className='modal-text' key={index}>
+                                <h7 className='modal-left'>{item.featVal}</h7><h7 className='modal-feature'>{item.feature}</h7><h7 className='modal-right'>{item.curVal}</h7>
                                 </div>
                             )
                         })}

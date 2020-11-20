@@ -232,6 +232,7 @@ Carousel Styling
   z-index: 2;
 }
 .modal-main {
+  padding-left: 10px;
   position: absolute;
   background: white;
   width: 500px;
@@ -241,6 +242,30 @@ Carousel Styling
   border-width: 1px;
   border-style: solid;
   display: block;
+  overflow-y: hidden;
+}
+.modal-text {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.modal-product {
+  display: inline-block;
+}
+.modal-prod-current {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+}
+.modal-right {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+}
+.modal-feature {
+  display: inline-block;
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
 }
 .related-carousel {
   top: 0;
