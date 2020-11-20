@@ -17,6 +17,7 @@ class App extends React.Component {
   }
 
   changeCurrent(id) {
+    console.log(id)
     this.setState({
       current: id,
     });

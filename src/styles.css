@@ -157,6 +157,16 @@ Rating and Reviews Styling
   text-align: center;
   padding: 0.5rem 1.5rem;
   background-color: #ffffff;
+  border: 0.1rem solid;
+}
+
+#review-submit-button {
+  background-color: white;
+  color: black;
+  border-radius: 0;
+  border-color: black;
+  text-align: center;
+  padding: 0.5rem 1.5rem;
 }
 
 #more-reviews-button:hover,
@@ -235,21 +245,45 @@ Carousel Styling
 .modal-holder {
   position: relative;
   top: -250px;
-  left: 200px;
+  left: 600px;
   z-index: 2;
 }
 .modal-main {
+  padding-left: 10px;
   position: absolute;
   background: white;
-  width: 400px;
-  height: 380px;
-  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 475px;
+  transform: translate(-50%,-50%);
   border: black;
   border-width: 1px;
   border-style: solid;
   display: block;
+  overflow-y: hidden;
 }
-
+.modal-text {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.modal-product {
+  display: inline-block;
+}
+.modal-prod-current {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+}
+.modal-right {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+}
+.modal-feature {
+  display: inline-block;
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+}
 .related-carousel {
   top: 0;
   right: 0;
@@ -325,9 +359,13 @@ Carousel Styling
   visibility: hidden;
 }
 
+
+/************* Image overview style ***************/
+
 /* =================================
 Image overview
 ==================================== */
+
 .default-container {
   margin-top: 10px;
   position: relative;

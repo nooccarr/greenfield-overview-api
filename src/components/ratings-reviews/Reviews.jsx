@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Review from './Review.jsx';
+import AddReviewModal from './AddReviewModal';
 
 function Reviews(props) {
   const reviewsFromProps = props.allReviews;
   const [reviewRenderCount, setReviewRenderCount] = useState(2);
 
+  // -------------- Handling and state for modal / add review button ---------------------
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   let handleReviewClick = () => {
     setReviewRenderCount(reviewRenderCount + 2);
   };
+
   let handleSortClick = (sortMethod) => {
     props.setSortMethod(sortMethod);
     console.log(sortMethod);
@@ -48,9 +55,14 @@ function Reviews(props) {
     return (
       <div className="reviews-container">
         <h4 className="review-header">0 reviews for this item</h4>
-        <button id="add-review-button" style={{ margin: '4rem' }}>
+        <button
+          id="add-review-button"
+          style={{ margin: '4rem' }}
+          onClick={() => setShow(true)}
+        >
           ADD A REVIEW +
         </button>
+        <AddReviewModal show={show} />
       </div>
     );
   } else if (reviewsFromProps.length <= 2) {
@@ -60,9 +72,14 @@ function Reviews(props) {
           {reviewsFromProps.length} reviews, sorted by {dropdownButton}
         </h4>
         <div>{renderReviews(reviewsFromProps)}</div>
-        <button id="add-review-button" style={{ margin: '4rem' }}>
+        <button
+          id="add-review-button"
+          style={{ margin: '4rem' }}
+          onClick={() => setShow(true)}
+        >
           ADD A REVIEW +
         </button>
+        <AddReviewModal show={show} />
       </div>
     );
   } else if (reviewsFromProps.length > 2) {
@@ -76,7 +93,10 @@ function Reviews(props) {
           <button id="more-reviews-button" onClick={handleReviewClick}>
             MORE REVIEWS
           </button>
-          <button id="add-review-button">ADD A REVIEW +</button>
+          <button id="add-review-button" onClick={() => setShow(true)}>
+            ADD A REVIEW +
+          </button>
+          <AddReviewModal show={show} handleClose={handleClose} />
         </div>
       </div>
     );
