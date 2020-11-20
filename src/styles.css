@@ -385,7 +385,7 @@ Image overview
 
 .default-styles {
   display: block;
-  margin: 20px 0 20px 0;
+  margin: 100px 0 20px 0;
 }
 
 .default-styles-img {
@@ -399,6 +399,24 @@ Image overview
 }
 /*********** selections *************/
 
+.default-checkout {
+  min-width: 100px;
+  margin-top: 100px;
+}
+.default-checkout-selections {
+  display: block;
+}
+.default-checkout-checkoutbtn {
+  display: block;
+}
+.default-checkout-checkoutbtn-btn {
+  width: 150px;
+  height: 40px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+}
 /*********** description **************/
 .default-description-container {
   display: block;
@@ -418,7 +436,11 @@ Image overview
 .default-features-container-list {
   margin: 10px 0 10px 50px;
 }
-
+/* .default-features-container-list li:before {
+  content: '✔';
+  margin-left: -1.5em;
+  margin-right: 1em;
+} */
 /********** sub slider ************/
 
 .default-current-img-button-left {
