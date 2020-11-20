@@ -18,7 +18,7 @@ class RelatedOutfit extends React.Component {
 
     // current Item will need to be handed down by props
     componentDidMount() {
-        axios.get('http://3.21.164.220/products/85/related')
+        axios.get(`http://3.21.164.220/products/${this.props.current}/related`)
         .then((response) => {
             var removeDups = (arr) => {
                 var memory = {}
@@ -37,6 +37,17 @@ class RelatedOutfit extends React.Component {
                 outfit: this.state.outfit
             })     
         })
+        .then(() => {
+            axios.get(`http://3.21.164.220/products/${this.props.current}`)
+            .then((response) => {
+                this.setState({
+                    related: this.state.related,
+                    outfit: this.state.outfit,
+                    currentFeat: response.data.features,
+                    curName: response.data.name
+                })
+            })
+        })
         .catch((err) => {
             console.log('there was an error getting related products', err)
         })
@@ -52,7 +63,7 @@ class RelatedOutfit extends React.Component {
     render() {
         return (
             <div>
-                <Related related={this.state.related}/>
+                <Related related={this.state.related} changeCurrent={this.props.changeCurrent} currentFeat={this.state.currentFeat} curName={this.state.curName}/>
                 <Outfit/>
             </div>
         )

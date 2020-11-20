@@ -41,19 +41,19 @@ class RelatedProd extends React.Component {
         this.getInfo()
     }
 
-    displayModal() {
-        if (this.state.modal === true) {
-            return (
-                <div>
-                <Modal toggleModal={this.toggleModal}/>
-                </div>
-            )
-        } else {
-            return (
-                <div></div>
-            )
-        }
-    }
+    // displayModal() {
+    //     if (this.state.modal === true) {
+    //         return (
+    //             <div>
+    //             <Modal toggleModal={this.toggleModal}/>
+    //             </div>
+    //         )
+    //     } else {
+    //         return (
+    //             <div></div>
+    //         )
+    //     }
+    // }
 
     toggleModal() {
         if (this.state.modal === false) {
@@ -90,7 +90,8 @@ class RelatedProd extends React.Component {
                     item: this.state.item,
                     name: response.data.name,
                     cat: response.data.category,
-                    price: response.data.default_price
+                    price: response.data.default_price,
+                    focusFeatures: response.data.features
                 })
             })
             .then(() => {
@@ -101,6 +102,7 @@ class RelatedProd extends React.Component {
                         name: this.state.name,
                         cat: this.state.cat,
                         price: this.state.price,
+                        focusFeatures: this.state.focusFeatures,
                         rate: Stars(response.data),
                         modal: false
                     })
@@ -123,14 +125,13 @@ class RelatedProd extends React.Component {
             return (
                 <div>
                 <div className='card' style={{width: '18rem'}}>
-                    <img src={this.state.item.results[0].photos[0].thumbnail_url} className='relatedImg'></img>
+                    <img src={this.state.item.results[0].photos[0].thumbnail_url} className='relatedImg' onClick={() => {this.props.changeCurrent(this.props.focus)}}></img>
                     <div className='container'></div>
                         <h6 className='cardText'>{this.state.cat}</h6>
-                        <h5 className='cardName'><h4 className='starBut' onClick={() => {this.toggleModal()}}>☆</h4><b>{this.state.name}</b></h5>
+                        <h5 className='cardName'><h4 className='starBut' onClick={() => {this.props.modalOn(this.state.name, this.state.focusFeatures)}}>☆</h4><b>{this.state.name}</b></h5>
                         {this.displayPrice()}
                         <p className='cardText'>{this.state.rate}</p>
                 </div>
-                {this.displayModal()}
                 </div>
             )
         }
