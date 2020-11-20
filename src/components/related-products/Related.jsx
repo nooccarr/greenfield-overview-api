@@ -49,7 +49,7 @@ class Related extends React.Component {
 
     rightButton() {
         var checker = (this.props.related.length * 141.3)
-        if(this.state.ref >= checker) {
+        if(this.state.ref >= checker || this.props.related.length <= 3) {
             return (
                 <button className='carouselHide' id='rightBut' onClick={() => {this.rightClick()}}></button>
             )

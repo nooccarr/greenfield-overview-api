@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import axios from 'axios';
 import Stars from '../ratings-reviews/Stars.jsx';
 import { colors } from '@material-ui/core';
+import Modal from './Modal'
 
 
 
@@ -12,6 +13,7 @@ class RelatedProd extends React.Component {
         this.state = {
             item: ''
         }
+        this.toggleModal = this.toggleModal.bind(this)
     }
 
     displayPrice() {
@@ -39,10 +41,46 @@ class RelatedProd extends React.Component {
         this.getInfo()
     }
 
+    displayModal() {
+        if (this.state.modal === true) {
+            return (
+                <div>
+                <Modal toggleModal={this.toggleModal}/>
+                </div>
+            )
+        } else {
+            return (
+                <div></div>
+            )
+        }
+    }
+
+    toggleModal() {
+        if (this.state.modal === false) {
+            this.setState({
+                item: this.state.item,
+                name: this.state.name,
+                cat: this.state.cat,
+                price: this.state.price,
+                rate: this.state.rate,
+                modal: true
+            })
+        } else if (this.state.modal === true) {
+            this.setState({
+                item: this.state.item,
+                name: this.state.name,
+                cat: this.state.cat,
+                price: this.state.price,
+                rate: this.state.rate,
+                modal: false
+            })
+        }
+    }
+
+
     getInfo () {
         axios.get(`http://3.21.164.220/products/${this.props.focus}/styles`)
         .then((response) => {
-            console.log('STYLES RESPONSE',response.data)
             this.setState({
                 item: response.data,
             })
@@ -63,7 +101,8 @@ class RelatedProd extends React.Component {
                         name: this.state.name,
                         cat: this.state.cat,
                         price: this.state.price,
-                        rate: Stars(response.data)
+                        rate: Stars(response.data),
+                        modal: false
                     })
                 })
             })
@@ -82,17 +121,19 @@ class RelatedProd extends React.Component {
             )
         } else {
             return (
+                <div>
                 <div className='card' style={{width: '18rem'}}>
                     <img src={this.state.item.results[0].photos[0].thumbnail_url} className='relatedImg'></img>
                     <div className='container'></div>
                         <h6 className='cardText'>{this.state.cat}</h6>
-                        <h5 className='cardName'><h4 className='starBut'>☆</h4><b>{this.state.name}</b></h5>
+                        <h5 className='cardName'><h4 className='starBut' onClick={() => {this.toggleModal()}}>☆</h4><b>{this.state.name}</b></h5>
                         {this.displayPrice()}
                         <p className='cardText'>{this.state.rate}</p>
                 </div>
+                {this.displayModal()}
+                </div>
             )
         }
-        // {Stars(this.state.data)}
     }
 }
 

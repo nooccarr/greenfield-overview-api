@@ -8,21 +8,14 @@ class DefaultImgSubSlider extends React.Component {
       subIndex: 0,
     };
   }
-  nextProperty() {
-    this.setState({ subIndex: this.state.subIndex + 1 });
-  }
-
-  prevProperty() {
-    this.setState({ subIndex: this.state.subIndex - 1 });
-  }
 
   render() {
     return (
       <div className="default-subslider-container">
         <button
           className="default-subslider-btn-top"
-          onClick={() => this.prevProperty()}
-          disabled={this.state.subIndex === 0}
+          onClick={() => this.props.prevSub()}
+          disabled={this.props.currentSubIndex === 0}
         >
           <ArrowDropUpIcon />
         </button>
@@ -30,7 +23,7 @@ class DefaultImgSubSlider extends React.Component {
           <div
             className="default-subslider-img-active"
             style={{
-              transform: `translateY(-${this.state.subIndex * 210}px)`,
+              transform: `translateY(-${this.props.currentSubIndex * 210}px)`,
             }}
           >
             {this.props.subSliderImgs.map((photo, index) => {
@@ -40,7 +33,7 @@ class DefaultImgSubSlider extends React.Component {
                   src={photo.thumbnail_url}
                   key={index}
                   onClick={() => {
-                    this.props.handleImageChange(index);
+                    this.props.handleMainImageChange(index);
                   }}
                 />
               );
@@ -49,8 +42,10 @@ class DefaultImgSubSlider extends React.Component {
         </div>
         <button
           className="default-subslider-btn-bottom"
-          onClick={() => this.nextProperty()}
-          disabled={this.state.subIndex > this.props.subSliderImgs.length - 4}
+          onClick={() => this.props.nextSub()}
+          disabled={
+            this.props.currentSubIndex > this.props.subSliderImgs.length - 4
+          }
         >
           <ArrowDropDownIcon />
         </button>
