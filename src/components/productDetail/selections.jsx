@@ -17,9 +17,11 @@ class Selections extends React.Component {
       currentSize: '',
       quantity: 0,
       totalPrice: 0,
+      status: false,
     };
     this.handleSizeChange = this.handleSizeChange.bind(this);
     this.handleQtyChange = this.handleQtyChange.bind(this);
+    this.submitValidation = this.submitValidation.bind(this);
   }
   handleSizeChange(event) {
     this.setState({ currentSize: event.target.value });
@@ -27,11 +29,15 @@ class Selections extends React.Component {
   handleQtyChange(event) {
     this.setState({ quantity: event.target.value });
   }
+  submitValidation() {
+    event.preventDefault();
+    this.setState({ status: Boolean(!this.state.currentSize) });
+  }
   render() {
     return (
       <div className="default-checkout">
         <div className="default-checkout-selections">
-          <FormControl variant="outlined">
+          <FormControl variant="outlined" error={this.state.status}>
             <InputLabel id="demo-simple-select-outlined-label">Size</InputLabel>
             <Select
               labelId="demo-simple-select-outlined-label"
@@ -47,6 +53,9 @@ class Selections extends React.Component {
               <MenuItem value={'L'}>L</MenuItem>
               <MenuItem value={'XL'}>XL</MenuItem>
             </Select>
+            {this.state.status && (
+              <FormHelperText>please select size</FormHelperText>
+            )}
           </FormControl>
           <FormControl variant="outlined">
             <InputLabel id="demo-simple-select-outlined-label">Qty</InputLabel>
@@ -57,6 +66,10 @@ class Selections extends React.Component {
               onChange={this.handleQtyChange}
               label="Qty"
               style={{ marginRight: '15px', minWidth: '100px' }}
+              displayEmpty={false}
+              renderValue={(v) => {
+                return 1;
+              }}
             >
               <MenuItem value={1}>1</MenuItem>
               <MenuItem value={2}>2</MenuItem>
@@ -66,11 +79,14 @@ class Selections extends React.Component {
             </Select>
           </FormControl>
         </div>
-        <div className="default-checkout-checkoutbtn">
-          <button className="default-checkout-checkoutbtn-btn">
+        <form className="default-checkout-checkoutbtn">
+          <button
+            className="default-checkout-checkoutbtn-btn"
+            onClick={this.submitValidation}
+          >
             CHECK OUT
           </button>
-        </div>
+        </form>
       </div>
     );
   }
