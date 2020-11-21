@@ -38,15 +38,13 @@ class App extends React.Component {
     } else {
       window.location.reload(false)
     }
-
-
   }
 
   // ------------------- dark mode magic ----------------------
   activateDarkness() {
     document.documentElement.style.filter = 'invert(1) hue-rotate(180deg)';
     document.body.querySelectorAll('img, picture, video')
-      .forEach(el => el.style.filter = 'invert(1) hue-rotate(180deg)');
+      .forEach(element => element.style.filter = 'invert(1) hue-rotate(180deg)');
   }
 
   render() {
@@ -66,7 +64,7 @@ class App extends React.Component {
           </div>
           <div className="dark-mode-wrapper" >
 
-            <WbSunnyIcon style={{ display: "inline" }} />
+            <WbSunnyIcon style={{ display: "inline", marginRight: ".8rem" }} />
             <Form.Check
               type="switch"
               id="dark-mode-switch"
