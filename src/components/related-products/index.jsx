@@ -70,7 +70,7 @@ class RelatedOutfit extends React.Component {
         return (
             <div>
                 <Related current={this.props.current} related={this.state.related} changeCurrent={this.props.changeCurrent} currentFeat={this.state.currentFeat} curName={this.state.curName}/>
-                <Outfit/>
+                <Outfit current={this.props.current}/>
             </div>
         )
     }

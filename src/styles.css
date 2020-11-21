@@ -269,8 +269,7 @@ Carousel Styling
   overflow-y: hidden;
 }
 .modal-text {
-  padding-top: 6px;
-  padding-bottom: 6px;
+  height:28px;
 }
 .modal-product {
   display: inline-block;
@@ -314,6 +313,31 @@ Carousel Styling
   border-style: solid;
 }
 
+.add-card {
+  margin: 20px;
+  border: black;
+  border-width: 1px;
+  border-style: solid;
+  min-height: 452px;
+  min-width: 288px;
+}
+
+.add-text {
+  padding-top: 10px;
+  display: inline-block;
+  position: relative;
+  left: 80px;
+}
+
+.add-icon {
+  font-size: 1000%;
+  position: relative;
+  transform: translateX(50%);
+  right: 50px;
+  z-index: -50;
+  top: 50px;
+}
+
 .cardText {
   padding-left: 10px;
   color: grey;
@@ -324,7 +348,11 @@ Carousel Styling
   right: 17px;
   color: rgb(90, 88, 88);
 }
-
+.outfitName{
+  position: relative;
+  right: 8px;
+  color: rgb(90, 88, 88);
+}
 .carouselArrow {
   border: solid grey;
   border-width: 0 5px 5px 0;
