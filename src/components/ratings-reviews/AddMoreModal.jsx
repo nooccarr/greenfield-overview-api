@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import ReviewForm from './ReviewForm';
+import AddMoreForm from './AddMoreForm';
 
-function AddReviewModal(props) {
+function AddMoreModal(props) {
   return (
     <Modal show={props.show} onHide={props.handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>
-          <h1>Write Your Review</h1> <p>about product</p>
+          <h1>Item Characteristics</h1>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <ReviewForm productCharacteristics={props.productCharacteristics} />
+        <AddMoreForm productCharacteristics={props.productCharacteristics} />
       </Modal.Body>
     </Modal>
   );
 }
 
-export default AddReviewModal;
+export default AddMoreModal;
