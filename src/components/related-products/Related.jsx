@@ -17,6 +17,11 @@ class Related extends React.Component {
 
     myRef = React.createRef();
     
+    componentDidUpdate(prevProps) {
+        if (prevProps.current !== this.props.current) {
+            this.forceUpdate()
+        }
+    }
 
     rightClick() {
         const slide = this.myRef.current
