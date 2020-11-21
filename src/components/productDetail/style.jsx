@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { reviewSection } from './Default-Review.jsx';
 
 const Style = (props) => {
   const setIndex = () => {
@@ -6,7 +7,7 @@ const Style = (props) => {
     props.setSubIndex(0);
   };
   return (
-    <div className="default-styles">
+    <div className="default-styles" ref={reviewSection}>
       <h5>STYLE > SELECTED STYLE</h5>
       <ul>
         {props.currentProductStyles.map((style, index) => {
