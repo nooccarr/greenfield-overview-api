@@ -6,14 +6,19 @@ import ReviewMain from './ratings-reviews/ReviewMain';
 import Related from './related-products/index.jsx';
 import Detail from './productDetail/index.jsx';
 import SearchIcon from '@material-ui/icons/Search';
+import Form from 'react-bootstrap/Form';
+import Brightness3Icon from '@material-ui/icons/Brightness3';
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       current: 1,
+      darkMode: false
     };
     this.changeCurrent = this.changeCurrent.bind(this);
+    this.setDarkMode = this.setDarkMode.bind(this)
   }
 
   changeCurrent(id) {
@@ -21,6 +26,24 @@ class App extends React.Component {
     this.setState({
       current: id,
     });
+  }
+
+  setDarkMode(e) {
+    if (!this.state.darkMode) {
+      this.activateDarkness()
+      this.setState({ darkMode: true })
+    } else {
+      window.location.reload(false)
+    }
+
+
+  }
+
+  // ------------------- dark mode magic ----------------------
+  activateDarkness() {
+    document.documentElement.style.filter = 'invert(1) hue-rotate(180deg)';
+    document.body.querySelectorAll('img, picture, video')
+      .forEach(el => el.style.filter = 'invert(1) hue-rotate(180deg)');
   }
 
   render() {
@@ -38,7 +61,17 @@ class App extends React.Component {
               <SearchIcon />
             </button>
           </div>
+          <div className="dark-mode-wrapper" >
 
+            <WbSunnyIcon style={{ display: "inline" }} />
+            <Form.Check
+              type="switch"
+              id="dark-mode-switch"
+              style={{ display: "inline" }}
+              onChange={this.setDarkMode}
+            />
+            <Brightness3Icon style={{ display: "inline" }} />
+          </div>
           <hr class="header-break"></hr>
         </header>
         <div className="container">
@@ -49,7 +82,7 @@ class App extends React.Component {
           />
           <ReviewMain current={this.state.current} />
         </div>
-      </div>
+      </div >
     );
   }
 }
