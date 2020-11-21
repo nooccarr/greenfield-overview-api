@@ -16,11 +16,14 @@ class App extends React.Component {
     this.changeCurrent = this.changeCurrent.bind(this);
   }
 
+  
+
   changeCurrent(id) {
     console.log(id)
     this.setState({
       current: id,
     });
+    console.log('THE STATE', this.state.current)
   }
 
   render() {
