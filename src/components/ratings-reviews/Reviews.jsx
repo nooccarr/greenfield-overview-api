@@ -16,8 +16,34 @@ function Reviews(props) {
 
   let handleSortClick = (sortMethod) => {
     props.setSortMethod(sortMethod);
-    console.log(sortMethod);
   };
+
+  // -------------------------- filter by stars --------------------------------
+  let activeStarFilters;
+  if (props.starFilters.length > 0) {
+    activeStarFilters = (
+      <div>
+        <h5 style={{ padding: '2rem' }}>
+          Showing{' '}
+          {props.starFilters.map(
+            (filter, index) => (index ? ', ' : '') + filter
+          )}{' '}
+          star reviews
+          <p
+            style={{
+              display: 'inline',
+              cursor: 'pointer',
+              fontSize: 'medium',
+              paddingLeft: '2rem',
+            }}
+            onClick={props.handleClearFilterClick}
+          >
+            (clear filters)
+          </p>
+        </h5>
+      </div>
+    );
+  }
 
   let dropdownButton = (
     <select
@@ -54,6 +80,7 @@ function Reviews(props) {
     return (
       <div className="reviews-container">
         <h4 className="review-header">0 reviews for this item</h4>
+        {activeStarFilters}
         <button
           id="add-review-button"
           style={{ margin: '4rem' }}
@@ -70,6 +97,7 @@ function Reviews(props) {
         <h4 className="review-header">
           {reviewsFromProps.length} reviews, sorted by {dropdownButton}
         </h4>
+        {activeStarFilters}
         <div>{renderReviews(reviewsFromProps)}</div>
         <button
           id="add-review-button"
@@ -87,6 +115,7 @@ function Reviews(props) {
         <h4 className="review-header">
           {reviewsFromProps.length} reviews, sorted by {dropdownButton}
         </h4>
+        {activeStarFilters}
         <div>{renderReviews(reviewsFromProps.slice(0, reviewRenderCount))}</div>
         <div className="review-buttons-bottom">
           <button id="more-reviews-button" onClick={handleReviewClick}>

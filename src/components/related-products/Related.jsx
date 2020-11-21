@@ -24,6 +24,7 @@ class Related extends React.Component {
     }
 
     rightClick() {
+        console.log(this.myRef)
         const slide = this.myRef.current
         slide.scrollLeft += 330
         this.setState({
@@ -92,8 +93,7 @@ class Related extends React.Component {
     }
 
     rightButton() {
-        var checker = (this.props.related.length * 141.3)
-        if(this.state.ref >= checker || this.props.related.length <= 3 || this.props.related.length === 4 && this.state.ref >= 320 || this.props.related.length === 5 && this.state.ref >= 600) {
+        if(this.props.related.length <= 3 || this.props.related.length === 4 && this.state.ref >= 320 || this.props.related.length === 5 && this.state.ref >= 600 || this.props.related.length === 6 && this.state.ref >= 800 || this.props.related.length === 9 && this.state.ref >= 1700) {
             return (
                 <button className='carouselHide' id='rightBut' onClick={() => {this.rightClick()}}></button>
             )

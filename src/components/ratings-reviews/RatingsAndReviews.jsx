@@ -4,7 +4,6 @@ import Rating from '@material-ui/lab/Rating';
 import ProductBreakdownBars from './ProductBreakdownBars';
 
 function RatingsAndReviews(props) {
-  // default values until state updates propery
   let percentagesObj;
   let recPercentage;
   if (props.ratingsPercentages) {
@@ -18,6 +17,11 @@ function RatingsAndReviews(props) {
   } else {
     recPercentage = 0;
   }
+
+  let handleStarFilterClick = (starValue) => {
+    if (props.starFilters.indexOf(starValue) === -1)
+      props.setStarFilters([...props.starFilters, starValue]);
+  };
 
   return (
     <div className="ratings-container">
@@ -36,11 +40,56 @@ function RatingsAndReviews(props) {
         <p>{recPercentage}% of reviews recommend this product</p>
       </div>
       <div id="bar-labels">
-        <p className="bar-label">5 stars</p>
-        <p className="bar-label">4 stars</p>
-        <p className="bar-label">3 stars</p>
-        <p className="bar-label">2 stars</p>
-        <p className="bar-label">1 stars</p>
+        <p
+          className="bar-label"
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            handleStarFilterClick(5);
+            props.filterByStar();
+          }}
+        >
+          5 stars
+        </p>
+        <p
+          className="bar-label"
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            handleStarFilterClick(4);
+            props.filterByStar();
+          }}
+        >
+          4 stars
+        </p>
+        <p
+          className="bar-label"
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            handleStarFilterClick(3);
+            props.filterByStar();
+          }}
+        >
+          3 stars
+        </p>
+        <p
+          className="bar-label"
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            handleStarFilterClick(2);
+            props.filterByStar();
+          }}
+        >
+          2 stars
+        </p>
+        <p
+          className="bar-label"
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            handleStarFilterClick(1);
+            props.filterByStar();
+          }}
+        >
+          1 stars
+        </p>
       </div>
       <div id="bars">
         <ProgressBar
