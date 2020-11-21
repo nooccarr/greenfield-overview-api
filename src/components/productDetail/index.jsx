@@ -189,6 +189,8 @@ class Detail extends React.Component {
     if (prevProps.current !== this.props.current) {
       this.fetchProduct();
       this.fetchStyle();
+      this.setMainIndex(0);
+      this.setSubIndex(0);
     }
   }
 
