@@ -14,7 +14,6 @@ class Detail extends React.Component {
     this.state = {
       mainSliderIndex: 0,
       subSliderIndex: 0,
-      currentProductId: this.props.current,
       currentProduct: {},
       currentProductStyles: [],
       currentStyle: {
@@ -144,7 +143,7 @@ class Detail extends React.Component {
   }
   fetchProduct() {
     return axios
-      .get(`http://3.21.164.220/products/${this.state.currentProductId}`)
+      .get(`http://3.21.164.220/products/${this.props.current}`)
       .then((product) => {
         this.getCurrentProdcut(product.data);
       })
@@ -155,7 +154,7 @@ class Detail extends React.Component {
 
   fetchStyle() {
     return axios
-      .get(`http://3.21.164.220/products/${this.state.currentProductId}/styles`)
+      .get(`http://3.21.164.220/products/${this.props.current}/styles`)
       .then((styles) => {
         this.getCurrentStyle(styles.data.results);
       })
@@ -184,6 +183,13 @@ class Detail extends React.Component {
   componentWillMount() {
     this.fetchProduct();
     this.fetchStyle();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.current !== this.props.current) {
+      this.fetchProduct();
+      this.fetchStyle();
+    }
   }
 
   nextMain() {
@@ -221,7 +227,7 @@ class Detail extends React.Component {
         <ProductInfo
           currentProduct={this.state.currentProduct}
           currentProductStyles={this.state.currentProductStyles}
-          productId={this.state.currentProductId}
+          productId={this.props.current}
           handleStyleChange={this.handleStyleChange}
           mainSliderIndex={this.state.mainSliderIndex}
           subSliderIndex={this.state.subSliderIndex}
