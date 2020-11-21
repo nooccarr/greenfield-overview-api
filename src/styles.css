@@ -254,7 +254,7 @@ Carousel Styling
   background: white;
   width: 500px;
   height: 475px;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   border: black;
   border-width: 1px;
   border-style: solid;
@@ -359,7 +359,6 @@ Carousel Styling
   visibility: hidden;
 }
 
-
 /************* Image overview style ***************/
 
 /* =================================
@@ -372,15 +371,17 @@ Image overview
   display: grid;
   grid-template-columns: 750px auto;
   grid-template-rows: 3fr 1fr;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .default-image-container {
   display: flex;
   /* overflow: hidden; */
   position: relative;
+  align-items: center;
 }
 .default-active-image {
   width: 550px;
+  align-items: center;
   overflow: hidden;
   background-color: rgb(240, 240, 237);
   position: relative;
@@ -389,6 +390,7 @@ Image overview
 .default-current-img {
   display: flex;
   position: relative;
+  margin: auto 0 auto 0;
   max-width: 550px;
   /* max-height: 800px; */
   align-items: center;
