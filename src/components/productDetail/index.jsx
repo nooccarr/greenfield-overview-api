@@ -14,8 +14,76 @@ class Detail extends React.Component {
     this.state = {
       mainSliderIndex: 0,
       subSliderIndex: 0,
-      currentProduct: {},
-      currentProductStyles: [],
+      currentProduct: {
+        id: 1,
+        name: 'Camo Onesie',
+        slogan: 'Blend in to your crowd',
+        description:
+          'The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.',
+        category: 'Jackets',
+        default_price: '140',
+        features: [
+          {
+            feature: 'Buttons',
+            value: 'Brass',
+          },
+        ],
+      },
+      currentProductStyles: [
+        {
+          style_id: 118,
+          name: 'Indigo',
+          original_price: '809',
+          sale_price: '0',
+          'default?': 1,
+          photos: [
+            {
+              thumbnail_url:
+                'https://images.unsplash.com/photo-1457968867385-9f877f3f2bce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+              url:
+                'https://images.unsplash.com/photo-1490723286627-4b66e6b2882a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+            },
+            {
+              thumbnail_url:
+                'https://images.unsplash.com/photo-1556304653-cba65c59b3c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80',
+              url:
+                'https://images.unsplash.com/photo-1560095633-6803ba0461cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80',
+            },
+            {
+              thumbnail_url:
+                'https://images.unsplash.com/photo-1517278322228-3fe7a86cf6f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
+              url:
+                'https://images.unsplash.com/photo-1560095633-6803ba0461cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80',
+            },
+          ],
+          skus: {
+            723: {
+              quantity: 49,
+              size: 'XS',
+            },
+            724: {
+              quantity: 1,
+              size: 'S',
+            },
+            725: {
+              quantity: 31,
+              size: 'M',
+            },
+            726: {
+              quantity: 26,
+              size: 'L',
+            },
+            727: {
+              quantity: 29,
+              size: 'XL',
+            },
+            728: {
+              quantity: 38,
+              size: 'XXL',
+            },
+          },
+        },
+      ],
       currentStyle: {
         style_id: 1,
         name: 'Forest Green & Black',
@@ -229,6 +297,7 @@ class Detail extends React.Component {
         <ProductInfo
           currentProduct={this.state.currentProduct}
           currentProductStyles={this.state.currentProductStyles}
+          currentStyle={this.state.currentStyle}
           productId={this.props.current}
           handleStyleChange={this.handleStyleChange}
           mainSliderIndex={this.state.mainSliderIndex}

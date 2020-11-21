@@ -13,7 +13,7 @@ class Selections extends React.Component {
     this.state = {
       product_id: 0,
       currentStyle: 0,
-      sku_id: 0,
+      currentSku: { quantity: 0, size: null },
       currentSize: '',
       quantity: 0,
       totalPrice: 0,
@@ -33,6 +33,10 @@ class Selections extends React.Component {
     event.preventDefault();
     this.setState({ status: Boolean(!this.state.currentSize) });
   }
+  currentSku(sku) {
+    this.setState({ currentSku: sku });
+  }
+  getStock() {}
   render() {
     return (
       <div className="default-checkout">
@@ -47,35 +51,55 @@ class Selections extends React.Component {
               label="Size"
               style={{ marginRight: '15px', minWidth: '150px' }}
             >
-              <MenuItem value={'XS'}>XS</MenuItem>
-              <MenuItem value={'S'}>S</MenuItem>
-              <MenuItem value={'M'}>M</MenuItem>
-              <MenuItem value={'L'}>L</MenuItem>
-              <MenuItem value={'XL'}>XL</MenuItem>
+              {Object.values(this.props.currentStyle.skus).map((sku, index) => {
+                return (
+                  <MenuItem
+                    value={sku.size}
+                    key={index}
+                    onClick={() => {
+                      this.currentSku(sku);
+                    }}
+                  >
+                    {sku.size}
+                  </MenuItem>
+                );
+              })}
             </Select>
             {this.state.status && (
               <FormHelperText>please select size</FormHelperText>
             )}
           </FormControl>
-          <FormControl variant="outlined">
+          <FormControl variant="outlined" disabled={!this.state.currentSize}>
             <InputLabel id="demo-simple-select-outlined-label">Qty</InputLabel>
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               value={this.state.quantity}
               onChange={this.handleQtyChange}
+              onClick={this.submitValidation}
               label="Qty"
               style={{ marginRight: '15px', minWidth: '100px' }}
               displayEmpty={false}
               renderValue={(v) => {
                 return 1;
               }}
+              disable={true}
             >
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
+              {Array.from(
+                {
+                  length:
+                    this.state.currentSku.quantity <= 15
+                      ? this.state.currentSku.quantity
+                      : 15,
+                },
+                (_, i) => i + 1
+              ).map((quantity, index) => {
+                return (
+                  <MenuItem value={quantity} key={index}>
+                    {quantity}
+                  </MenuItem>
+                );
+              })}
             </Select>
           </FormControl>
         </div>

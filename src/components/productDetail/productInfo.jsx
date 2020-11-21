@@ -39,6 +39,7 @@ const ProductInfo = (props) => {
       <Selections
         currentProduct={props.currentProduct}
         currentProductStyles={props.currentProductStyles}
+        currentStyle={props.currentStyle}
       />
     </div>
   );
