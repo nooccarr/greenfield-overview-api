@@ -2,20 +2,48 @@ import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Rating from '@material-ui/lab/Rating';
 import Button from 'react-bootstrap/Button';
+import Box from '@material-ui/core/Box';
 
 function ReviewForm(props) {
+  const [value, setValue] = React.useState(2);
+  const [hover, setHover] = React.useState(-1);
+
   const starLabels = {
     1: 'Poor',
     2: 'Fair',
     3: 'Average',
-    4: 'Good+',
+    4: 'Good',
     5: 'Great',
   };
+
   return (
     <Form>
       <Form.Group>
         <h3>Overall Rating</h3>
-        <Rating className="modal-form-stars" style={{ width: '100%' }} />
+        <div>
+          <Rating
+            name="hover-feedback"
+            value={value}
+            precision={1}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+            onChangeActive={(event, newHover) => {
+              setHover(newHover);
+            }}
+          />
+          {value !== null && (
+            <Box
+              style={{
+                position: 'absolute',
+                top: '7.8%',
+                left: '29.8%',
+              }}
+            >
+              {starLabels[hover !== -1 ? hover : value]}
+            </Box>
+          )}
+        </div>
         <Form.Label>Do you recommend this product?</Form.Label>
         <Form.Check
           inline

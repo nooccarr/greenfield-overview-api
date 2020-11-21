@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Rating from '@material-ui/lab/Rating';
+import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 
 function Review(props) {
   let truncSummary;
