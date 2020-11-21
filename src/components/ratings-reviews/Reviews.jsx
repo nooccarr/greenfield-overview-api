@@ -88,7 +88,7 @@ function Reviews(props) {
         >
           ADD A REVIEW +
         </button>
-        <AddReviewModal show={show} />
+        <AddReviewModal show={show} handleClose={handleClose} />
       </div>
     );
   } else if (reviewsFromProps.length <= 2) {
@@ -106,7 +106,7 @@ function Reviews(props) {
         >
           ADD A REVIEW +
         </button>
-        <AddReviewModal show={show} />
+        <AddReviewModal show={show} handleClose={handleClose} />
       </div>
     );
   } else if (reviewsFromProps.length > 2) {
@@ -124,7 +124,11 @@ function Reviews(props) {
           <button id="add-review-button" onClick={() => setShow(true)}>
             ADD A REVIEW +
           </button>
-          <AddReviewModal show={show} handleClose={handleClose} />
+          <AddReviewModal
+            show={show}
+            handleClose={handleClose}
+            productCharacteristics={props.productCharacteristics}
+          />
         </div>
       </div>
     );

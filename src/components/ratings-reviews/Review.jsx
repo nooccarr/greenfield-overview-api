@@ -6,6 +6,7 @@ function Review(props) {
   const [yesCounter, setYesCounter] = useState(props.indReview.helpfulness);
   const [alreadyClicked, setAlreadyClicked] = useState(false);
   let truncSummary;
+  let truncBody;
   let responseFromSeller = '';
   let recommendedLine = '';
   let reportLink = (
@@ -71,6 +72,12 @@ function Review(props) {
     truncSummary = `${props.indReview.summary.slice(0, 35)}...`;
   }
 
+  if (props.indReview.body.length < 251) {
+    truncBody = props.indReview.body;
+  } else {
+    truncBody = `${props.indReview.body.slice(0, 251)}...`;
+  }
+
   if (props.indReview.recommend === 1) {
     recommendedLine = '✓ I recommend this product';
   }
@@ -88,7 +95,7 @@ function Review(props) {
         {props.indReview.reviewer_name} | {convertedDate}
       </p>
       <h3 className="individual-review-header">{truncSummary}</h3>
-      <p className="individual-review-body">{props.indReview.body}</p>
+      <p className="individual-review-body">{truncBody}</p>
       <div className="individual-review-photos">
         {/* map magic here to render out review photos */}
         <p id="individual-review-recommended">{recommendedLine}</p>
