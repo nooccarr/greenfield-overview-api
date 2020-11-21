@@ -9,7 +9,6 @@ function Reviews(props) {
   // -------------- Handling and state for modal / add review button ---------------------
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   let handleReviewClick = () => {
     setReviewRenderCount(reviewRenderCount + 2);

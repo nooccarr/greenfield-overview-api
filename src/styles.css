@@ -60,6 +60,12 @@ header {
   top: 3%;
 }
 
+.dark-mode-wrapper {
+  position: absolute;
+  left: 93%;
+  top: 3%;
+}
+
 /* =================================
 Rating and Reviews Styling
 ==================================== */
