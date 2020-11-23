@@ -3,10 +3,13 @@ import Form from 'react-bootstrap/Form';
 import Rating from '@material-ui/lab/Rating';
 import Button from 'react-bootstrap/Button';
 import Box from '@material-ui/core/Box';
+import AddMoreModal from './AddMoreModal';
 
 function ReviewForm(props) {
-  const [value, setValue] = React.useState(2);
-  const [hover, setHover] = React.useState(-1);
+  const [value, setValue] = useState(2);
+  const [hover, setHover] = useState(-1);
+  const [showMore, setShowMore] = useState(false);
+  const handleClose = () => setShowMore(false);
 
   const starLabels = {
     1: 'Poor',
@@ -44,29 +47,33 @@ function ReviewForm(props) {
             </Box>
           )}
         </div>
-        <Form.Label>Do you recommend this product?</Form.Label>
-        <Form.Check
-          inline
-          type="radio"
-          value="yes"
-          label="Yes"
-          style={{ margin: '2rem' }}
-          title="recommended-check"
-        />
-        <Form.Check
-          required
-          inline
-          type="radio"
-          value="no"
-          label="No"
-          title="recommended-check"
-        />
+        <Form.Label style={{ fontWeight: 'bold', marginTop: '1rem' }}>
+          Do you recommend this product?
+        </Form.Label>
+        <Form.Group>
+          <Form.Check
+            inline
+            type="radio"
+            label="Yes"
+            name="formHorizontalRadios"
+            id="formHorizontalRadios1"
+          />
+          <Form.Check
+            inline
+            type="radio"
+            label="No"
+            name="formHorizontalRadios"
+            id="formHorizontalRadios2"
+          />
+        </Form.Group>
       </Form.Group>
 
       <Form.Group>
-        <Form.Label>Review Summary</Form.Label>
+        <Form.Label style={{ fontWeight: 'bold' }}>Review Summary</Form.Label>
         <Form.Control type="input" placeholder="Example: Best purchase ever!" />
-        <Form.Label>Review</Form.Label>
+        <Form.Label style={{ fontWeight: 'bold', marginTop: '.3rem' }}>
+          Review
+        </Form.Label>
         <Form.Control
           as="textarea"
           placeholder="Why did you like the product or not?"
@@ -81,12 +88,14 @@ function ReviewForm(props) {
       </Form.Group>
       <hr></hr>
       <Form.Group>
-        <Form.Label>What is your nickname?</Form.Label>
+        <Form.Label style={{ fontWeight: 'bold' }}>
+          What is your nickname?
+        </Form.Label>
         <Form.Control required placeholder="Example: jackson11!" />
         <Form.Text className="text-muted">
           For privacy reasons, do not use your full name or email address.
         </Form.Text>
-        <Form.Label>Your Email</Form.Label>
+        <Form.Label style={{ fontWeight: 'bold' }}>Your Email</Form.Label>
         <Form.Control required placeholder="Example: jackson11@email.com" />
         <Form.Text className="text-muted">
           For authentication reasons, you will not be emailed
@@ -101,6 +110,18 @@ function ReviewForm(props) {
       >
         Submit
       </Button>
+      <Button
+        id="review-more-button"
+        style={{ float: 'right', margin: '1rem 1rem' }}
+        onClick={() => setShowMore(true)}
+      >
+        Add More
+      </Button>
+      <AddMoreModal
+        show={showMore}
+        handleClose={handleClose}
+        productCharacteristics={props.productCharacteristics}
+      />
     </Form>
   );
 }

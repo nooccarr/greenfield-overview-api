@@ -21,8 +21,6 @@ class App extends React.Component {
     this.setDarkMode = this.setDarkMode.bind(this)
   }
 
-  
-
   changeCurrent(id) {
     console.log(id)
     this.setState({

@@ -18,6 +18,7 @@ function ReviewMain(props) {
   const [sortMethod, setSortMethod] = useState('relevance');
   const [starFilters, setStarFilters] = useState([]);
   const [unchangedReviews, setUnchangedReviews] = useState(null);
+
   let handleClearFilterClick = () => {
     setStarFilters([]);
     setAllReviews(unchangedReviews);
@@ -27,7 +28,7 @@ function ReviewMain(props) {
     console.log(starFilters);
     for (let i = 0; i < allReviews.length; i++) {
       console.log(allReviews[i]);
-      if (starFilters.indexOf(allReviews[i].rating) > 0) {
+      if (starFilters.indexOf(allReviews[i].rating) === -1) {
         allReviews.splice(i, 1);
       }
     }
@@ -89,6 +90,7 @@ function ReviewMain(props) {
         starFilters={starFilters}
         handleClearFilterClick={handleClearFilterClick}
         filterByStar={filterByStar}
+        productCharacteristics={productCharacteristics}
       />
     </div>
   );
