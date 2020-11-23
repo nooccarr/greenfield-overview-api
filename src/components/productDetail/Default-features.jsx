@@ -2,11 +2,13 @@ import React from 'react';
 
 const Features = (props) => {
   // API data acting weird...
-  console.log('this is features: ', props.currentProduct.slogan);
+  console.log('this is features: ', props.currentProduct.features);
   return (
     <div className="default-features-container">
       <ul className="default-features-container-list">
-        <li>{props.currentProduct.slogan}</li>
+        {props.currentProduct.features.map((item, index) => {
+          return <li key={index}>{item.feature}</li>;
+        })}
       </ul>
     </div>
   );
