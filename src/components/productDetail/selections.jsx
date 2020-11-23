@@ -37,6 +37,11 @@ class Selections extends React.Component {
   currentSku(sku) {
     this.setState({ currentSku: sku });
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentStyle !== this.props.currentStyle) {
+      this.setState({ currentSize: '' });
+    }
+  }
   getStock() {}
   render() {
     return (
