@@ -114,6 +114,20 @@ class Outfit extends React.Component {
         this.outfitUpdate()
     }
 
+
+    addDisplay() {
+        if (this.state.outfit.length >= 8) {
+            return (
+                <h5 className='full-outfit'><b>Your Outfit is Full</b></h5>
+            )
+        }
+        else {
+            return (
+                <h1 className='add-icon'>+</h1>
+            )
+        }
+    }
+
     render() {
         console.log('LOCAL STORAGE', window.localStorage)
         if (this.state.outfit === undefined) {
@@ -128,7 +142,7 @@ class Outfit extends React.Component {
                                 <div className='add-card' onClick={() => {this.addToOutfit()}}>
                                     <div className='add-container'></div>
                                     <h5 className='add-text'><b>Add To Outfit</b></h5>
-                                    <h1 className='add-icon'>+</h1>
+                                    {this.addDisplay()}
                                 </div>
                                 {this.state.outfit.map((item, index) => {
                                     return(

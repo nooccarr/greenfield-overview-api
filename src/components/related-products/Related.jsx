@@ -93,7 +93,7 @@ class Related extends React.Component {
     }
 
     rightButton() {
-        if(this.props.related.length <= 3 || this.props.related.length === 4 && this.state.ref >= 320 || this.props.related.length === 5 && this.state.ref >= 600 || this.props.related.length === 6 && this.state.ref >= 800 || this.props.related.length === 9 && this.state.ref >= 1700) {
+        if(this.props.related.length <= 3 || this.props.related.length === 4 && this.state.ref >= 320 || this.props.related.length === 5 && this.state.ref >= 600 || this.props.related.length === 6 && this.state.ref >= 800 || this.props.related.length === 7 && this.state.ref >= 1000 || this.props.related.length === 8 && this.state.ref >= 1330 || this.props.related.length === 9 && this.state.ref >= 1700) {
             return (
                 <button className='carouselHide' id='rightBut' onClick={() => {this.rightClick()}}></button>
             )
