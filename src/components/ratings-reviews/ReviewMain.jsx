@@ -37,7 +37,9 @@ function ReviewMain(props) {
 
   // -------------- fetch data from reviews endpoint ---------------------
   useEffect(() => {
-    fetch(`http://3.21.164.220/reviews/?product_id=284&sort=${sortMethod}`)
+    fetch(
+      `http://3.21.164.220/reviews/?product_id=${props.current}&sort=${sortMethod}`
+    )
       .then((res) => {
         return res.json();
       })
@@ -49,11 +51,11 @@ function ReviewMain(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, [sortMethod]);
+  }, [sortMethod, props.current]);
 
   // -------------- fetch data from reviews meta endpoint ---------------------
   useEffect(() => {
-    fetch('http://3.21.164.220/reviews/meta?product_id=284')
+    fetch(`http://3.21.164.220/reviews/meta?product_id=${props.current}`)
       .then((res) => {
         return res.json();
       })
@@ -67,7 +69,7 @@ function ReviewMain(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [props.current]);
 
   return (
     <div className="review-main-container">
