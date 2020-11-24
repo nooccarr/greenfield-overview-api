@@ -29,7 +29,7 @@ class Outfit extends React.Component {
         slide.scrollLeft += 330
         this.setState({
             ref: this.state.ref+=330,
-            outfit: this.state.update
+            outfit: this.state.outfit
         })
         // if(slide.scrollLeft >= (slide.scrollWidth - slide.offsetWidth)) {
         //     slide.scrollLeft = 0
@@ -41,7 +41,7 @@ class Outfit extends React.Component {
         slide.scrollLeft -= 330
         this.setState({
             ref: this.state.ref-=330,
-            outfit: this.state.oufit
+            outfit: this.state.outfit
         })
         // if(slide.scrollLeft <= 0) {
         //     slide.scrollLeft = slide.offsetWidth
@@ -61,8 +61,7 @@ class Outfit extends React.Component {
     }
 
     rightButton() {
-        var checker = (this.state.outfit.length * 141.3)
-        if(this.state.ref >= checker) {
+        if(this.state.outfit.length <= 2 || this.state.outfit.length === 3 && this.state.ref >= 320 || this.state.outfit.length === 4 && this.state.ref >= 600 || this.state.outfit.length === 5 && this.state.ref >= 800 || this.state.outfit.length === 6 && this.state.ref >= 1000 || this.state.outfit.length === 7 && this.state.ref >= 1330 || this.state.outfit.length === 8 && this.state.ref >= 1660) {
             return (
                 <button className='carouselHide' id='rightBut' onClick={() => {this.rightClick()}}></button>
             )
@@ -93,8 +92,10 @@ class Outfit extends React.Component {
     }
 
     addToOutfit() {
+        if (this.state.outfit.length < 8) {
         console.log('add has run', this.props.current)
         window.localStorage.setItem(`${this.props.current}`, `DANGO`)
+        }
         this.outfitUpdate()
     }
 
@@ -121,10 +122,9 @@ class Outfit extends React.Component {
             )
         }
         return (
-            <div>
-                {console.log('YOUR OUTFIT AFTER', this.state.outfit)}
+            <div className='wrapper'>
                 <h3>YOUR OUTFIT</h3>
-                    <div className='related-carousel'>
+                    <div className='related-carousel' ref={this.myRef}>
                                 <div className='add-card' onClick={() => {this.addToOutfit()}}>
                                     <div className='add-container'></div>
                                     <h5 className='add-text'><b>Add To Outfit</b></h5>
