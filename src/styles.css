@@ -391,6 +391,7 @@ Carousel Styling
 .carouselLeft {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
+  left: -20px;
 }
 
 .carouselHide {
@@ -402,6 +403,15 @@ Carousel Styling
   position: relative;
   top: -275px;
   visibility: hidden;
+}
+
+.full-outfit {
+  font-size: 180%;
+  position: relative;
+  text-align: center;
+  z-index: -50;
+  top: 100px;
+
 }
 
 /************* Image overview style ***************/
