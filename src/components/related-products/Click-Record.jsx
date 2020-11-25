@@ -9,12 +9,32 @@ var recordClick = (string) => {
     var widget = toRec[0]
     var element = toRec[1]
     var time = moment().format('h:mm:ss a')
+    var reqBod = {
+        element: element,
+        widget: widget,
+        time: time
+    }
 
-    axios.post(`http://3.21.164.220/interations?element=${element}&widget=${widget}&time=${time}`)
+    axios.post(`http://3.21.164.220/interations`, reqBod)
     .then(() => {
         console.log('DATA SUCCESSFULLY RECORDED')
     })
     .catch((err) => {
         console.log('THERE WAS AN ERROR RECORDING DATA:', err)
     })
+}
+
+
+// axios({
+//     method: 'post',
+//     url: 'http://3.21.164.220/interations',
+//     data: {
+//       element: element,
+//       widget: widget,
+//       time: time
+//     }
+//   })
+
+export {
+    recordClick
 }
