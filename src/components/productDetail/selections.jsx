@@ -80,6 +80,7 @@ class Selections extends React.Component {
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
+              defaultValue={1}
               value={this.state.quantity}
               onChange={this.handleQtyChange}
               onClick={this.submitValidation}
@@ -87,7 +88,7 @@ class Selections extends React.Component {
               style={{ marginRight: '15px', minWidth: '100px' }}
               displayEmpty={false}
               renderValue={(v) => {
-                return 1;
+                return v || 1;
               }}
               disable={true}
             >
