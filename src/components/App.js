@@ -22,11 +22,11 @@ class App extends React.Component {
   }
 
   changeCurrent(id) {
-    console.log(id)
+    // console.log(id)
     this.setState({
       current: id,
     });
-    console.log('THE STATE', this.state.current)
+    // console.log('THE STATE', this.state.current)
   }
 
   setDarkMode(e) {
