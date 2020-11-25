@@ -35,6 +35,8 @@ const ProductInfo = (props) => {
         handleStyleChange={props.handleStyleChange}
         setMainIndex={props.setMainIndex}
         setSubIndex={props.setSubIndex}
+        activeStyleIndex={props.activeStyleIndex}
+        handleStyleActiveChange={props.handleStyleActiveChange}
       />
       <Selections
         currentProduct={props.currentProduct}
