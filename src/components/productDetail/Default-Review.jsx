@@ -3,13 +3,12 @@ import React, { useRef } from 'react';
 import Rating from '@material-ui/lab/Rating';
 
 const Review = (props) => {
-  const reviewSection = useRef(null);
-
   const goToReviewSection = () =>
     window.scrollTo({
       top: reviewSection.offsetTop,
       behavior: 'smooth',
     });
+  const element = document.getElementsByClassName('review-main-container');
 
   return (
     <div className="default-review">
@@ -22,7 +21,10 @@ const Review = (props) => {
       />
       <h6
         style={{ textDecoration: 'underline', cursor: 'pointer' }}
-        onClick={goToReviewSection}
+        onClick={() => {
+          console.log(element[0]);
+          element[0].scrollIntoView({ behavior: 'smooth' });
+        }}
       >
         read all reviews
       </h6>
