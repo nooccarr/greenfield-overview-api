@@ -25,6 +25,7 @@ class DefaultImage extends React.Component {
           handleMainImageChange={this.props.setMainIndex}
           prevSub={this.props.prevSub}
           nextSub={this.props.nextSub}
+          activeIndex={this.props.activeIndex}
         />
         <div className="default-active-image">
           <div

@@ -14,6 +14,8 @@ class Detail extends React.Component {
     this.state = {
       mainSliderIndex: 0,
       subSliderIndex: 0,
+      activeIndex: 0,
+      activeStyleIndex: 0,
       currentProduct: {
         id: 1,
         name: 'Camo Onesie',
@@ -202,9 +204,11 @@ class Detail extends React.Component {
     this.prevMain = this.prevMain.bind(this);
     this.nextSub = this.nextSub.bind(this);
     this.prevSub = this.prevSub.bind(this);
+    this.handleStyleActiveChange = this.handleStyleActiveChange.bind(this);
   }
   setMainIndex(num) {
     this.setState({ mainSliderIndex: num });
+    this.setState({ activeIndex: num });
   }
   setSubIndex(num) {
     this.setState({ subSliderIndex: num });
@@ -264,10 +268,12 @@ class Detail extends React.Component {
 
   nextMain() {
     this.setState({ mainSliderIndex: this.state.mainSliderIndex + 1 });
+    this.setState({ activeIndex: this.state.activeIndex + 1 });
   }
 
   prevMain() {
     this.setState({ mainSliderIndex: this.state.mainSliderIndex - 1 });
+    this.setState({ activeIndex: this.state.activeIndex - 1 });
   }
 
   nextSub() {
@@ -277,7 +283,9 @@ class Detail extends React.Component {
   prevSub() {
     this.setState({ subSliderIndex: this.state.subSliderIndex - 1 });
   }
-
+  handleStyleActiveChange(num) {
+    this.setState({ activeStyleIndex: num });
+  }
   render() {
     return (
       <div className="default-container">
@@ -292,6 +300,7 @@ class Detail extends React.Component {
           nextMain={this.nextMain}
           prevSub={this.prevSub}
           nextSub={this.nextSub}
+          activeIndex={this.state.activeIndex}
         />
 
         <ProductInfo
@@ -304,6 +313,8 @@ class Detail extends React.Component {
           subSliderIndex={this.state.subSliderIndex}
           setMainIndex={this.setMainIndex}
           setSubIndex={this.setSubIndex}
+          activeStyleIndex={this.state.activeStyleIndex}
+          handleStyleActiveChange={this.handleStyleActiveChange}
         />
 
         <Description

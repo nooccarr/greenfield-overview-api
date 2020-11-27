@@ -54,7 +54,7 @@ function Review(props) {
       day: 'numeric',
     }
   );
-  if (props.indReview.response !== 'null') {
+  if (props.indReview.response) {
     responseFromSeller = (
       <div
         class="response-from-seller-wrapper"
@@ -64,6 +64,8 @@ function Review(props) {
         <p id="response-from-seller-body">{props.indReview.response}</p>
       </div>
     );
+  } else {
+    responseFromSeller = <div></div>;
   }
 
   if (props.indReview.summary.length < 35) {
