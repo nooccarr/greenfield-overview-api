@@ -24,6 +24,7 @@ class App extends React.Component {
   componentDidMount() {
     var current = this.setCurrent()
     if (current === undefined) {
+      window.location.search = `?id=1`
       this.setState({
         current: 1,
         darkMode: this.state.darkMode
