@@ -14,19 +14,41 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      current: 1,
+      current: undefined,
       darkMode: false
     };
     this.changeCurrent = this.changeCurrent.bind(this);
     this.setDarkMode = this.setDarkMode.bind(this)
   }
 
+  componentDidMount() {
+    var current = this.setCurrent()
+    if (current === undefined) {
+      this.setState({
+        current: 1,
+        darkMode: this.state.darkMode
+      })
+    } else {
+      this.setState({
+        current: current,
+        darkMode: this.state.darkMode
+        })
+      }
+    }
+
+
+
+  setCurrent() {
+    var searchParam = window.location.search
+    var searchParamSplit = searchParam.split('=')
+    var curItem = searchParamSplit[1]
+    return curItem
+  }
+
+
   changeCurrent(id) {
-    // console.log(id)
-    this.setState({
-      current: id,
-    });
-    // console.log('THE STATE', this.state.current)
+    console.log(id)
+    window.location.search = `?id=${id}`
   }
 
 
@@ -39,7 +61,7 @@ class App extends React.Component {
     }
   }
 
-
+  
 
   // ------------------- dark mode magic ----------------------
   activateDarkness() {
@@ -49,44 +71,50 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <header>
-          <h1 class="main-logo">DANGO</h1>
-          <div class="search-wrap">
-            <input
-              type="text"
-              class="search"
-              placeholder="What are you looking for?"
-            />
-            <button type="submit" class="searchButton">
-              <SearchIcon />
-            </button>
-          </div>
-          <div className="dark-mode-wrapper" >
+    if (this.state.current === undefined) {
+      return (
+        <div>please wait</div>
+      )
+    } else {
+      return (
+        <div>
+          <header>
+            <h1 class="main-logo">DANGO</h1>
+            <div class="search-wrap">
+              <input
+                type="text"
+                class="search"
+                placeholder="What are you looking for?"
+              />
+              <button type="submit" class="searchButton">
+                <SearchIcon />
+              </button>
+            </div>
+            <div className="dark-mode-wrapper" >
 
-            <WbSunnyIcon style={{ display: "inline", marginRight: ".8rem" }} />
-            <Form.Check
-              type="switch"
-              id="dark-mode-switch"
-              style={{ display: "inline" }}
-              onChange={this.setDarkMode}
+              <WbSunnyIcon style={{ display: "inline", marginRight: ".8rem" }} />
+              <Form.Check
+                type="switch"
+                id="dark-mode-switch"
+                style={{ display: "inline" }}
+                onChange={this.setDarkMode}
+              />
+              <Brightness3Icon style={{ display: "inline" }} />
+            </div>
+            <hr class="header-break"></hr>
+          </header>
+          <div className="container">
+            <Detail current={this.state.current} />
+            <Related
+              current={this.state.current}
+              changeCurrent={this.changeCurrent}
             />
-            <Brightness3Icon style={{ display: "inline" }} />
+            <ReviewMain current={this.state.current} />
           </div>
-          <hr class="header-break"></hr>
-        </header>
-        <div className="container">
-          <Detail current={this.state.current} />
-          <Related
-            current={this.state.current}
-            changeCurrent={this.changeCurrent}
-          />
-          <ReviewMain current={this.state.current} />
-        </div>
-      </div >
-    );
-  }
+        </div >
+      );
+    }
+  } 
 }
 
 export default hot(App);
