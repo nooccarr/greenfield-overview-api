@@ -110,8 +110,8 @@ class Related extends React.Component {
     render() {
         return (
         <div className='wrapper'>
-        <h3>RELATED PRODUCTS</h3>
-            <div className='related-carousel' ref={this.myRef}>
+        <h3 className='RelatedNOutfit-relateTitle'>RELATED PRODUCTS</h3>
+            <div className='related-carousel RelatedNOutfit-relateCaro' ref={this.myRef}>
                 {this.props.related.map((item, index) => {
                     return (
                         <div key={index}>
