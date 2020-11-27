@@ -29,6 +29,7 @@ class App extends React.Component {
     // console.log('THE STATE', this.state.current)
   }
 
+
   setDarkMode(e) {
     if (!this.state.darkMode) {
       this.activateDarkness()
@@ -37,6 +38,8 @@ class App extends React.Component {
       window.location.reload(false)
     }
   }
+
+
 
   // ------------------- dark mode magic ----------------------
   activateDarkness() {

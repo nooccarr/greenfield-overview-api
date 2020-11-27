@@ -19,12 +19,12 @@ class RelatedProd extends React.Component {
     displayPrice() {
         if(this.state.item.results[0].sale_price === '0') {
             return (
-                <p className='cardText'>${this.state.price}</p>
+                <p className='cardText RelatedNOutfit-relatePrice'>${this.state.price}</p>
             )
         } else {
             return (
                 <div>
-                    <p className='cardText' style={{color: 'red'}}>${this.state.item.results[0].sale_price}<strike className='cardText' style={{color: 'black'}}>${this.state.price}</strike></p>
+                    <p className='cardText RelatedNOutfit-relatePrice' style={{color: 'red'}}>${this.state.item.results[0].sale_price}<strike className='cardText' style={{color: 'black'}}>${this.state.price}</strike></p>
                 </div>
             )
         }
@@ -124,13 +124,13 @@ class RelatedProd extends React.Component {
         } else {
             return (
                 <div>
-                <div className='card' style={{width: '18rem'}}>
-                    <img src={this.state.item.results[0].photos[0].thumbnail_url} className='relatedImg' onClick={() => {this.props.changeCurrent(this.props.focus)}}></img>
+                <div className='card RelatedNOutfit-relatedCard' style={{width: '18rem'}}>
+                    <img src={this.state.item.results[0].photos[0].thumbnail_url} className='relatedImg RelatedNOutfit-relateImg' onClick={() => {this.props.changeCurrent(this.props.focus)}}></img>
                     <div className='container'></div>
-                        <h6 className='cardText'>{this.state.cat}</h6>
-                        <h5 className='cardName'><h4 className='starBut' onClick={() => {this.props.modalOn(this.state.name, this.state.focusFeatures)}}>☆</h4><b>{this.state.name}</b></h5>
+                        <h6 className='cardText RelatedNOutfit-relateTxt'>{this.state.cat}</h6>
+                        <h5 className='cardName RelatedNOutfit-relateName'><h4 className='starBut RelatedNOutfit-compareBut' onClick={() => {this.props.modalOn(this.state.name, this.state.focusFeatures)}}>☆</h4><b className='RelatedNOutfit-title'>{this.state.name}</b></h5>
                         {this.displayPrice()}
-                        <p className='cardText'>{this.state.rate}</p>
+                        <p className='cardText RelatedNOutfit-relateRate'>{this.state.rate}</p>
                 </div>
                 </div>
             )

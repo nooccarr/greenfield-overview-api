@@ -12,7 +12,7 @@ class OutfitProd extends React.Component {
     displayPrice() {
         if(this.state.item.results[0].sale_price === '0') {
             return (
-                <p className='cardText'>${this.state.price}</p>
+                <p className='cardText RelatedNOutfit-outPrice'>${this.state.price}</p>
             )
         } else {
             return (
@@ -79,13 +79,13 @@ class OutfitProd extends React.Component {
         } else {
             return (
                 <div>
-                <div className='card' style={{width: '18rem'}}>
-                    <img src={this.state.item.results[0].photos[0].thumbnail_url} className='relatedImg'></img>
+                <div className='card RelatedNOutfit-outfitCard' style={{width: '18rem'}}>
+                    <img src={this.state.item.results[0].photos[0].thumbnail_url} className='relatedImg RelatedNOutfit-outfitImg'></img>
                     <div className='container'></div>
-                        <h6 className='cardText'>{this.state.cat}</h6>
-                        <h5 className='outfitName'><h4 className='starBut' onClick={() => {this.props.removeFromOutfit(this.props.focus)}}>X</h4><b>{this.state.name}</b></h5>
+                        <h6 className='cardText RelatedNOutfit-outfitTxt'>{this.state.cat}</h6>
+                        <h5 className='outfitName RelatedNOutfit-outName'><h4 className='starBut RelatedNOutfit-outfitRemove' onClick={() => {this.props.removeFromOutfit(this.props.focus)}}>X</h4><b className='RelatedNOutfit-outTitle'>{this.state.name}</b></h5>
                         {this.displayPrice()}
-                        <p className='cardText'>{this.state.rate}</p>
+                        <p className='cardText RelatedNOutfit-outfitTxt'>{this.state.rate}</p>
                 </div>
                 </div>
             )

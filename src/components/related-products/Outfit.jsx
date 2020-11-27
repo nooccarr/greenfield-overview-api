@@ -118,12 +118,12 @@ class Outfit extends React.Component {
     addDisplay() {
         if (this.state.outfit.length >= 8) {
             return (
-                <h5 className='full-outfit'><b>Your Outfit is Full</b></h5>
+                <h5 className='full-outfit RelatedNOutfit-full'><b>Your Outfit is Full</b></h5>
             )
         }
         else {
             return (
-                <h1 className='add-icon'>+</h1>
+                <h1 className='add-icon RelatedNOutfit-outfitAdd'>+</h1>
             )
         }
     }
@@ -136,10 +136,10 @@ class Outfit extends React.Component {
             )
         }
         return (
-            <div className='wrapper'>
-                <h3>YOUR OUTFIT</h3>
-                    <div className='related-carousel' ref={this.myRef}>
-                                <div className='add-card' onClick={() => {this.addToOutfit()}}>
+            <div className='wrapper RelatedNOutfit-caroWrap'>
+                <h3 className='RelatedNOutfit-outTitle'>YOUR OUTFIT</h3>
+                    <div className='related-carousel RelatedNOutfit-caroOutfit' ref={this.myRef}>
+                                <div className='add-card RelatedNOutfit-addOut' onClick={() => {this.addToOutfit()}}>
                                     <div className='add-container'></div>
                                     <h5 className='add-text'><b>Add To Outfit</b></h5>
                                     {this.addDisplay()}

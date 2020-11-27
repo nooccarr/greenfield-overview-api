@@ -15,7 +15,7 @@ var recordClick = (string) => {
         time: time
     }
 
-    axios.post(`http://3.21.164.220/interations`, reqBod)
+    axios.post(`http://3.21.164.220/interactions`, reqBod)
     .then(() => {
         console.log('DATA SUCCESSFULLY RECORDED')
     })
