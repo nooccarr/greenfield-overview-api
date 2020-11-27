@@ -21,12 +21,28 @@ class App extends React.Component {
     this.setDarkMode = this.setDarkMode.bind(this)
   }
 
+  componentDidMount() {
+    var current = this.setCurrent()
+    this.setState({
+      current: current,
+      darkMode: this.state.darkMode
+    })
+  }
+
+
+
+  setCurrent() {
+    var searchParam = window.location.search
+    var searchParamSplit = searchParam.split('=')
+    var curItem = searchParamSplit[1]
+    return curItem
+  }
+
+
   changeCurrent(id) {
     console.log(id)
-    this.setState({
-      current: id,
-    });
-    console.log('THE STATE', this.state.current)
+    window.location.search = `?id=${id}`
+    // console.log('THE STATE', this.state.current)
   }
 
 
