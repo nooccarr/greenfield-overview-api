@@ -50,7 +50,6 @@ class App extends React.Component {
   changeCurrent(id) {
     console.log(id)
     window.location.search = `?id=${id}`
-    // console.log('THE STATE', this.state.current)
   }
 
 

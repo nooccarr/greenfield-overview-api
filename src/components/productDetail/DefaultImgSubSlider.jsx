@@ -27,9 +27,13 @@ class DefaultImgSubSlider extends React.Component {
             }}
           >
             {this.props.subSliderImgs.map((photo, index) => {
+              const className =
+                this.props.activeIndex === index
+                  ? 'default-subslider-img-focus'
+                  : 'default-subslider-img';
               return (
                 <img
-                  className="default-subslider-img"
+                  className={className}
                   src={photo.thumbnail_url}
                   key={index}
                   onClick={() => {

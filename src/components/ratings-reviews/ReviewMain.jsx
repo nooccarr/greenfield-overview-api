@@ -25,15 +25,27 @@ function ReviewMain(props) {
   };
 
   let filterByStar = () => {
-    console.log(starFilters);
-    for (let i = 0; i < allReviews.length; i++) {
-      console.log(allReviews[i]);
-      if (starFilters.indexOf(allReviews[i].rating) === -1) {
-        allReviews.splice(i, 1);
+    let tempArr = [];
+    if (starFilters.length > 0) {
+      for (let i = 0; i < unchangedReviews.length; i++) {
+        if (
+          unchangedReviews[i].rating === starFilters[0] ||
+          unchangedReviews[i].rating === starFilters[1] ||
+          unchangedReviews[i].rating === starFilters[2] ||
+          unchangedReviews[i].rating === starFilters[3] ||
+          unchangedReviews[i].rating === starFilters[4]
+        ) {
+          tempArr.push(unchangedReviews[i]);
+        }
       }
+      console.log(tempArr);
+      setAllReviews(tempArr);
     }
-    setAllReviews(allReviews);
   };
+
+  useEffect(() => {
+    filterByStar();
+  }, [starFilters]);
 
   // -------------- fetch data from reviews endpoint ---------------------
   useEffect(() => {

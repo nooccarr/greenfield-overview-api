@@ -11,13 +11,18 @@ const Style = (props) => {
       <h5>STYLE > SELECTED STYLE</h5>
       <ul>
         {props.currentProductStyles.map((style, index) => {
+          const className =
+            props.activeStyleIndex === index
+              ? 'default-styles-img-active'
+              : 'default-styles-img';
           return (
             <img
-              className="default-styles-img"
+              className={className}
               src={style.photos[0].thumbnail_url}
               key={index}
               onClick={() => {
                 props.handleStyleChange(style);
+                props.handleStyleActiveChange(index);
                 setIndex();
               }}
             ></img>
