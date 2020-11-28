@@ -1,18 +1,12 @@
 import React from 'react';
-import { Carousel, CarouselItem } from 'react-bootstrap';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowLeft';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowRight';
 import DefaultImgSubSlider from './DefaultImgSubSlider.jsx';
+import AspectRatioIcon from '@material-ui/icons/AspectRatio';
 
 class DefaultImage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      currentIndex: 0,
-    };
-    // this.handleImageChange = this.handleImageChange.bind(this);
-    // this.nextProperty = this.nextProperty.bind(this);
-    // this.prevProperty = this.prevProperty.bind(this);
   }
 
   render() {
@@ -62,6 +56,16 @@ class DefaultImage extends React.Component {
             <ArrowBackIosIcon />
           </button>
         </div>
+        <button
+          className="default-expand-changView-btn"
+          onClick={() => {
+            this.props.changeExpandView();
+            document.getElementById('default-product-info').style.display =
+              'none';
+          }}
+        >
+          <AspectRatioIcon />
+        </button>
       </div>
     );
   }

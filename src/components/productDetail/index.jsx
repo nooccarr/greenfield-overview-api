@@ -1,5 +1,6 @@
 import React from 'react';
 import DefaultImage from './DefaultImage.jsx';
+import ExpandView from './expandView.jsx';
 import ProductInfo from './productInfo.jsx';
 import Style from './style.jsx';
 import Selections from './selections.jsx';
@@ -16,6 +17,7 @@ class Detail extends React.Component {
       subSliderIndex: 0,
       activeIndex: 0,
       activeStyleIndex: 0,
+      isExpandView: false,
       currentProduct: {
         id: 1,
         name: 'Camo Onesie',
@@ -205,6 +207,10 @@ class Detail extends React.Component {
     this.nextSub = this.nextSub.bind(this);
     this.prevSub = this.prevSub.bind(this);
     this.handleStyleActiveChange = this.handleStyleActiveChange.bind(this);
+    this.changeExpandView = this.changeExpandView.bind(this);
+  }
+  changeExpandView() {
+    this.setState({ isExpandView: !this.state.isExpandView });
   }
   setMainIndex(num) {
     this.setState({ mainSliderIndex: num });
@@ -263,6 +269,7 @@ class Detail extends React.Component {
       this.fetchStyle();
       this.setMainIndex(0);
       this.setSubIndex(0);
+      this.setState({ isExpandView: false });
     }
   }
 
@@ -289,19 +296,37 @@ class Detail extends React.Component {
   render() {
     return (
       <div className="default-container">
-        <DefaultImage
-          currentImageSet={this.state.currentImageSet}
-          currentImage={this.state.currentImage}
-          mainSliderIndex={this.state.mainSliderIndex}
-          subSliderIndex={this.state.subSliderIndex}
-          setMainIndex={this.setMainIndex}
-          setSubIndex={this.setSubIndex}
-          prevMain={this.prevMain}
-          nextMain={this.nextMain}
-          prevSub={this.prevSub}
-          nextSub={this.nextSub}
-          activeIndex={this.state.activeIndex}
-        />
+        {this.state.isExpandView ? (
+          <ExpandView
+            currentImageSet={this.state.currentImageSet}
+            currentImage={this.state.currentImage}
+            mainSliderIndex={this.state.mainSliderIndex}
+            subSliderIndex={this.state.subSliderIndex}
+            setMainIndex={this.setMainIndex}
+            setSubIndex={this.setSubIndex}
+            prevMain={this.prevMain}
+            nextMain={this.nextMain}
+            prevSub={this.prevSub}
+            nextSub={this.nextSub}
+            activeIndex={this.state.activeIndex}
+            changeExpandView={this.changeExpandView}
+          />
+        ) : (
+          <DefaultImage
+            currentImageSet={this.state.currentImageSet}
+            currentImage={this.state.currentImage}
+            mainSliderIndex={this.state.mainSliderIndex}
+            subSliderIndex={this.state.subSliderIndex}
+            setMainIndex={this.setMainIndex}
+            setSubIndex={this.setSubIndex}
+            prevMain={this.prevMain}
+            nextMain={this.nextMain}
+            prevSub={this.prevSub}
+            nextSub={this.nextSub}
+            activeIndex={this.state.activeIndex}
+            changeExpandView={this.changeExpandView}
+          />
+        )}
 
         <ProductInfo
           currentProduct={this.state.currentProduct}

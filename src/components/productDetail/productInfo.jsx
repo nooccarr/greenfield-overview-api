@@ -26,7 +26,7 @@ const ProductInfo = (props) => {
   }, []);
 
   return (
-    <div className="default-product-info">
+    <div className="default-product-info" id="default-product-info">
       <Review ratingAverage={ratingAverage} />
 
       <TitleAndPrice currentProduct={props.currentProduct} />

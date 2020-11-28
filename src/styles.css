@@ -454,6 +454,68 @@ Image overview
     transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
+.default-changView-btn {
+  align-self: start;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+/******* expand view *********/
+.default-expand-image-container {
+  display: flex;
+  /* overflow: hidden; */
+  grid-column-start: 1;
+  grid-column-end: 3;
+  position: relative;
+  align-items: center;
+}
+.default-expand-active-image {
+  width: 660px;
+  align-items: center;
+  overflow: hidden;
+  background-color: rgb(240, 240, 237);
+  position: relative;
+  margin: 0 50px 0 50px;
+}
+
+.default-expand-current-img {
+  display: flex;
+  position: relative;
+  margin: auto 0 auto 0;
+  max-width: 660px;
+  /* max-height: 800px; */
+  align-items: center;
+
+  transition: opacity 300ms linear, border-color 300ms linear,
+    background-color 300ms linear,
+    transform 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+.default-expand-current-img-button-left {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  margin-left: 50px;
+  border: none;
+  background-color: lightgray;
+}
+
+.default-expand-current-img-button-right {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  margin-right: 20px;
+  border: none;
+  background-color: lightgray;
+}
+.default-expand-changView-btn {
+  align-self: start;
+  cursor: pointer;
+  border: none;
+  margin-left: 10px;
+  background-color: transparent;
+}
 /******* product info *********/
 
 .default-product-info {
