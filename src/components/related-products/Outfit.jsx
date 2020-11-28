@@ -55,7 +55,7 @@ class Outfit extends React.Component {
             )
         } else {
             return (
-                <button className='carouselArrow carouselLeft' id='leftBut' onClick={() => {this.leftClick()}}></button>
+                <button className='carouselArrow carouselLeft RelatedNOutfit-outfitLeft' id='leftBut' onClick={() => {this.leftClick()}}></button>
             )
         }
     }
@@ -67,7 +67,7 @@ class Outfit extends React.Component {
             )
         } else {
             return (
-                <button className='carouselArrow carouselRight' id='rightBut' onClick={() => {this.rightClick()}}></button>
+                <button className='carouselArrow carouselRight RelatedNOutfit-outfitRight' id='rightBut' onClick={() => {this.rightClick()}}></button>
             )
         }
     }

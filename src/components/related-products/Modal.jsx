@@ -26,6 +26,12 @@ class Modal extends React.Component {
             }
         }
         for (var key in memory) {
+            if (memory[key].featVal === 'null') {
+                memory[key].featVal = '✓'
+            }
+            if (memory[key].curVal === 'null') {
+                memeory[key].curVal = '✓'
+            }
             compare.push(memory[key])
         }
         console.log(this.props.currentFeat)
