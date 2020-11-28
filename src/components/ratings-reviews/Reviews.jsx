@@ -82,6 +82,7 @@ function Reviews(props) {
         <h4 className="review-header">0 reviews for this item</h4>
         {activeStarFilters}
         <button
+          className="review-add-review"
           id="add-review-button"
           style={{ margin: '4rem' }}
           onClick={() => setShow(true)}
@@ -100,6 +101,7 @@ function Reviews(props) {
         {activeStarFilters}
         <div>{renderReviews(reviewsFromProps)}</div>
         <button
+          className="review-add-review"
           id="add-review-button"
           style={{ margin: '4rem' }}
           onClick={() => setShow(true)}
