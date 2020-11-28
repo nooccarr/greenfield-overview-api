@@ -7,7 +7,11 @@ const Features = (props) => {
     <div className="default-features-container">
       <ul className="default-features-container-list">
         {props.currentProduct.features.map((item, index) => {
-          return <li key={index}>{item.feature}</li>;
+          return (
+            <li key={index}>
+              {item.feature}: {item.value}
+            </li>
+          );
         })}
       </ul>
     </div>
