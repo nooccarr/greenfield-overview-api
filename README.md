@@ -10,7 +10,7 @@ First install dependencies:
 npm install
 ```
 
-To run in hot module reloading mode:
+To run node server:
 
 ```sh
 npm start
