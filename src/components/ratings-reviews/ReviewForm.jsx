@@ -96,7 +96,11 @@ function ReviewForm(props) {
           For privacy reasons, do not use your full name or email address.
         </Form.Text>
         <Form.Label style={{ fontWeight: 'bold' }}>Your Email</Form.Label>
-        <Form.Control required placeholder="Example: jackson11@email.com" />
+        <Form.Control
+          required
+          type="email"
+          placeholder="Example: jackson11@email.com"
+        />
         <Form.Text className="text-muted">
           For authentication reasons, you will not be emailed
         </Form.Text>
@@ -114,6 +118,7 @@ function ReviewForm(props) {
         id="review-more-button"
         style={{ float: 'right', margin: '1rem 1rem' }}
         onClick={() => setShowMore(true)}
+        className="review-submitButton"
       >
         Add More
       </Button>

@@ -7,7 +7,7 @@ function AddReviewModal(props) {
     <Modal show={props.show} onHide={props.handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>
-          <h1>Write Your Review</h1> <p>about product</p>
+          <h1>Write Your Review</h1>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

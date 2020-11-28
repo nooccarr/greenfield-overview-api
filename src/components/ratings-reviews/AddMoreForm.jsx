@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function AddMoreForm(props) {
-  let chars = Object.keys(props.productCharacteristics);
+  let charArray;
+
+  if (!props.productCharacteristics) {
+    charArray = [];
+  } else {
+    charArray = Object.keys(props.productCharacteristics);
+  }
 
   let charLabels = {
     Size: [
       'A size too small',
       '½ a size too small',
-      'Perfect, ½ a size too big',
+      'Perfect',
+      '½ a size too big',
       'A size too wide',
     ],
     Width: [
@@ -47,10 +56,35 @@ function AddMoreForm(props) {
     ],
   };
 
+  let mappedChars = charArray.map((char) => {
+    return (
+      <div>
+        <h3>{char}</h3>
+        <Form.Group>
+          <Form.Check type="radio" label={charLabels[char][0]} />
+          <Form.Check type="radio" label={charLabels[char][1]} />
+          <Form.Check type="radio" label={charLabels[char][2]} />
+          <Form.Check type="radio" label={charLabels[char][3]} />
+          <Form.Check type="radio" label={charLabels[char][4]} />
+        </Form.Group>
+      </div>
+    );
+    tempCount++;
+  });
+
+  console.log(mappedChars);
+
   return (
     <div>
-      <h1>stuff</h1>
-      <p>{chars}</p>
+      <p>{mappedChars}</p>
+      <hr></hr>
+      <Button
+        id="review-submit-button"
+        type="submit"
+        style={{ float: 'right', margin: '1rem 1rem' }}
+      >
+        Submit
+      </Button>
     </div>
   );
 }

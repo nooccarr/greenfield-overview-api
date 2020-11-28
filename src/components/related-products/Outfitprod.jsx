@@ -41,6 +41,9 @@ class OutfitProd extends React.Component {
             })
             axios.get(`http://3.21.164.220/products/${response.data.product_id}`)
             .then((response) => {
+                if (this.state.item.results[0].photos[0].thumbnail_url === null) {
+                    this.state.item.results[0].photos[0].thumbnail_url = 'https://www.moorefieldrealestate.com/assets/images/image-not-available.jpg'
+                }
                 this.setState({
                     item: this.state.item,
                     name: response.data.name,

@@ -87,7 +87,7 @@ class Related extends React.Component {
             )
         } else {
             return (
-                <button className='carouselArrow carouselLeft' id='leftBut' onClick={() => {this.leftClick()}}></button>
+                <button className='carouselArrow carouselLeft RelatedNOutfit-relateLeft' id='leftBut' onClick={() => {this.leftClick()}}></button>
             )
         }
     }
@@ -99,7 +99,7 @@ class Related extends React.Component {
             )
         } else {
             return (
-                <button className='carouselArrow carouselRight' id='rightBut' onClick={() => {this.rightClick()}}></button>
+                <button className='carouselArrow carouselRight RelatedNOutfit-relateRight' id='rightBut' onClick={() => {this.rightClick()}}></button>
             )
         }
     }
