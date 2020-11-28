@@ -92,6 +92,7 @@ function Review(props) {
         readOnly
         size="small"
         id="review-stars"
+        className="review-stars"
       />
       <p className="individual-review-user">
         {props.indReview.reviewer_name} | {convertedDate}
