@@ -72,7 +72,29 @@ class Outfit extends React.Component {
         }
     }
 
+    fadeRight() {
+        if(this.state.outfit.length <= 2 || this.state.outfit.length === 3 && this.state.ref >= 320 || this.state.outfit.length === 4 && this.state.ref >= 600 || this.state.outfit.length === 5 && this.state.ref >= 800 || this.state.outfit.length === 6 && this.state.ref >= 1000 || this.state.outfit.length === 7 && this.state.ref >= 1330 || this.state.outfit.length === 8 && this.state.ref >= 1660) {
+            return (
+                <div className='theFade2 fade-out'></div>
+            )
+        } else {
+            return (
+                <div className='theFade2 fade-in'></div>
+            )
+        }
+    }
 
+    fadeLeft() {
+        if(this.state.ref <= 0) {
+            return (
+                <div className='theFade1 fade-out'></div>
+            )
+        } else {
+            return (
+                <div className='theFade1 fade-in'></div>
+            )
+        }
+    }
     
     componentDidMount() {
         this.outfitUpdate()
@@ -137,6 +159,8 @@ class Outfit extends React.Component {
         }
         return (
             <div className='wrapper RelatedNOutfit-caroWrap'>
+                <div className='theFade3'></div>
+                <div className='theFade4'></div>
                 <h3 className='RelatedNOutfit-outTitle'>YOUR OUTFIT</h3>
                     <div className='related-carousel RelatedNOutfit-caroOutfit' ref={this.myRef}>
                                 <div className='add-card RelatedNOutfit-addOut' onClick={() => {this.addToOutfit()}}>
@@ -153,6 +177,8 @@ class Outfit extends React.Component {
                                 })}
                     </div>
                     {this.leftButton()}{this.rightButton()}
+                    {this.fadeLeft()}
+                    {this.fadeRight()}
             </div>
         )
     }
