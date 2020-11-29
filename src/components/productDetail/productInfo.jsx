@@ -29,7 +29,10 @@ const ProductInfo = (props) => {
     <div className="default-product-info" id="default-product-info">
       <Review ratingAverage={ratingAverage} />
 
-      <TitleAndPrice currentProduct={props.currentProduct} />
+      <TitleAndPrice
+        currentProduct={props.currentProduct}
+        currentStyle={props.currentStyle}
+      />
       <Style
         currentProductStyles={props.currentProductStyles}
         handleStyleChange={props.handleStyleChange}
