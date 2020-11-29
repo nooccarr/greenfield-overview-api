@@ -104,8 +104,29 @@ class Related extends React.Component {
         }
     }
 
+    fadeRight() {
+        if(this.props.related.length <= 3 || this.props.related.length === 4 && this.state.ref >= 320 || this.props.related.length === 5 && this.state.ref >= 600 || this.props.related.length === 6 && this.state.ref >= 800 || this.props.related.length === 7 && this.state.ref >= 1000 || this.props.related.length === 8 && this.state.ref >= 1330 || this.props.related.length === 9 && this.state.ref >= 1700) {
+            return (
+                <div className='theFade2 fade-out'></div>
+            )
+        } else {
+            return (
+                <div className='theFade2 fade-in'></div>
+            )
+        }
+    }
 
-
+    fadeLeft() {
+        if(this.state.ref <= 0) {
+            return (
+                <div className='theFade1 fade-out'></div>
+            )
+        } else {
+            return (
+                <div className='theFade1 fade-in'></div>
+            )
+        }
+    }
 
     render() {
         return (
@@ -123,6 +144,8 @@ class Related extends React.Component {
             <div className='row'>
             {this.leftButton()}{this.rightButton()}{this.displayModal()}
             </div>
+            {this.fadeLeft()}
+            {this.fadeRight()}
         </div>
         )
     }
