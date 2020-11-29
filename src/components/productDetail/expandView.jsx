@@ -11,6 +11,7 @@ const ExpandView = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   return (
     <div className="default-expand-image-container">
       <DefaultImgSubSlider

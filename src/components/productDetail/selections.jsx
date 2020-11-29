@@ -44,82 +44,96 @@ class Selections extends React.Component {
   }
   getStock() {}
   render() {
-    return (
-      <div className="default-checkout">
-        <div className="default-checkout-selections">
-          <FormControl variant="outlined" error={this.state.status}>
-            <InputLabel id="demo-simple-select-outlined-label">Size</InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              value={this.state.currentSize}
-              onChange={this.handleSizeChange}
-              label="Size"
-              style={{ marginRight: '15px', minWidth: '150px' }}
-            >
-              {Object.values(this.props.currentStyle.skus).map((sku, index) => {
-                return (
-                  <MenuItem
-                    value={sku.size}
-                    key={index}
-                    onClick={() => {
-                      this.currentSku(sku);
-                    }}
-                  >
-                    {sku.size}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-            {this.state.status && (
-              <FormHelperText>please select size</FormHelperText>
-            )}
-          </FormControl>
-          <FormControl variant="outlined" disabled={!this.state.currentSize}>
-            <InputLabel id="demo-simple-select-outlined-label">Qty</InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              defaultValue={1}
-              value={this.state.quantity}
-              onChange={this.handleQtyChange}
-              onClick={this.submitValidation}
-              label="Qty"
-              style={{ marginRight: '15px', minWidth: '100px' }}
-              displayEmpty={false}
-              renderValue={(v) => {
-                return v || 1;
-              }}
-              disable={true}
-            >
-              {Array.from(
-                {
-                  length:
-                    this.state.currentSku.quantity <= 15
-                      ? this.state.currentSku.quantity
-                      : 15,
-                },
-                (_, i) => i + 1
-              ).map((quantity, index) => {
-                return (
-                  <MenuItem value={quantity} key={index}>
-                    {quantity}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </FormControl>
+    if (this.props.currentStyle.skus === undefined) {
+      return (
+        <div>
+          <span>please wait for related product to load</span>
         </div>
-        <form className="default-checkout-checkoutbtn">
-          <button
-            className="default-checkout-checkoutbtn-btn"
-            onClick={this.submitValidation}
-          >
-            CHECK OUT
-          </button>
-        </form>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="default-checkout">
+          <div className="default-checkout-selections">
+            <FormControl variant="outlined" error={this.state.status}>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Size
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                value={this.state.currentSize}
+                onChange={this.handleSizeChange}
+                label="Size"
+                style={{ marginRight: '15px', minWidth: '150px' }}
+              >
+                {Object.values(this.props.currentStyle.skus).map(
+                  (sku, index) => {
+                    return (
+                      <MenuItem
+                        value={sku.size}
+                        key={index}
+                        onClick={() => {
+                          this.currentSku(sku);
+                        }}
+                      >
+                        {sku.size}
+                      </MenuItem>
+                    );
+                  }
+                )}
+              </Select>
+              {this.state.status && (
+                <FormHelperText>please select size</FormHelperText>
+              )}
+            </FormControl>
+            <FormControl variant="outlined" disabled={!this.state.currentSize}>
+              <InputLabel id="demo-simple-select-outlined-label">
+                Qty
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                defaultValue={1}
+                value={this.state.quantity}
+                onChange={this.handleQtyChange}
+                onClick={this.submitValidation}
+                label="Qty"
+                style={{ marginRight: '15px', minWidth: '100px' }}
+                displayEmpty={false}
+                renderValue={(v) => {
+                  return v || 1;
+                }}
+                disable={true}
+              >
+                {Array.from(
+                  {
+                    length:
+                      this.state.currentSku.quantity <= 15
+                        ? this.state.currentSku.quantity
+                        : 15,
+                  },
+                  (_, i) => i + 1
+                ).map((quantity, index) => {
+                  return (
+                    <MenuItem value={quantity} key={index}>
+                      {quantity}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
+          </div>
+          <form className="default-checkout-checkoutbtn">
+            <button
+              className="default-checkout-checkoutbtn-btn"
+              onClick={this.submitValidation}
+            >
+              CHECK OUT
+            </button>
+          </form>
+        </div>
+      );
+    }
   }
 }
 export default Selections;
