@@ -1,9 +1,21 @@
+const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
-const path = require('path');
+const port = 3000;
+const db = require('../db-postgres/index.js');
 
-const port = 3000
+app.use(express.static('./dist'));
+app.use(bodyParser.json());
 
-app.use('/', express.static(path.join(__dirname, '../dist')))
+// const router = require('./routes');
+// app.use('/', router);
 
-app.listen(port, () => console.log(`Listening on port ${port}`))
+db.one('SELECT $1 AS value', 123)
+  .then(function (data) {
+    console.log('DATA:', data.value)
+  })
+  .catch(function (error) {
+    console.log('ERROR:', error)
+  });
+
+app.listen(port, () => console.log(`Listening on port ${port}`));
