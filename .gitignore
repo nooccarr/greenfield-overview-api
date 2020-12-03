@@ -17,4 +17,7 @@ Thumbs.db
 
 config.js
 
-database
+rawDatabases
+cleanedDatabases
+test1
+test2
