@@ -14,10 +14,10 @@ const csvStringifier = createCsvStringifier({
   ],
 });
 
-// let readStream = fs.createReadStream('../rawDatabases/product.csv');
-// let writeStream = fs.createWriteStream('../cleanedDatabases/product.csv');
-let readStream = fs.createReadStream('../sampleDatabase/productSample.csv');
-let writeStream = fs.createWriteStream('../cleanedSamples/productSample.csv');
+let readStream = fs.createReadStream('../rawDatabases/product.csv');
+let writeStream = fs.createWriteStream('../cleanedDatabases/product.csv');
+// let readStream = fs.createReadStream('../sampleDatabase/productSample.csv');
+// let writeStream = fs.createWriteStream('../cleanedSamples/productSample.csv');
 
 class ProductCleaner extends Transform {
   constructor(options) {
@@ -35,6 +35,7 @@ class ProductCleaner extends Transform {
     }
     let onlyNumbers = chunk.default_price.replace(/\D/g, '');
     chunk.default_price = onlyNumbers;
+    // console.log(chunk);
     chunk = csvStringifier.stringifyRecords([chunk]);
     this.push(chunk);
     next();

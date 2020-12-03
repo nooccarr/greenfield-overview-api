@@ -11,10 +11,10 @@ const csvStringifier = createCsvStringifier({
   ],
 });
 
-// let readStream = fs.createReadStream('../rawDatabases/related.csv');
-// let writeStream = fs.createWriteStream('../cleanedDatabases/related.csv');
-let readStream = fs.createReadStream('../sampleDatabase/relatedSample.csv');
-let writeStream = fs.createWriteStream('../cleanedSamples/relatedSample.csv');
+let readStream = fs.createReadStream('../rawDatabases/related.csv');
+let writeStream = fs.createWriteStream('../cleanedDatabases/related.csv');
+// let readStream = fs.createReadStream('../sampleDatabase/relatedSample.csv');
+// let writeStream = fs.createWriteStream('../cleanedSamples/relatedSample.csv');
 
 class RelatedCleaner extends Transform {
   constructor(options) {
@@ -22,6 +22,7 @@ class RelatedCleaner extends Transform {
   }
 
   _transform(chunk, encoding, next) {
+    // console.log(chunk);
     chunk = csvStringifier.stringifyRecords([chunk]);
     this.push(chunk);
     next();

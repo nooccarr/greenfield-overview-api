@@ -20,7 +20,6 @@
     "axios": "^0.21.0",
     "babel-jest": "^26.6.3",
     "bootstrap": "^4.5.3",
-    "csv": "^5.3.2",
     "csv-parser": "^2.3.4",
     "csv-writer": "^1.6.0",
     "jest": "^26.6.3",
