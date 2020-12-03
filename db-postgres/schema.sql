@@ -3,56 +3,56 @@
 
 \c greenfield;
 
-DROP TABLE IF EXISTS products;
-DROP TABLE IF EXISTS related;
-DROP TABLE IF EXISTS features;
-DROP TABLE IF EXISTS styles;
-DROP TABLE IF EXISTS photos;
-DROP TABLE IF EXISTS skus;
+DROP TABLE IF EXISTS products CASCADE;
+DROP TABLE IF EXISTS related CASCADE;
+DROP TABLE IF EXISTS features CASCADE;
+DROP TABLE IF EXISTS styles CASCADE;
+DROP TABLE IF EXISTS photos CASCADE;
+DROP TABLE IF EXISTS skus CASCADE;
 
 CREATE TABLE products(
-  id INTEGER PRIMARY KEY NOT NULL UNIQUE,
-  name VARCHAR(30) NOT NULL,
-  slogan VARCHAR(110) NOT NULL,
-  description VARCHAR(470) NOT NULL,
-  category VARCHAR(20) NOT NULL,
-  default_price VARCHAR(25) NOT NULL
+  id integer PRIMARY KEY NOT NULL UNIQUE,
+  name varchar(30) NOT NULL,
+  slogan varchar(110) NOT NULL,
+  description varchar(470) NOT NULL,
+  category varchar(20) NOT NULL,
+  default_price varchar(25) NOT NULL
 );
 
 CREATE TABLE related(
-  id INTEGER PRIMARY KEY NOT NULL UNIQUE,
-  product_id INTEGER NOT NULL,
-  related_product_id INTEGER NOT NULL REFERENCES products(id)
+  id integer PRIMARY KEY NOT NULL UNIQUE,
+  product_id integer NOT NULL,
+  related_product_id integer NOT NULL REFERENCES products(id)
 );
 
 CREATE TABLE features(
-  id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-  product_id INTEGER NOT NULL REFERENCES products(id),
-  feature VARCHAR(30) NOT NULL,
-  value VARCHAR(30) NOT NULL
+  id integer PRIMARY KEY NOT NULL UNIQUE,
+  product_id integer NOT NULL REFERENCES products(id),
+  feature varchar(30) NOT NULL,
+  value varchar(30) NOT NULL
 );
 
 CREATE TABLE styles(
-  id INTEGER PRIMARY KEY NOT NULL UNIQUE,
-  product_id INTEGER NOT NULL REFERENCES products(id),
-  name VARCHAR(60) NOT NULL,
-  sale_price VARCHAR(10) NULL,
-  original_price VARCHAR(10) NOT NULL,
-  "default?" INTEGER NOT NULL
+  id integer PRIMARY KEY NOT NULL UNIQUE,
+  product_id integer NOT NULL REFERENCES products(id),
+  name varchar(60) NOT NULL,
+  sale_price varchar(10) NULL,
+  original_price varchar(10) NOT NULL,
+  "default?" integer NOT NULL
 );
 
 CREATE TABLE photos(
-  id INTEGER PRIMARY KEY NOT NULL UNIQUE,
-  style_id INTEGER NOT NULL REFERENCES styles(id),
-  url VARCHAR(150) NOT NULL,
-  thumbnail_url VARCHAR(150) NOT NULL
+  id integer PRIMARY KEY NOT NULL UNIQUE,
+  style_id integer NOT NULL REFERENCES styles(id),
+  url varchar(150) NOT NULL,
+  thumbnail_url varchar(150) NOT NULL
 );
 
 CREATE TABLE skus(
-  id INTEGER PRIMARY KEY NOT NULL UNIQUE,
-  style_id INTEGER NOT NULL REFERENCES styles(id),
-  size VARCHAR(10) NOT NULL,
-  quantity INTEGER NOT NULL
+  id integer PRIMARY KEY NOT NULL UNIQUE,
+  style_id integer NOT NULL REFERENCES styles(id),
+  size varchar(10) NOT NULL,
+  quantity integer NOT NULL
 );
 
 \COPY products FROM '../database/cleanedSamples/productSample.csv' DELIMITER ',' CSV HEADER; -- READY FOR TRANSFORM

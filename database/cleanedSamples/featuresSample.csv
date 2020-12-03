@@ -1,60 +1,60 @@
-product_id,feature,value
-1,Buttons,Brass
-2,Lenses,Ultrasheen
-2,UV Protection,null
-2,Frames,LightCompose
-3,Fabric,100% Cotton
-3,Cut,Skinny
-4,Fabric,99% Cotton 1% Elastic
-4,Cut,Loose
-5,Sole,Rubber
-5,Material,FullControlSkin
-5,Mid-Sole,ControlSupport Arch Bridge
-5,Stitching,Double Stitch
-6,Sole,Rubber
-6,Material,FullControlSkin
-6,Mid-Sole,ControlSupport Arch Bridge
-6,Stitching,Double Stitch
-7,Sole,Rubber
-7,Material,FullControlSkin
-7,Stitching,Double Stitch
-8,Sole,Rubber
-8,Material,FullControlSkin
-8,Stitching,Double Stitch
-9,Sole,Rubber
-9,Material,FullControlSkin
-9,Mid-Sole,ControlSupport Arch Bridge
-9,Stitching,Double Stitch
-11,Sole,Rubber
-11,Material,FullControlSkin
-11,Stitching,Double Stitch
-12,Cut,Skinny
-13,Fabric,"95% Cotton, 5% Elastic"
-14,Stitching,Cross Stitch
-15,Fair Trade Certified,null
-15,Non-GMO,null
-15,Frame,AllLight Composition Resin
-15,Non-GMO,null
-16,Sustainably Sourced,null
-16,Material,Armor Weave
-16,5 Year Warranty,null
-17,Cut,Striaght
-18,Sustainably Sourced,null
-18,Stitching,Cross Stitch
-18,Satisfaction Guaranteed,null
-19,Fair Trade Certified,null
-19,Sustainably Sourced,null
-20,Fair Trade Certified,null
-20,Non-GMO,null
-20,Non-GMO,null
-20,Lens,Ultrasheen Gold
-21,Stitching,Cross Stitch
-21,Fair Trade Certified,null
-22,5 Year Warranty,null
-22,Frame,AllLight Composition Resin
-23,Cut,Skinny
-23,Sustainably Sourced,null
-23,Fair Trade Certified,null
-24,Material,Armor Weave
-24,Satisfaction Guaranteed,null
-24,Fabric,Cashmere
+id,product_id,feature,value
+1,1,Buttons,Brass
+2,2,Lenses,Ultrasheen
+3,2,UV Protection,null
+4,2,Frames,LightCompose
+5,3,Fabric,100% Cotton
+6,3,Cut,Skinny
+7,4,Fabric,99% Cotton 1% Elastic
+8,4,Cut,Loose
+9,5,Sole,Rubber
+10,5,Material,FullControlSkin
+11,5,Mid-Sole,ControlSupport Arch Bridge
+12,5,Stitching,Double Stitch
+13,6,Sole,Rubber
+14,6,Material,FullControlSkin
+15,6,Mid-Sole,ControlSupport Arch Bridge
+16,6,Stitching,Double Stitch
+17,7,Sole,Rubber
+18,7,Material,FullControlSkin
+19,7,Stitching,Double Stitch
+20,8,Sole,Rubber
+21,8,Material,FullControlSkin
+22,8,Stitching,Double Stitch
+23,9,Sole,Rubber
+24,9,Material,FullControlSkin
+25,9,Mid-Sole,ControlSupport Arch Bridge
+26,9,Stitching,Double Stitch
+27,11,Sole,Rubber
+28,11,Material,FullControlSkin
+29,11,Stitching,Double Stitch
+30,12,Cut,Skinny
+31,13,Fabric,"95% Cotton, 5% Elastic"
+32,14,Stitching,Cross Stitch
+33,15,Fair Trade Certified,null
+34,15,Non-GMO,null
+35,15,Frame,AllLight Composition Resin
+36,15,Non-GMO,null
+37,16,Sustainably Sourced,null
+38,16,Material,Armor Weave
+39,16,5 Year Warranty,null
+40,17,Cut,Striaght
+41,18,Sustainably Sourced,null
+42,18,Stitching,Cross Stitch
+43,18,Satisfaction Guaranteed,null
+44,19,Fair Trade Certified,null
+45,19,Sustainably Sourced,null
+46,20,Fair Trade Certified,null
+47,20,Non-GMO,null
+48,20,Non-GMO,null
+49,20,Lens,Ultrasheen Gold
+50,21,Stitching,Cross Stitch
+51,21,Fair Trade Certified,null
+52,22,5 Year Warranty,null
+53,22,Frame,AllLight Composition Resin
+54,23,Cut,Skinny
+55,23,Sustainably Sourced,null
+56,23,Fair Trade Certified,null
+57,24,Material,Armor Weave
+58,24,Satisfaction Guaranteed,null
+59,24,Fabric,Cashmere

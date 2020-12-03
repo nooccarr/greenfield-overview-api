@@ -5,6 +5,7 @@ const Transform = require('stream').Transform;
 
 const csvStringifier = createCsvStringifier({
   header: [
+    { id: "id", title: "id" },
     { id: "productId", title: "product_id" },
     { id: "Fabric", title: "feature" },
     { id: "Canvas", title: "value" }
@@ -16,6 +17,8 @@ const csvStringifier = createCsvStringifier({
 let readStream = fs.createReadStream('../sampleDatabase/featuresSample.csv');
 let writeStream = fs.createWriteStream('../cleanedSamples/featuresSample.csv');
 
+let featuresIdCounter = 1;
+
 class FeaturesCleaner extends Transform {
   constructor(options) {
     super(options);
@@ -23,6 +26,8 @@ class FeaturesCleaner extends Transform {
 
   _transform(chunk, encoding, next) {
     let newChunk = {};
+    newChunk.id = featuresIdCounter;
+    featuresIdCounter++;
     for (let key in chunk) {
       if (key === '1') {
         newChunk.productId = chunk[key];
