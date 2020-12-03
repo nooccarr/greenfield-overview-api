@@ -11,10 +11,10 @@ const csvStringifier = createCsvStringifier({
   ],
 });
 
-let readStream = fs.createReadStream('../rawDatabases/features.csv');
-let writeStream = fs.createWriteStream('../cleanedDatabases/features.csv');
-// let readStream = fs.createReadStream('../sampleDatabase/featuresSample.csv');
-// let writeStream = fs.createWriteStream('../cleanedSamples/featuresSample.csv');
+// let readStream = fs.createReadStream('../rawDatabases/features.csv');
+// let writeStream = fs.createWriteStream('../cleanedDatabases/features.csv');
+let readStream = fs.createReadStream('../sampleDatabase/featuresSample.csv');
+let writeStream = fs.createWriteStream('../cleanedSamples/featuresSample.csv');
 
 class FeaturesCleaner extends Transform {
   constructor(options) {

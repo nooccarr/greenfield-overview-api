@@ -12,10 +12,10 @@ const csvStringifier = createCsvStringifier({
   ],
 });
 
-let readStream = fs.createReadStream('../rawDatabases/skus.csv');
-let writeStream = fs.createWriteStream('../cleanedDatabases/skus.csv');
-// let readStream = fs.createReadStream('../sampleDatabase/skusSample.csv');
-// let writeStream = fs.createWriteStream('../cleanedSamples/skusSample.csv');
+// let readStream = fs.createReadStream('../rawDatabases/skus.csv');
+// let writeStream = fs.createWriteStream('../cleanedDatabases/skus.csv');
+let readStream = fs.createReadStream('../sampleDatabase/skusSample.csv');
+let writeStream = fs.createWriteStream('../cleanedSamples/skusSample.csv');
 
 class SkusCleaner extends Transform {
   constructor(options) {

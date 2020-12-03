@@ -12,8 +12,10 @@ const csvStringifier = createCsvStringifier({
   ],
 });
 
-let readStream = fs.createReadStream('../rawDatabases/photos.csv');
-let writeStream = fs.createWriteStream('../cleanedDatabases/photos.csv');
+// let readStream = fs.createReadStream('../rawDatabases/photos.csv');
+// let writeStream = fs.createWriteStream('../cleanedDatabases/photos.csv');
+let readStream = fs.createReadStream('../sampleDatabase/photosSample.csv');
+let writeStream = fs.createWriteStream('../cleanedSamples/photosSample.csv');
 
 class PhotosCleaner extends Transform {
   constructor(options) {
