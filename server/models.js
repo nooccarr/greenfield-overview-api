@@ -5,10 +5,14 @@ module.exports = {
   readProduct: (params) => {
     let queryStr = 'select * from products join features on products.id = features.product_id and products.id = $1';
     return db.many(queryStr, params)
-      .catch(err => console.log('Error:', err));
+      .catch(err => console.log('Error: ', err));
   },
   readStyles: () => {},
-  readRelated: () => {}
+  readRelated: (params) => {
+    let queryStr = 'select related_product_id from related where product_id = $1';
+    return db.many(queryStr, params)
+      .catch(err => console.log('Error: ', err));
+  }
 };
 
 ////////////////////////////////////////////////////////////

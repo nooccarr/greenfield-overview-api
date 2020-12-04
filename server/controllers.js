@@ -41,8 +41,15 @@ module.exports = {
       .catch(error => res.sendStatus(404));
   },
   getRelated: (req, res) => {
-    models.readRelated()
-      .then(related => res.json(related))
+    let params = req.params.product_id;
+    models.readRelated(params)
+      .then(related => {
+        let result = [];
+        for (let i = 0; i < related.length; i++) {
+          result.push(related[i].related_product_id);
+        }
+        res.json(result)
+      })
       .catch(error => res.sendStatus(404));
   }
 };

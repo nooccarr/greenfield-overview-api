@@ -10,7 +10,4 @@ app.use(bodyParser.json());
 const router = require('./routes.js');
 app.use('/', router);
 
-
-
-
 app.listen(port, () => console.log(`Listening on port ${port}`));
