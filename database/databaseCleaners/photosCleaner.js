@@ -12,8 +12,8 @@ const csvStringifier = createCsvStringifier({
   ],
 });
 
-let readStream = fs.createReadStream('../rawDatabases/photos.csv');
-let writeStream = fs.createWriteStream('../cleanedDatabases/photos.csv');
+let readStream = fs.createReadStream('../rawDatabases/photos-1.csv');
+let writeStream = fs.createWriteStream('../cleanedDatabases/photos-1.csv');
 // let readStream = fs.createReadStream('../sampleDatabase/photosSample.csv');
 // let writeStream = fs.createWriteStream('../cleanedSamples/photosSample.csv');
 
@@ -43,11 +43,11 @@ class PhotosCleaner extends Transform {
       }
     }
     if (!photosObj[chunk.id]) {
+      // console.log(chunk);
       chunk = csvStringifier.stringifyRecords([chunk]);
       this.push(chunk);
     }
     photosObj[chunk.id] = true;
-    // console.log(chunk);
     if (chunks.length) {
       chunks = chunks.join('').split('\n');
       for (let i = 0; i < chunks.length; i++) {
@@ -71,8 +71,8 @@ class PhotosCleaner extends Transform {
           url: arr[2],
           thumbnail_url: arr[3]
         };
-        // console.log(obj);
         if (!photosObj[obj.id]) {
+          // console.log(obj);
           chunk = csvStringifier.stringifyRecords([obj]);
           this.push(chunk);
         }
