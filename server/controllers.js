@@ -3,7 +3,15 @@ const models = require('./models.js');
 
 module.exports = {
   getProducts: (req, res) => {
-    models.readProducts()
+    let page = Number(req.query.page) || 1;
+    let count = Number(req.query.count) || 5;
+    if (page !== 1) {
+      temp = page;
+      page = page * count - count + 1;
+      count = temp * count;
+    }
+    let params = [page, count];
+    models.readProducts(params)
       .then(products => res.json(products))
       .catch(error => res.sendStatus(404));
   },
