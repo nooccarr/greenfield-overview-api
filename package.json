@@ -10,7 +10,7 @@
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack --mode development --watch",
     "build-prod": "webpack --mode production",
-    "start": "PORT=3000 nodemon ./server/index.js",
+    "start": "PORT=3000 nodemon ./server/index.js --watch",
     "test": "jest"
   },
   "dependencies": {
