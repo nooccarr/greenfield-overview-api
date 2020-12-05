@@ -7,12 +7,13 @@ module.exports = {
       .catch(err => console.log('Error: ', err));
   },
   readProduct: (params) => {
-    let queryStr = 'select * from products join features on products.id = features.product_id and products.id = $1';
+    let queryStr = 'select products.*, features.feature, features.value from products join features on products.id = features.product_id and products.id = $1';
     return db.many(queryStr, params)
       .catch(err => console.log('Error: ', err));
   },
   readStyles: (params) => {
     let queryStr = 'select styles.*, photos.url, photos.thumbnail_url, skus.size, skus.quantity from styles left outer join skus on styles.id = skus.style_id left outer join photos on styles.id = photos.style_id where styles.product_id = $1';
+    // consider db.multi (has too many duplicate rows!!)
     return db.many(queryStr, params)
       .catch(err => console.log('Error: ', err));
   },
@@ -23,9 +24,11 @@ module.exports = {
   }
 };
 
-// styles belong to products
-// photos belong to styles
-// skys belong to styles
+// Future Enhancement for readProduct & readStyles:
+// mix subQueries and join
+// subQueries: single row
+// join: multiple rows
+
 ////////////////////////////////////////////////////////////
 // FOR STRESS TEST
 // db.many('select * from products where id = 11')

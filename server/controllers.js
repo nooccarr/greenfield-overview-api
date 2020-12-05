@@ -21,32 +21,68 @@ module.exports = {
       .then(data => {
         let result = data[0];
         let product = {
-          id: result.product_id,
+          id: result.id,
           name: result.name,
           slogan: result.slogan,
           description: result.description,
           category: result.category,
-          default_price: result.default_price
+          default_price: result.default_price,
+          features: []
         };
         for (let i = 0; i < data.length; i++) {
           let result = data[i];
-          if (!product.features) {
-            product.features = [];
-          }
           let feature = {
             feature: result.feature,
             value: result.value
           }
           product.features.push(feature);
         }
-        res.json(product)
+        res.json(product);
       })
       .catch(error => res.sendStatus(404));
   },
   getStyles: (req, res) => {
     let params = req.params.product_id;
     models.readStyles(params)
-      .then(styles => res.json(styles))
+      .then(data => {
+        let result = data[0];
+        let productStyles = {
+          product_id: result.product_id,
+          results: []
+        };
+        let currentId = 0;
+        let photos = [];
+        let skus = {};
+        for (let i = 0; i < data.length; i++) {
+          let result = data[i];
+          if (currentId !== result.id) {
+            let style = {
+              style_id: result.id,
+              name: result.name,
+              original_price: result.original_price,
+              sale_price: result.sale_price,
+              'default?': result['default?'],
+              photos: photos,
+              skus: skus
+            };
+            productStyles.results.push(style);
+            currentId = result.id;
+            photos = [],
+            skus = {}
+          }
+          if (result.url || result.thumbnail_url) {
+            let photo = {
+              thumbnail_url: result.thumbnail_url,
+              url: result.url
+            };
+            photos.push(photo);
+          }
+          if (result.size || result.quantity) {
+            skus[result.size] = result.quantity;
+          }
+        }
+        res.json(productStyles);
+      })
       .catch(error => res.sendStatus(404));
   },
   getRelated: (req, res) => {
