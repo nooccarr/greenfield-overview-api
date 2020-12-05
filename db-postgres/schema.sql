@@ -23,6 +23,7 @@ CREATE TABLE related(
   id integer PRIMARY KEY NOT NULL UNIQUE,
   product_id integer NOT NULL REFERENCES products(id),
   related_product_id integer NOT NULL
+  -- create index related_idx on related (product_id)
 );
 
 CREATE TABLE features(
@@ -30,6 +31,7 @@ CREATE TABLE features(
   product_id integer NOT NULL REFERENCES products(id),
   feature varchar(30) NOT NULL,
   value varchar(30)
+  -- create index features_idx on features (product_id)
 );
 
 CREATE TABLE styles(
@@ -39,6 +41,7 @@ CREATE TABLE styles(
   sale_price varchar(10) NULL,
   original_price varchar(10) NOT NULL,
   "default?" integer NOT NULL
+  -- create index styles_idx on styles (product_id)
 );
 
 CREATE TABLE photos(
@@ -46,6 +49,7 @@ CREATE TABLE photos(
   style_id integer NOT NULL REFERENCES styles(id),
   url varchar(150) NOT NULL,
   thumbnail_url varchar(150) NOT NULL
+  -- create index photos_idx on photos (style_id)
 );
 
 CREATE TABLE skus(
@@ -53,6 +57,7 @@ CREATE TABLE skus(
   style_id integer NOT NULL REFERENCES styles(id),
   size varchar(10) NOT NULL,
   quantity integer NOT NULL
+  -- create index skus_idx on skus (style_id)
 );
 
 \COPY products FROM '../database/cleanedDatabases/product.csv' DELIMITER ',' CSV HEADER;

@@ -31,11 +31,13 @@ module.exports = {
         };
         for (let i = 0; i < data.length; i++) {
           let result = data[i];
-          let feature = {
-            feature: result.feature,
-            value: result.value
+          if (result.value) {
+            let feature = {
+              feature: result.feature,
+              value: result.value
+            }
+            product.features.push(feature);
           }
-          product.features.push(feature);
         }
         res.json(product);
       })
@@ -50,11 +52,29 @@ module.exports = {
           product_id: result.product_id,
           results: []
         };
-        let currentId = 0;
+        let currentId = data[0].id;
         let photos = [];
         let skus = {};
         for (let i = 0; i < data.length; i++) {
           let result = data[i];
+          if (result.url) {
+            let unique = true;
+            for (let j = 0; j < photos.length; j++) {
+              if (photos[j].url === result.url) {
+                unique = false;
+              }
+            }
+            if (unique) {
+              let photo = {
+                thumbnail_url: result.thumbnail_url,
+                url: result.url
+              };
+              photos.push(photo);
+            }
+          }
+          if (result.size || result.quantity) {
+            skus[result.size] = result.quantity;
+          }
           if (currentId !== result.id) {
             let style = {
               style_id: result.id,
@@ -65,21 +85,20 @@ module.exports = {
               photos: photos,
               skus: skus
             };
+            if (!style.photos.length) {
+              photos.push({ thumbnail_url: null, url: null });
+            }
             productStyles.results.push(style);
             currentId = result.id;
             photos = [],
             skus = {}
           }
-          if (result.url || result.thumbnail_url) {
-            let photo = {
-              thumbnail_url: result.thumbnail_url,
-              url: result.url
-            };
-            photos.push(photo);
-          }
-          if (result.size || result.quantity) {
-            skus[result.size] = result.quantity;
-          }
+        }
+        if (!productStyles.results.length) {
+          let style = {
+            photos: [{ thumbnail_url: null, url: null }]
+          };
+          productStyles.results.push(style);
         }
         res.json(productStyles);
       })
@@ -93,7 +112,7 @@ module.exports = {
         for (let i = 0; i < related.length; i++) {
           result.push(related[i].related_product_id);
         }
-        res.json(result)
+        res.json(result);
       })
       .catch(error => res.sendStatus(404));
   }

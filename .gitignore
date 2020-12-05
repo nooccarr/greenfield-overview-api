@@ -19,3 +19,5 @@ config.js
 
 rawDatabases
 cleanedDatabases
+
+newrelic.js
