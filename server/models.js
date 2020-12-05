@@ -11,7 +11,11 @@ module.exports = {
     return db.many(queryStr, params)
       .catch(err => console.log('Error: ', err));
   },
-  readStyles: () => {},
+  readStyles: (params) => {
+    let queryStr = 'select styles.*, photos.url, photos.thumbnail_url, skus.size, skus.quantity from styles left outer join skus on styles.id = skus.style_id left outer join photos on styles.id = photos.style_id where styles.product_id = $1';
+    return db.many(queryStr, params)
+      .catch(err => console.log('Error: ', err));
+  },
   readRelated: (params) => {
     let queryStr = 'select related_product_id from related where product_id = $1';
     return db.many(queryStr, params)
@@ -19,6 +23,9 @@ module.exports = {
   }
 };
 
+// styles belong to products
+// photos belong to styles
+// skys belong to styles
 ////////////////////////////////////////////////////////////
 // FOR STRESS TEST
 // db.many('select * from products where id = 11')

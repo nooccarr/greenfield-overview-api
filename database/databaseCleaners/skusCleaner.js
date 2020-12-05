@@ -30,11 +30,8 @@ class SkusCleaner extends Transform {
         delete chunk[key];
       }
     }
-    let validSize = ['XS', 'S', 'M', 'L', 'XL'];
-    if (validSize.indexOf(chunk.size) >= 0) {
-      chunk = csvStringifier.stringifyRecords([chunk]);
-      this.push(chunk);
-    }
+    chunk = csvStringifier.stringifyRecords([chunk]);
+    this.push(chunk);
     next();
   }
 }

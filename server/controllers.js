@@ -44,7 +44,8 @@ module.exports = {
       .catch(error => res.sendStatus(404));
   },
   getStyles: (req, res) => {
-    models.readStyles()
+    let params = req.params.product_id;
+    models.readStyles(params)
       .then(styles => res.json(styles))
       .catch(error => res.sendStatus(404));
   },
