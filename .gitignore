@@ -19,5 +19,8 @@ config.js
 
 rawDatabases
 cleanedDatabases
+sampleDatabase
+samplePhotos
+cleanedSamples
 
 newrelic.js
