@@ -46,7 +46,7 @@ class Detail extends React.Component {
   }
   fetchProduct() {
     return axios
-      .get(`http://3.21.164.220/products/${this.props.current}`)
+      .get(`./products/${this.props.current}`)
       .then((product) => {
         this.getCurrentProdcut(product.data);
       })
@@ -57,7 +57,7 @@ class Detail extends React.Component {
 
   fetchStyle() {
     return axios
-      .get(`http://3.21.164.220/products/${this.props.current}/styles`)
+      .get(`./products/${this.props.current}/styles`)
       .then((styles) => {
         this.getCurrentStyle(styles.data.results);
       })

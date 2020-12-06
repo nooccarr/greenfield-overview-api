@@ -39,13 +39,13 @@ class OutfitProd extends React.Component {
 
   getInfo() {
     axios
-      .get(`http://3.21.164.220/products/${this.props.focus}/styles`)
+      .get(`./products/${this.props.focus}/styles`)
       .then((response) => {
         this.setState({
           item: response.data,
         });
         axios
-          .get(`http://3.21.164.220/products/${response.data.product_id}`)
+          .get(`./products/${response.data.product_id}`)
           .then((response) => {
             if (this.state.item.results[0].photos[0].thumbnail_url === null) {
               this.state.item.results[0].photos[0].thumbnail_url =

@@ -51,6 +51,14 @@ class Selections extends React.Component {
         </div>
       );
     } else {
+      let currentStyleSkus = [];
+      for (let key in this.props.currentStyle.skus) {
+        let sku = {
+          quantity: this.props.currentStyle.skus[key],
+          size: key
+        };
+        currentStyleSkus.push(sku);
+      }
       return (
         <div className="default-checkout">
           <div className="default-checkout-selections">
@@ -66,7 +74,7 @@ class Selections extends React.Component {
                 label="Size"
                 style={{ marginRight: '15px', minWidth: '150px' }}
               >
-                {Object.values(this.props.currentStyle.skus).map(
+                {currentStyleSkus.map(
                   (sku, index) => {
                     return (
                       <MenuItem
