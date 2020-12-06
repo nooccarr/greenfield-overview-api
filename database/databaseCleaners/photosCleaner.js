@@ -12,8 +12,8 @@ const csvStringifier = createCsvStringifier({
   ],
 });
 
-let readStream = fs.createReadStream('../rawDatabases/photos-1.csv');
-let writeStream = fs.createWriteStream('../cleanedDatabases/photos-1.csv');
+let readStream = fs.createReadStream('../rawDatabases/photos-0.csv');
+let writeStream = fs.createWriteStream('../databaseCleaners/photos-0.csv');
 // let readStream = fs.createReadStream('../sampleDatabase/photosSample.csv');
 // let writeStream = fs.createWriteStream('../cleanedSamples/photosSample.csv');
 
@@ -51,18 +51,13 @@ class PhotosCleaner extends Transform {
     if (chunks.length) {
       chunks = chunks.join('').split('\n');
       for (let i = 0; i < chunks.length; i++) {
-        let arr = chunks[i]
+        let str = chunks[i];
+        let match = str.match(/\dhttp/);
+        if (match) {
+          str = str.replace(/\dhttp/, `${match[0][0]},http`);
+        }
+        let arr = str
           .split('"').join('')
-          .split('0htt').join('0,htt')
-          .split('1htt').join('1,htt')
-          .split('2htt').join('2,htt')
-          .split('3htt').join('3,htt')
-          .split('4htt').join('4,htt')
-          .split('5htt').join('5,htt')
-          .split('6htt').join('6,htt')
-          .split('7htt').join('7,htt')
-          .split('8htt').join('8,htt')
-          .split('9htt').join('9,htt')
           .split('uhtt').join('u,htt')
           .split(',');
         let obj = {
@@ -72,7 +67,6 @@ class PhotosCleaner extends Transform {
           thumbnail_url: arr[3]
         };
         if (!photosObj[obj.id]) {
-          // console.log(obj);
           chunk = csvStringifier.stringifyRecords([obj]);
           this.push(chunk);
         }
@@ -92,5 +86,5 @@ readStream
   .pipe(transformer)
   .pipe(writeStream)
   .on('finish', () => {
-    console.log('finished');
+    console.log('Finished transforming photos.csv');
   });

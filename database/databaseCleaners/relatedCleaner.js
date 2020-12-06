@@ -38,5 +38,5 @@ readStream
   .pipe(transformer)
   .pipe(writeStream)
   .on('finish', () => {
-    console.log('finished');
+    console.log('Finished transforming related.csv');
   });
