@@ -19,10 +19,7 @@ Thumbs.db
 
 rawDatabases
 cleanedDatabases
-sampleDatabase
-samplePhotos
-cleanedSamples
 
 config.js
-photosSplitter.js
 newrelic.js
+csvSplitStream.js

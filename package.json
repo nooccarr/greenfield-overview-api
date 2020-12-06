@@ -12,9 +12,8 @@
     "build-prod": "webpack --mode production",
     "start": "PORT=3000 nodemon ./server/index.js --watch",
     "test": "jest",
-    "transform": "cd ./database && mkdir rawPhotos cleanedPhotos && cd databaseCleaners && node photosSplitter.js",
-    "rmPhotos": "cd ./database && rm -r rawPhotos cleanedPhotos",
-    "load": "cd db-postgres && cat schema.sql | psql greenfield"
+    "transform": "cd ./database/databaseCleaners && node productCleaner.js && node featuresCleaner.js && node relatedCleaner.js && node stylesCleaner.js && node skusCleaner.js && node photosCleaner.js",
+    "load": "cd ./db-postgres && cat schema.sql | psql greenfield"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",

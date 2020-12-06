@@ -88,6 +88,6 @@ for (let i = 0; i <= 1; i++) {
     .pipe(transformer)
     .pipe(writeStream)
     .on('finish', () => {
-      console.log('finished');
+      console.log(`Finished transforming photos-${i}.csv`);
     });
 }
