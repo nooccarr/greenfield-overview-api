@@ -1,10 +1,9 @@
 const csvSplitStream = require('csv-split-stream');
 const fs = require('fs');
 
-
 return csvSplitStream.split(
   fs.createReadStream('../rawDatabases/photos.csv'),
-    { lineLimit: 800000 },
+    { lineLimit: 100000 },
     (index) => fs.createWriteStream(`../rawDatabases/photos-${index}.csv`)
   )
   .then(csvSplitResponse => {
