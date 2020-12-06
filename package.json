@@ -12,8 +12,8 @@
     "build-prod": "webpack --mode production",
     "start": "PORT=3000 nodemon ./server/index.js --watch",
     "test": "jest",
-    "transform": "cd ./database/databaseCleaners && mkdir rawPhotos cleanedPhotos && node photosSplitter.js",
-    "rmPhotos": "cd ./database/databaseCleaners && rm -r rawPhotos cleanedPhotos",
+    "transform": "cd ./database && mkdir rawPhotos cleanedPhotos && cd databaseCleaners && node photosSplitter.js",
+    "rmPhotos": "cd ./database && rm -r rawPhotos cleanedPhotos",
     "load": "cd db-postgres && cat schema.sql | psql greenfield"
   },
   "dependencies": {

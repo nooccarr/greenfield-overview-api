@@ -15,7 +15,7 @@ node_modules/
 ehthumbs.db
 Thumbs.db
 
-config.js
+
 
 rawDatabases
 cleanedDatabases
@@ -23,4 +23,6 @@ sampleDatabase
 samplePhotos
 cleanedSamples
 
+config.js
+photosSplitter.js
 newrelic.js
