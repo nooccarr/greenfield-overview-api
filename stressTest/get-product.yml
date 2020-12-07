@@ -1,0 +1,34 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    # - duration: 60
+    #   arrivalRate: 1
+    #   name: 1 request per second
+    # - duration: 60
+    #   arrivalRate: 10
+    #   name: 10 request per second
+    # - duration: 60
+    #   arrivalRate: 100
+    #   name: 100 request per second
+    # - duration: 60
+    #   arrivalRate: 1000
+    #   name: 1000 request per second
+  variables:
+    productIds:
+    - ['978969']
+    - ['727272']
+    - ['345345']
+    - ['848343']
+    - ['535453']
+    - ['234343']
+    - ['123456']
+    - ['710234']
+    - ['245252']
+    - ['56000']
+scenarios:
+  - name: "get product"
+    flow:
+      - loop:
+        - get:
+            url: "/products/{{ $loopElement }}"
+        over: productIds
