@@ -47,6 +47,7 @@ module.exports = {
     let params = req.params.product_id;
     models.readStyles(params)
       .then(data => {
+        // res.json(data)
         let result = data[0];
         let productStyles = {
           product_id: result.product_id,
@@ -75,7 +76,7 @@ module.exports = {
           if (result.size || result.quantity) {
             skus[result.size] = result.quantity;
           }
-          if (currentId !== result.id) {
+          if (data[i + 1] === undefined || currentId !== data[i + 1].id) {
             let style = {
               style_id: result.id,
               name: result.name,
@@ -89,7 +90,9 @@ module.exports = {
               photos.push({ thumbnail_url: null, url: null });
             }
             productStyles.results.push(style);
-            currentId = result.id;
+            if (data[i + 1]) {
+              currentId = data[i + 1].id;
+            }
             photos = [],
             skus = {}
           }
