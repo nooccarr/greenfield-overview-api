@@ -3,7 +3,14 @@ const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
 const fs = require('fs');
 const Transform = require('stream').Transform;
 
+
 for (let i = 0; i <= 1; i++) {
+  let idx;
+  if (!idx && i === 0) {
+    idx = 1;
+  } else if (!idx && i === 1) {
+    idx = 99939;
+  }
   const csvStringifier = createCsvStringifier({
     header: [
       { id: 'id', title: 'id' },
@@ -17,8 +24,6 @@ for (let i = 0; i <= 1; i++) {
   let writeStream = fs.createWriteStream(`../cleanedDatabases/photos-${i}.csv`);
   // let readStream = fs.createReadStream('../sampleDatabase/photosSample.csv');
   // let writeStream = fs.createWriteStream('../cleanedSamples/photosSample.csv');
-
-  let photosObj = {};
 
   class PhotosCleaner extends Transform {
     constructor(options) {
@@ -43,12 +48,10 @@ for (let i = 0; i <= 1; i++) {
           delete chunk[trimKey];
         }
       }
-      if (!photosObj[chunk.id]) {
-        // console.log(chunk);
-        chunk = csvStringifier.stringifyRecords([chunk]);
-        this.push(chunk);
-      }
-      photosObj[chunk.id] = true;
+      chunk.id = idx;
+      idx++;
+      chunk = csvStringifier.stringifyRecords([chunk]);
+      this.push(chunk);
       if (chunks.length) {
         chunks = chunks.join('').split('\n');
         for (let i = 0; i < chunks.length; i++) {
@@ -62,17 +65,14 @@ for (let i = 0; i <= 1; i++) {
             .split('uhtt').join('u,htt')
             .split(',');
           let obj = {
-            id: arr[0],
+            id: idx,
             styleId: arr[1],
             url: arr[2],
             thumbnail_url: arr[3]
           };
-          if (!photosObj[obj.id]) {
-            // console.log(obj);
-            chunk = csvStringifier.stringifyRecords([obj]);
-            this.push(chunk);
-          }
-          photosObj[obj.id] = true;
+          idx++;
+          chunk = csvStringifier.stringifyRecords([obj]);
+          this.push(chunk);
         }
       }
       next();
