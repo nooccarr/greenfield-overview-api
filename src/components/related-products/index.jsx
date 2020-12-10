@@ -28,7 +28,7 @@ class RelatedOutfit extends React.Component {
 
 
     getInfo() {
-        axios.get(`./products/${this.props.current}/related`)
+        axios.get(`http://3.129.44.47/products/${this.props.current}/related`)
         .then((response) => {
             var removeDups = (arr) => {
                 var memory = {}
@@ -48,7 +48,7 @@ class RelatedOutfit extends React.Component {
             })
         })
         .then(() => {
-            axios.get(`./products/${this.props.current}`)
+            axios.get(`http://3.129.44.47/products/${this.props.current}`)
             .then((response) => {
                 this.setState({
                     related: this.state.related,

@@ -79,12 +79,12 @@ class RelatedProd extends React.Component {
 
 
     getInfo () {
-        axios.get(`./products/${this.props.focus}/styles`)
+        axios.get(`http://3.129.44.47/products/${this.props.focus}/styles`)
         .then((response) => {
             this.setState({
                 item: response.data,
             })
-            axios.get(`./products/${response.data.product_id}`)
+            axios.get(`http://3.129.44.47/products/${response.data.product_id}`)
             .then((response) => {
                 if (this.state.item.results[0].photos[0].thumbnail_url === null) {
                     this.state.item.results[0].photos[0].thumbnail_url = 'https://www.moorefieldrealestate.com/assets/images/image-not-available.jpg'
