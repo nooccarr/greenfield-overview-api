@@ -4,7 +4,7 @@
 The API can currently be found at http://3.21.164.220/.
 
 ### The data services for this api
-1. [Products](https://gist.github.com/trentgoing/409c2d76ce8e187e2132e45d9bed4605#file-products_api-md)
+* Products
 
 
 ### Use of Parameters
@@ -13,6 +13,7 @@ In an HTTP GET request, parameters are sent as a query string:
 `http://example.com/page?parameter=value&also=another`
 
 In an HTTP POST or PUT request, the parameters are not sent along with the URI, but in the request body.  Parameters noted for each route below follow this standard.
+
 
 
 # Products API
